@@ -1,24 +1,27 @@
 {
-  "name" : "CF Workers Stats",
-  "icon" : "chart.bar.fill",
-  "color" : "#3B82F6",
-  "version" : "1.0.0",
-  "description" : "Cloudflare Workers invocation stats, error rate and CPU time widget",
-  "runInApp" : false,
-  "author" : {
-    "name" : "Gin",
-    "email" : "",
-    "homepage" : "https://github.com/IchimaruGin728"
+  "name": "CF Workers Stats",
+  "icon": "chart.bar.fill",
+  "color": "#3B82F6",
+  "version": "1.0.0",
+  "description": "Cloudflare Workers invocation stats, error rate and CPU time widget",
+  "runInApp": false,
+  "author": {
+    "name": "Gin",
+    "email": "",
+    "homepage": "https://github.com/IchimaruGin728"
   },
-  "localizedNames" : {
-    "zh" : "CF Workers 统计",
-    "en" : "CF Workers Stats"
+  "localizedNames": {
+    "zh": "CF Workers 统计",
+    "en": "CF Workers Stats"
   },
-  "localizedDescriptions" : {
-    "zh" : "显示 Worker 过去 24 小时的调用量、错误率、CPU 耗时",
-    "en" : "Show Worker invocations, error rate, and CPU time for last 24 hours"
+  "localizedDescriptions": {
+    "zh": "显示 Worker 过去 24 小时的调用量、错误率、CPU 耗时",
+    "en": "Show Worker invocations, error rate, and CPU time for last 24 hours"
   },
-  "intentInputTypes" : [],
-  "contributors" : [],
-  "remoteResource" : null
+  "intentInputTypes": [],
+  "contributors": [],
+  "remoteResource": {
+    "url": "https://github.com/IchimaruGin728/Gins-Scripts/releases/download/v1.0.0/cf-workers-widget.zip",
+    "autoUpdateInterval": null
+  }
 }

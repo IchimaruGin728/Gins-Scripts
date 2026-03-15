@@ -1,24 +1,27 @@
 {
-  "name" : "CF Deploy Monitor",
-  "icon" : "arrow.triangle.2.circlepath",
-  "color" : "#F6821F",
-  "version" : "1.0.0",
-  "description" : "Cloudflare Pages + Workers deployment live activity monitor",
-  "runInApp" : false,
-  "author" : {
-    "name" : "Gin",
-    "email" : "",
-    "homepage" : "https://github.com/IchimaruGin728"
+  "name": "CF Deploy Monitor",
+  "icon": "arrow.triangle.2.circlepath",
+  "color": "#F6821F",
+  "version": "1.0.0",
+  "description": "Cloudflare Pages + Workers deployment live activity monitor",
+  "runInApp": false,
+  "author": {
+    "name": "Gin",
+    "email": "",
+    "homepage": "https://github.com/IchimaruGin728"
   },
-  "localizedNames" : {
-    "zh" : "CF 部署监控",
-    "en" : "CF Deploy Monitor"
+  "localizedNames": {
+    "zh": "CF 部署监控",
+    "en": "CF Deploy Monitor"
   },
-  "localizedDescriptions" : {
-    "zh" : "灵动岛实时显示 Cloudflare Pages 构建 + Workers 部署状态",
-    "en" : "Live Activity showing Cloudflare Pages build + Workers deploy status"
+  "localizedDescriptions": {
+    "zh": "灵动岛实时显示 Cloudflare Pages 构建 + Workers 部署状态",
+    "en": "Live Activity showing Cloudflare Pages build + Workers deploy status"
   },
-  "intentInputTypes" : [],
-  "contributors" : [],
-  "remoteResource" : null
+  "intentInputTypes": [],
+  "contributors": [],
+  "remoteResource": {
+    "url": "https://github.com/IchimaruGin728/Gins-Scripts/releases/download/v1.0.0/cf-deploy-live-activity.zip",
+    "autoUpdateInterval": null
+  }
 }

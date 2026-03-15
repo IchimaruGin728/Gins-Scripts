@@ -1,24 +1,27 @@
 {
-  "name" : "CF Analytics",
-  "icon" : "chart.line.uptrend.xyaxis",
-  "color" : "#8B5CF6",
-  "version" : "1.0.0",
-  "description" : "Cloudflare Zone traffic analytics widget",
-  "runInApp" : false,
-  "author" : {
-    "name" : "Gin",
-    "email" : "",
-    "homepage" : "https://github.com/IchimaruGin728"
+  "name": "CF Analytics",
+  "icon": "chart.line.uptrend.xyaxis",
+  "color": "#8B5CF6",
+  "version": "1.0.0",
+  "description": "Cloudflare Zone traffic analytics widget",
+  "runInApp": false,
+  "author": {
+    "name": "Gin",
+    "email": "",
+    "homepage": "https://github.com/IchimaruGin728"
   },
-  "localizedNames" : {
-    "zh" : "CF 流量分析",
-    "en" : "CF Analytics"
+  "localizedNames": {
+    "zh": "CF 流量分析",
+    "en": "CF Analytics"
   },
-  "localizedDescriptions" : {
-    "zh" : "显示 Zone 过去 24 小时的请求量、带宽、缓存率、威胁拦截",
-    "en" : "Show Zone requests, bandwidth, cache rate, and threats for last 24 hours"
+  "localizedDescriptions": {
+    "zh": "显示 Zone 过去 24 小时的请求量、带宽、缓存率、威胁拦截",
+    "en": "Show Zone requests, bandwidth, cache rate, and threats for last 24 hours"
   },
-  "intentInputTypes" : [],
-  "contributors" : [],
-  "remoteResource" : null
+  "intentInputTypes": [],
+  "contributors": [],
+  "remoteResource": {
+    "url": "https://github.com/IchimaruGin728/Gins-Scripts/releases/download/v1.0.0/cf-analytics-widget.zip",
+    "autoUpdateInterval": null
+  }
 }

@@ -1,24 +1,27 @@
 {
-  "name" : "CF IP Trace",
-  "icon" : "network",
-  "color" : "#F6821F",
-  "version" : "1.0.0",
-  "description" : "Cloudflare IP trace, latency RTT, and download speed widget",
-  "runInApp" : false,
-  "author" : {
-    "name" : "Gin",
-    "email" : "",
-    "homepage" : "https://github.com/IchimaruGin728"
+  "name": "CF IP Trace",
+  "icon": "network",
+  "color": "#F6821F",
+  "version": "1.0.0",
+  "description": "Cloudflare IP trace, latency RTT, and download speed widget",
+  "runInApp": false,
+  "author": {
+    "name": "Gin",
+    "email": "",
+    "homepage": "https://github.com/IchimaruGin728"
   },
-  "localizedNames" : {
-    "zh" : "CF IP 追踪",
-    "en" : "CF IP Trace"
+  "localizedNames": {
+    "zh": "CF IP 追踪",
+    "en": "CF IP Trace"
   },
-  "localizedDescriptions" : {
-    "zh" : "显示当前 IP、Cloudflare 接入节点、延迟和下载速率",
-    "en" : "Show current IP, Cloudflare edge node, latency and download speed"
+  "localizedDescriptions": {
+    "zh": "显示当前 IP、Cloudflare 接入节点、延迟和下载速率",
+    "en": "Show current IP, Cloudflare edge node, latency and download speed"
   },
-  "intentInputTypes" : [],
-  "contributors" : [],
-  "remoteResource" : null
+  "intentInputTypes": [],
+  "contributors": [],
+  "remoteResource": {
+    "url": "https://github.com/IchimaruGin728/Gins-Scripts/releases/download/v1.0.0/cf-ip-trace.zip",
+    "autoUpdateInterval": null
+  }
 }
