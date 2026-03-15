@@ -4,8 +4,6 @@ import {
   HStack,
   Text,
   Spacer,
-  fetch,
-  WidgetReloadPolicy,
 } from "scripting"
 
 // ======= 配置区 =======
@@ -119,7 +117,7 @@ function MetricBox({
 }
 
 async function render() {
-  const reloadPolicy: WidgetReloadPolicy = {
+  const reloadPolicy = {
     policy: "after",
     date: new Date(Date.now() + 15 * 60 * 1000),
   }

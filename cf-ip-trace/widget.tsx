@@ -4,9 +4,6 @@ import {
   HStack,
   Text,
   Spacer,
-  Rectangle,
-  fetch,
-  WidgetReloadPolicy,
 } from "scripting"
 
 interface TraceInfo {
@@ -94,7 +91,7 @@ function formatSpeed(kbps: number): string {
 }
 
 async function render() {
-  const reloadPolicy: WidgetReloadPolicy = {
+  const reloadPolicy = {
     policy: "after",
     date: new Date(Date.now() + 15 * 60 * 1000),
   }

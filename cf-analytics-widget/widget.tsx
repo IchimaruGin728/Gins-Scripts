@@ -4,8 +4,6 @@ import {
   HStack,
   Text,
   Spacer,
-  fetch,
-  WidgetReloadPolicy,
 } from "scripting"
 
 // ======= 配置区 =======
@@ -120,7 +118,7 @@ function StatCard({ label, value, color }: { label: string; value: string; color
 }
 
 async function render() {
-  const reloadPolicy: WidgetReloadPolicy = {
+  const reloadPolicy = {
     policy: "after",
     date: new Date(Date.now() + 15 * 60 * 1000),
   }
