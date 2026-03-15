@@ -1,6 +1,7 @@
 import {
   AppIntentManager,
   AppIntentProtocol,
+  fetch,
 } from "scripting"
 import { CFDeployLiveActivity } from "./live_activity"
 

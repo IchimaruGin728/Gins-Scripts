@@ -4,6 +4,8 @@ import {
   HStack,
   Text,
   Spacer,
+  fetch,
+  Color,
 } from "scripting"
 
 interface TraceInfo {
@@ -71,13 +73,13 @@ const coloCity: Record<string, string> = {
   JNB: "约翰内斯堡", CPT: "开普敦", NBO: "内罗毕",
 }
 
-function rttColor(ms: number): string {
+function rttColor(ms: number): Color {
   if (ms < 80) return "#22C55E"
   if (ms < 200) return "#F59E0B"
   return "#EF4444"
 }
 
-function speedColor(kbps: number): string {
+function speedColor(kbps: number): Color {
   if (kbps > 50000) return "#22C55E"
   if (kbps > 10000) return "#84CC16"
   if (kbps > 1000) return "#F59E0B"
@@ -92,7 +94,7 @@ function formatSpeed(kbps: number): string {
 
 async function render() {
   const reloadPolicy = {
-    policy: "after",
+    policy: "after" as const,
     date: new Date(Date.now() + 15 * 60 * 1000),
   }
 

@@ -4,6 +4,8 @@ import {
   HStack,
   Text,
   Spacer,
+  fetch,
+  Color,
 } from "scripting"
 
 // ======= 配置区 =======
@@ -102,7 +104,7 @@ function formatCount(n: number): string {
   return `${n}`
 }
 
-function StatCard({ label, value, color }: { label: string; value: string; color: string }) {
+function StatCard({ label, value, color }: { label: string; value: string; color: Color }) {
   return (
     <VStack
       spacing={2}
@@ -119,7 +121,7 @@ function StatCard({ label, value, color }: { label: string; value: string; color
 
 async function render() {
   const reloadPolicy = {
-    policy: "after",
+    policy: "after" as const,
     date: new Date(Date.now() + 15 * 60 * 1000),
   }
 
@@ -153,7 +155,7 @@ async function render() {
         {/* 第二行：缓存率 & 威胁 */}
         <HStack spacing={8}>
           <StatCard label="缓存命中" value={`${cacheRate}%`} color="#22C55E" />
-          <StatCard label="威胁拦截" value={formatCount(stats.threats)} color={stats.threats > 0 ? "#EF4444" : "secondaryLabel"} />
+          <StatCard label="威胁拦截" value={formatCount(stats.threats)} color={(stats.threats > 0 ? "#EF4444" : "secondaryLabel") as Color} />
         </HStack>
 
         {/* 页面访问 */}

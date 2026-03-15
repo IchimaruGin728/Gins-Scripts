@@ -4,6 +4,8 @@ import {
   HStack,
   Text,
   Spacer,
+  fetch,
+  Color,
 } from "scripting"
 
 // ======= 配置区 =======
@@ -95,7 +97,7 @@ function formatCpu(ms: number): string {
 function MetricBox({
   label, value, color, sub, subColor,
 }: {
-  label: string; value: string; color: string; sub?: string; subColor?: string
+  label: string; value: string; color: Color; sub?: string; subColor?: Color
 }) {
   return (
     <VStack
@@ -118,7 +120,7 @@ function MetricBox({
 
 async function render() {
   const reloadPolicy = {
-    policy: "after",
+    policy: "after" as const,
     date: new Date(Date.now() + 15 * 60 * 1000),
   }
 
@@ -157,7 +159,7 @@ async function render() {
           <MetricBox
             label="错误率"
             value={`${errorRate}%`}
-            color={errorRateNum > 1 ? "#EF4444" : errorRateNum > 0.1 ? "#F59E0B" : "#22C55E"}
+            color={(errorRateNum > 1 ? "#EF4444" : errorRateNum > 0.1 ? "#F59E0B" : "#22C55E") as Color}
             sub={`${formatCount(stats.errors)} 次错误`}
             subColor={stats.errors > 0 ? "#EF4444" : undefined}
           />
@@ -173,7 +175,7 @@ async function render() {
           <MetricBox
             label="CPU P99"
             value={formatCpu(stats.cpuP99)}
-            color={stats.cpuP99 > 10 ? "#F59E0B" : "#8B5CF6"}
+            color={(stats.cpuP99 > 10 ? "#F59E0B" : "#8B5CF6") as Color}
           />
         </HStack>
 
