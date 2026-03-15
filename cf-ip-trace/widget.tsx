@@ -31,31 +31,64 @@ interface SpeedResult {
 }
 
 async function fetchTrace(): Promise<{ info: TraceInfo; speed: SpeedResult }> {
-  const t0 = Date.now()
-  const res = await fetch("https://cloudflare.com/cdn-cgi/trace")
-  const rttMs = Date.now() - t0
-
-  const text = await res.text()
-  const obj: Record<string, string> = {}
-  for (const line of text.trim().split("\n")) {
-    const eq = line.indexOf("=")
-    if (eq > 0) obj[line.slice(0, eq)] = line.slice(eq + 1)
-  }
-
-  let downloadKbps = 0
   try {
-    const dlT0 = Date.now()
-    const dlRes = await fetch("https://speed.cloudflare.com/__down?bytes=102400")
-    await dlRes.arrayBuffer()
-    const dlMs = Date.now() - dlT0
-    downloadKbps = Math.round((102400 * 8) / (dlMs / 1000) / 1000)
-  } catch (_e) {
-    // speed test failure won't break main info
-  }
+    const t0 = Date.now()
+    
+    // 给 trace fetch 增加 5 秒超时
+    const traceFetch = async () => {
+      const res = await fetch("https://cloudflare.com/cdn-cgi/trace")
+      return await res.text()
+    }
 
-  return {
-    info: obj as unknown as TraceInfo,
-    speed: { rttMs, downloadKbps },
+    const timeout = (ms: number) => new Promise<string>((_, reject) =>
+      setTimeout(() => reject(new Error("Trace Timeout")), ms)
+    )
+
+    const text = await Promise.race([traceFetch(), timeout(5000)])
+    const rttMs = Date.now() - t0
+
+    const obj: Record<string, string> = {}
+    for (const line of text.trim().split("\n")) {
+      const eq = line.indexOf("=")
+      if (eq > 0) obj[line.slice(0, eq)] = line.slice(eq + 1)
+    }
+
+    // 基础数据补全，防止渲染时崩溃
+    const info: TraceInfo = {
+      ip: obj.ip ?? "未知",
+      ts: obj.ts ?? "",
+      visit_scheme: obj.visit_scheme ?? "",
+      uag: obj.uag ?? "",
+      colo: obj.colo ?? "未知",
+      sliver: obj.sliver ?? "",
+      http: obj.http ?? "未知",
+      loc: obj.loc ?? "未知",
+      tls: obj.tls ?? "未知",
+      sni: obj.sni ?? "",
+      warp: obj.warp ?? "off",
+      gateway: obj.gateway ?? "off",
+      rbi: obj.rbi ?? "",
+      kex: obj.kex ?? "",
+    }
+
+    let downloadKbps = 0
+    try {
+      const speedTest = async () => {
+        const dlT0 = Date.now()
+        const dlRes = await fetch("https://speed.cloudflare.com/__down?bytes=102400")
+        await dlRes.arrayBuffer()
+        const dlMs = Date.now() - dlT0
+        return Math.round((102400 * 8) / (Math.max(dlMs, 1) / 1000) / 1000)
+      }
+
+      downloadKbps = await Promise.race([speedTest(), timeout(5000) as any])
+    } catch (_e) {
+      // 速度测试失败不影响主信息
+    }
+
+    return { info, speed: { rttMs, downloadKbps } }
+  } catch (e) {
+    throw e
   }
 }
 
@@ -74,16 +107,16 @@ const coloCity: Record<string, string> = {
 }
 
 function rttColor(ms: number): Color {
-  if (ms < 80) return "#22C55E"
-  if (ms < 200) return "#F59E0B"
-  return "#EF4444"
+  if (ms < 80) return "#22C55E" as Color
+  if (ms < 200) return "#F59E0B" as Color
+  return "#EF4444" as Color
 }
 
 function speedColor(kbps: number): Color {
-  if (kbps > 50000) return "#22C55E"
-  if (kbps > 10000) return "#84CC16"
-  if (kbps > 1000) return "#F59E0B"
-  return "#EF4444"
+  if (kbps > 50000) return "#22C55E" as Color
+  if (kbps > 10000) return "#84CC16" as Color
+  if (kbps > 1000) return "#F59E0B" as Color
+  return "#EF4444" as Color
 }
 
 function formatSpeed(kbps: number): string {
@@ -112,7 +145,7 @@ async function render() {
       >
         {/* 标题 */}
         <HStack spacing={6}>
-          <Text font={11} fontWeight="bold" foregroundStyle="#F6821F">
+          <Text font={11} fontWeight="bold" foregroundStyle={"#F6821F" as Color}>
             ◆ CF IP · SPEED
           </Text>
           <Spacer />
@@ -131,14 +164,14 @@ async function render() {
         <HStack spacing={16}>
           <VStack spacing={2}>
             <Text font={10} foregroundStyle="secondaryLabel">接入节点</Text>
-            <Text font={13} fontWeight="medium" foregroundStyle="#F6821F">
-              {info.colo} · {city}
+            <Text font={13} fontWeight="medium" foregroundStyle={"#F6821F" as Color}>
+              {String(info.colo)} · {String(city)}
             </Text>
           </VStack>
           <VStack spacing={2}>
             <Text font={10} foregroundStyle="secondaryLabel">协议</Text>
-            <Text font={12} foregroundStyle="#3B82F6">
-              {info.http} / {info.tls}
+            <Text font={12} foregroundStyle={"#3B82F6" as Color}>
+              {String(info.http)} / {String(info.tls)}
             </Text>
           </VStack>
         </HStack>
@@ -149,7 +182,7 @@ async function render() {
             <Text font={10} foregroundStyle="secondaryLabel">延迟 RTT</Text>
             <HStack spacing={3}>
               <Text font={14} fontWeight="semibold" foregroundStyle={rttColor(speed.rttMs)}>
-                {speed.rttMs}
+                {String(speed.rttMs)}
               </Text>
               <Text font={10} foregroundStyle="secondaryLabel">ms</Text>
             </HStack>
@@ -167,13 +200,13 @@ async function render() {
           <VStack spacing={4}>
             <HStack spacing={4}>
               <Text font={10} foregroundStyle="secondaryLabel">WARP</Text>
-              <Text font={10} foregroundStyle={warpActive ? "#22C55E" : "tertiaryLabel"}>
+              <Text font={10} foregroundStyle={(warpActive ? "#22C55E" : "tertiaryLabel") as Color}>
                 {warpActive ? "ON" : "OFF"}
               </Text>
             </HStack>
             <HStack spacing={4}>
               <Text font={10} foregroundStyle="secondaryLabel">GW</Text>
-              <Text font={10} foregroundStyle={gatewayActive ? "#22C55E" : "tertiaryLabel"}>
+              <Text font={10} foregroundStyle={(gatewayActive ? "#22C55E" : "tertiaryLabel") as Color}>
                 {gatewayActive ? "ON" : "OFF"}
               </Text>
             </HStack>
@@ -185,8 +218,8 @@ async function render() {
   } catch (e) {
     Widget.present(
       <VStack padding={16} spacing={4}>
-        <Text font={11} fontWeight="bold" foregroundStyle="#F6821F">◆ CF IP · SPEED</Text>
-        <Text font={12} foregroundStyle="#ff4444">获取失败</Text>
+        <Text font={11} fontWeight="bold" foregroundStyle={"#F6821F" as Color}>◆ CF IP · SPEED</Text>
+        <Text font={12} foregroundStyle={"#ff4444" as Color}>获取失败</Text>
         <Text font={10} foregroundStyle="secondaryLabel">{String(e)}</Text>
       </VStack>,
       reloadPolicy
