@@ -1,11 +1,5 @@
-import {
-  Widget,
-  VStack,
-  HStack,
-  Text,
-  Spacer,
-  fetch,
   Color,
+  config,
 } from "scripting"
 
 interface TraceInfo {
@@ -34,17 +28,17 @@ async function fetchTrace(): Promise<{ info: TraceInfo; speed: SpeedResult }> {
   try {
     const t0 = Date.now()
     
-    // 给 trace fetch 增加 5 秒超时
+    // 给 trace fetch 限制 3 秒超时，小组件背景执行必须快
     const traceFetch = async () => {
       const res = await fetch("https://cloudflare.com/cdn-cgi/trace")
       return await res.text()
     }
 
     const timeout = (ms: number) => new Promise<string>((_, reject) =>
-      setTimeout(() => reject(new Error("Trace Timeout")), ms)
+      setTimeout(() => reject(new Error("Timeout")), ms)
     )
 
-    const text = await Promise.race([traceFetch(), timeout(5000)])
+    const text = await Promise.race([traceFetch(), timeout(3000)])
     const rttMs = Date.now() - t0
 
     const obj: Record<string, string> = {}
@@ -53,7 +47,6 @@ async function fetchTrace(): Promise<{ info: TraceInfo; speed: SpeedResult }> {
       if (eq > 0) obj[line.slice(0, eq)] = line.slice(eq + 1)
     }
 
-    // 基础数据补全，防止渲染时崩溃
     const info: TraceInfo = {
       ip: obj.ip ?? "未知",
       ts: obj.ts ?? "",
@@ -72,18 +65,25 @@ async function fetchTrace(): Promise<{ info: TraceInfo; speed: SpeedResult }> {
     }
 
     let downloadKbps = 0
-    try {
-      const speedTest = async () => {
-        const dlT0 = Date.now()
-        const dlRes = await fetch("https://speed.cloudflare.com/__down?bytes=102400")
-        await dlRes.arrayBuffer()
-        const dlMs = Date.now() - dlT0
-        return Math.round((102400 * 8) / (Math.max(dlMs, 1) / 1000) / 1000)
-      }
+    // 小组件模式下，如果 RTT 太高或已经是背景执行，尽可能简化或跳过速度测试
+    const skipSpeedTest = config.runsInWidget && (rttMs > 300)
+    
+    if (!skipSpeedTest) {
+      try {
+        const speedTest = async () => {
+          const dlT0 = Date.now()
+          // 减少测试数据大小，缩短背景执行时间
+          const bytes = config.runsInWidget ? 10240 : 102400
+          const dlRes = await fetch(`https://speed.cloudflare.com/__down?bytes=${bytes}`)
+          await dlRes.arrayBuffer()
+          const dlMs = Date.now() - dlT0
+          return Math.round((bytes * 8) / (Math.max(dlMs, 1) / 1000) / 1000)
+        }
 
-      downloadKbps = await Promise.race([speedTest(), timeout(5000) as any])
-    } catch (_e) {
-      // 速度测试失败不影响主信息
+        downloadKbps = await Promise.race([speedTest(), timeout(config.runsInWidget ? 2000 : 5000) as any])
+      } catch (_e) {
+        // 速度测试失败不影响主信息
+      }
     }
 
     return { info, speed: { rttMs, downloadKbps } }
@@ -161,17 +161,17 @@ async function render() {
         </VStack>
 
         {/* 数据中心 & 协议 */}
-        <HStack spacing={16}>
-          <VStack spacing={2}>
-            <Text font={10} foregroundStyle="secondaryLabel">接入节点</Text>
-            <Text font={13} fontWeight="medium" foregroundStyle={"#F6821F" as Color}>
-              {String(info.colo)} · {String(city)}
+        <HStack spacing={10}>
+          <VStack spacing={2} frame={{ maxWidth: 80 }}>
+            <Text font={9} foregroundStyle="secondaryLabel">接入节点</Text>
+            <Text font={12} fontWeight="medium" foregroundStyle={"#F6821F" as Color} lineLimit={1}>
+              {String(info.colo)} · {String(city).length > 4 ? String(city).slice(0, 3) : city}
             </Text>
           </VStack>
           <VStack spacing={2}>
-            <Text font={10} foregroundStyle="secondaryLabel">协议</Text>
-            <Text font={12} foregroundStyle={"#3B82F6" as Color}>
-              {String(info.http)} / {String(info.tls)}
+            <Text font={9} foregroundStyle="secondaryLabel">协议</Text>
+            <Text font={11} foregroundStyle={"#3B82F6" as Color} lineLimit={1}>
+              {String(info.http)} / {String(info.tls).replace("TLSv", "")}
             </Text>
           </VStack>
         </HStack>
