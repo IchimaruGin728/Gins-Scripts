@@ -6,7 +6,6 @@ import {
   Spacer,
   fetch,
   Color,
-  config,
 } from "scripting"
 
 interface TraceInfo {

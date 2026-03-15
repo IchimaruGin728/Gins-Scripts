@@ -1,4 +1,4 @@
-import { Script, config } from "scripting"
+import { Script } from "scripting"
 
 if (config.runsInApp) {
   console.present().then(() => Script.exit())
