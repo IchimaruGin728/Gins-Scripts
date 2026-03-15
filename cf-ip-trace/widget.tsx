@@ -1,3 +1,10 @@
+import {
+  Widget,
+  VStack,
+  HStack,
+  Text,
+  Spacer,
+  fetch,
   Color,
   config,
 } from "scripting"
