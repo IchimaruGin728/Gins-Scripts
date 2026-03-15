@@ -71,22 +71,22 @@ async function fetchTrace(): Promise<{ info: TraceInfo; speed: SpeedResult }> {
     }
 
     let downloadKbps = 0
-    // 小组件模式下，如果 RTT 太高或已经是背景执行，尽可能简化或跳过速度测试
-    const skipSpeedTest = config.runsInWidget && (rttMs > 300)
+    // 默认开启速度测试，通过 RTT 判断是否跳过（如果网络响应已经很慢，大概率背景下载会超时）
+    const skipSpeedTest = rttMs > 500
     
     if (!skipSpeedTest) {
       try {
         const speedTest = async () => {
           const dlT0 = Date.now()
-          // 减少测试数据大小，缩短背景执行时间
-          const bytes = config.runsInWidget ? 10240 : 102400
+          // 统一使用较小的数据块（20KB），平衡精度与背景执行时间
+          const bytes = 20480
           const dlRes = await fetch(`https://speed.cloudflare.com/__down?bytes=${bytes}`)
           await dlRes.arrayBuffer()
           const dlMs = Date.now() - dlT0
           return Math.round((bytes * 8) / (Math.max(dlMs, 1) / 1000) / 1000)
         }
 
-        downloadKbps = await Promise.race([speedTest(), timeout(config.runsInWidget ? 2000 : 5000) as any])
+        downloadKbps = await Promise.race([speedTest(), timeout(3000) as any])
       } catch (_e) {
         // 速度测试失败不影响主信息
       }
