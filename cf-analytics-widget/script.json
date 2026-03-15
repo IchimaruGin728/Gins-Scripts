@@ -1,0 +1,24 @@
+{
+  "name" : "CF Analytics",
+  "icon" : "chart.line.uptrend.xyaxis",
+  "color" : "#8B5CF6",
+  "version" : "1.0.0",
+  "description" : "Cloudflare Zone traffic analytics widget",
+  "runInApp" : false,
+  "author" : {
+    "name" : "Gin",
+    "email" : "",
+    "homepage" : "https://github.com/IchimaruGin728"
+  },
+  "localizedNames" : {
+    "zh" : "CF 流量分析",
+    "en" : "CF Analytics"
+  },
+  "localizedDescriptions" : {
+    "zh" : "显示 Zone 过去 24 小时的请求量、带宽、缓存率、威胁拦截",
+    "en" : "Show Zone requests, bandwidth, cache rate, and threats for last 24 hours"
+  },
+  "intentInputTypes" : [],
+  "contributors" : [],
+  "remoteResource" : null
+}

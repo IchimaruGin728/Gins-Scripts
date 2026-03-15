@@ -1,6 +1,9 @@
-/** @jsxRuntime classic */
-// CF Deploy Live Activity — AppIntents
-// 同时监控 Cloudflare Pages 构建 + Workers 脚本部署状态
+import {
+  AppIntentManager,
+  AppIntentProtocol,
+  fetch,
+} from "scripting"
+import { CFDeployLiveActivity } from "./live_activity"
 
 // ======= 配置区 =======
 const CF_API_TOKEN  = "YOUR_API_TOKEN_HERE"
@@ -53,14 +56,14 @@ async function fetchPagesDeployment(): Promise<PagesState> {
   const completed = d.modified_on ? new Date(d.modified_on) : undefined
 
   return {
-    status:        mapPagesStatus(d.latest_stage?.status, d.latest_stage?.name),
-    branch:        d.deployment_trigger?.metadata?.branch ?? "unknown",
-    commitMessage: d.deployment_trigger?.metadata?.commit_message ?? "",
-    environment:   d.environment ?? "production",
-    startedAt:     d.created_on,
-    completedAt:   d.modified_on,
+    status:          mapPagesStatus(d.latest_stage?.status, d.latest_stage?.name),
+    branch:          d.deployment_trigger?.metadata?.branch ?? "unknown",
+    commitMessage:   d.deployment_trigger?.metadata?.commit_message ?? "",
+    environment:     d.environment ?? "production",
+    startedAt:       d.created_on,
+    completedAt:     d.modified_on,
     buildDurationMs: completed ? completed.getTime() - started.getTime() : undefined,
-    url:           d.url,
+    url:             d.url,
   }
 }
 
@@ -112,14 +115,11 @@ export const CheckDeployStatus = AppIntentManager.register({
     ])
     const state: DeployState = { pages, worker, pagesProject: PAGES_PROJECT, workerName: WORKER_NAME }
 
-    await LiveActivityManager.update("cf-deploy", { contentState: state })
+    CFDeployLiveActivity.update(state)
 
     const pagesSettled = ["success", "failure", "canceled", "idle"].includes(pages.status)
     if (pagesSettled && worker.status !== "deploying") {
-      await LiveActivityManager.end("cf-deploy", {
-        contentState: state,
-        dismissalPolicy: "after-delay",
-      })
+      CFDeployLiveActivity.end()
     }
   },
 })
@@ -134,6 +134,6 @@ export const StartDeployMonitor = AppIntentManager.register({
       fetchWorkerState(),
     ])
     const state: DeployState = { pages, worker, pagesProject: PAGES_PROJECT, workerName: WORKER_NAME }
-    await LiveActivityManager.start("cf-deploy", { contentState: state })
+    CFDeployLiveActivity.start({ contentState: state })
   },
 })

@@ -1,6 +1,13 @@
-/** @jsxRuntime classic */
-// CF Deploy Live Activity — Dynamic Island UI
-// 灵动岛同时显示 Pages 构建进度 + Workers 部署状态
+import {
+  LiveActivity,
+  LiveActivityUI,
+  LiveActivityUIExpandedCenter,
+  HStack,
+  VStack,
+  Text,
+  Spacer,
+  Rectangle,
+} from "scripting"
 
 type PagesStatus  = "idle" | "queued" | "active" | "success" | "failure" | "canceled"
 type WorkerStatus = "idle" | "deploying" | "active" | "failed"
@@ -23,14 +30,12 @@ interface WorkerState {
   routes: number
 }
 
-interface DeployState {
+export interface DeployState {
   pages: PagesState
   worker: WorkerState
-  pagesProject: string   // 静态，合并进 state
-  workerName: string     // 静态，合并进 state
+  pagesProject: string
+  workerName: string
 }
-
-// ---- 样式工具 ----
 
 function pagesColor(s: PagesStatus): string {
   switch (s) {
@@ -45,12 +50,12 @@ function pagesColor(s: PagesStatus): string {
 
 function pagesIcon(s: PagesStatus): string {
   switch (s) {
-    case "success":  return "✓"
-    case "failure":  return "✕"
-    case "canceled": return "⊘"
-    case "active":   return "▶"
-    case "queued":   return "…"
-    default:         return "○"
+    case "success":  return "checkmark.circle.fill"
+    case "failure":  return "xmark.circle.fill"
+    case "canceled": return "minus.circle.fill"
+    case "active":   return "play.circle.fill"
+    case "queued":   return "clock.fill"
+    default:         return "circle"
   }
 }
 
@@ -76,10 +81,10 @@ function workerColor(s: WorkerStatus): string {
 
 function workerIcon(s: WorkerStatus): string {
   switch (s) {
-    case "active":    return "✓"
-    case "deploying": return "↑"
-    case "failed":    return "✕"
-    default:          return "○"
+    case "active":    return "checkmark.circle.fill"
+    case "deploying": return "arrow.up.circle.fill"
+    case "failed":    return "xmark.circle.fill"
+    default:          return "circle"
   }
 }
 
@@ -121,63 +126,61 @@ export const CFDeployLiveActivity = LiveActivity.register(
     return (
       <LiveActivityUI
         compactLeading={
-          <HStack spacing={4} padding={{ left: 6, right: 2 }}>
-            <Text font={{ name: "system", size: 12 }} color={pagesColor(pages.status)} fontWeight="bold">
-              {pagesIcon(pages.status)}
+          <HStack spacing={4} padding={{ leading: 6, trailing: 2 }}>
+            <Text font={12} fontWeight="bold" foregroundStyle={pagesColor(pages.status)}>
+              P
             </Text>
-            <Text font={{ name: "system", size: 10 }} color="#F6821F" fontWeight="semibold">
-              Pages
+            <Text font={10} fontWeight="semibold" foregroundStyle="#F6821F">
+              {pagesLabel(pages.status)}
             </Text>
           </HStack>
         }
         compactTrailing={
-          <HStack spacing={4} padding={{ left: 2, right: 6 }}>
-            <Text font={{ name: "system", size: 10 }} color={workerColor(worker.status)} fontWeight="bold">
-              {workerIcon(worker.status)}
+          <HStack spacing={4} padding={{ leading: 2, trailing: 6 }}>
+            <Text font={12} fontWeight="bold" foregroundStyle={workerColor(worker.status)}>
+              W
             </Text>
-            <Text font={{ name: "system", size: 10 }} color="#8B5CF6" fontWeight="semibold">
-              Worker
+            <Text font={10} fontWeight="semibold" foregroundStyle="#8B5CF6">
+              {workerLabel(worker.status)}
             </Text>
           </HStack>
         }
         minimal={
-          <Text font={{ name: "system", size: 12 }} color={anyBusy ? "#F59E0B" : "#22C55E"} fontWeight="bold">
+          <Text font={12} fontWeight="bold" foregroundStyle={anyBusy ? "#F59E0B" : "#22C55E"}>
             {anyBusy ? "↑" : "✓"}
           </Text>
         }
         content={
           <HStack spacing={0} padding={12}>
             <HStack spacing={8}>
-              <Text font={{ name: "system", size: 18 }} color={pagesColor(pages.status)}>
-                {pagesIcon(pages.status)}
+              <Text font={18} foregroundStyle={pagesColor(pages.status)}>
+                P
               </Text>
               <VStack spacing={2}>
                 <HStack spacing={4}>
-                  <Text font={{ name: "system", size: 11 }} color="#F6821F" fontWeight="bold">Pages</Text>
-                  <Text font={{ name: "system", size: 11 }} color={pagesColor(pages.status)}>
+                  <Text font={11} fontWeight="bold" foregroundStyle="#F6821F">Pages</Text>
+                  <Text font={11} foregroundStyle={pagesColor(pages.status)}>
                     {pagesLabel(pages.status)}
                   </Text>
                 </HStack>
-                <Text font={{ name: "monospaced", size: 10 }} color="#888888">
-                  ⎇ {pages.branch}
+                <Text font={10} foregroundStyle="secondaryLabel">
+                  {pages.branch}
                 </Text>
               </VStack>
             </HStack>
             <Spacer />
-            <Rectangle width={1} height={32} background={{ light: "#e5e7eb", dark: "#2a2d3a" }} />
-            <Spacer />
             <HStack spacing={8}>
-              <Text font={{ name: "system", size: 18 }} color={workerColor(worker.status)}>
-                {workerIcon(worker.status)}
+              <Text font={18} foregroundStyle={workerColor(worker.status)}>
+                W
               </Text>
               <VStack spacing={2}>
                 <HStack spacing={4}>
-                  <Text font={{ name: "system", size: 11 }} color="#8B5CF6" fontWeight="bold">Worker</Text>
-                  <Text font={{ name: "system", size: 11 }} color={workerColor(worker.status)}>
+                  <Text font={11} fontWeight="bold" foregroundStyle="#8B5CF6">Worker</Text>
+                  <Text font={11} foregroundStyle={workerColor(worker.status)}>
                     {workerLabel(worker.status)}
                   </Text>
                 </HStack>
-                <Text font={{ name: "monospaced", size: 10 }} color="#888888">
+                <Text font={10} foregroundStyle="secondaryLabel">
                   {worker.scriptTag ? `#${worker.scriptTag}` : "—"}
                 </Text>
               </VStack>
@@ -185,104 +188,97 @@ export const CFDeployLiveActivity = LiveActivity.register(
           </HStack>
         }
       >
-        {/* 展开：左右分栏 Pages | Worker */}
+        {/* 展开区域 */}
         <LiveActivityUIExpandedCenter>
           <HStack spacing={0} padding={0}>
-
             {/* Pages 一侧 */}
-            <VStack spacing={8} padding={14}>
+            <VStack spacing={8} padding={14} frame={{ minWidth: 0, maxWidth: Infinity }}>
               <HStack spacing={4}>
-                <Text font={{ name: "system", size: 10 }} color="#888888">PAGES</Text>
+                <Text font={10} foregroundStyle="secondaryLabel">PAGES</Text>
                 <Spacer />
-                <Text font={{ name: "system", size: 11 }} color="#F6821F" fontWeight="semibold" lineLimit={1}>
+                <Text font={11} fontWeight="semibold" foregroundStyle="#F6821F" lineLimit={1}>
                   {state.pagesProject}
                 </Text>
               </HStack>
 
               <HStack spacing={6}>
-                <Text font={{ name: "system", size: 16 }} color={pagesColor(pages.status)} fontWeight="bold">
-                  {pagesIcon(pages.status)}
+                <Text font={16} fontWeight="bold" foregroundStyle={pagesColor(pages.status)}>
+                  P
                 </Text>
                 <VStack spacing={2}>
-                  <Text font={{ name: "system", size: 13 }} color={pagesColor(pages.status)} fontWeight="semibold">
+                  <Text font={13} fontWeight="semibold" foregroundStyle={pagesColor(pages.status)}>
                     {pagesLabel(pages.status)}
                   </Text>
-                  <Text font={{ name: "monospaced", size: 10 }} color="#8B5CF6">
-                    ⎇ {pages.branch}
+                  <Text font={10} foregroundStyle="#8B5CF6">
+                    {pages.branch}
                   </Text>
                 </VStack>
               </HStack>
 
-              <Text font={{ name: "system", size: 10 }} color={{ light: "#555555", dark: "#aaaaaa" }} lineLimit={1}>
+              <Text font={10} foregroundStyle="secondaryLabel" lineLimit={1}>
                 {pages.commitMessage.slice(0, 28)}{pages.commitMessage.length > 28 ? "…" : ""}
               </Text>
 
-              {pagesBuilding && (
+              {pagesBuilding ? (
                 <VStack spacing={3}>
-                  <Rectangle height={3} background={{ light: "#e5e7eb", dark: "#2a2d3a" }} cornerRadius={2}>
-                    <Rectangle width={`${progress}%`} height={3} background="#3B82F6" cornerRadius={2} />
-                  </Rectangle>
                   <HStack>
-                    <Text font={{ name: "system", size: 9 }} color="#888888">
+                    <Text font={9} foregroundStyle="secondaryLabel">
                       {mins}:{String(secs).padStart(2, "0")} 已用
                     </Text>
                     <Spacer />
-                    <Text font={{ name: "system", size: 9 }} color="#888888">
+                    <Text font={9} foregroundStyle="secondaryLabel">
                       {pages.environment}
                     </Text>
                   </HStack>
                 </VStack>
-              )}
+              ) : null}
 
-              {!pagesBuilding && pages.buildDurationMs !== undefined && (
-                <Text font={{ name: "system", size: 10 }} color="#888888">
+              {!pagesBuilding && pages.buildDurationMs !== undefined ? (
+                <Text font={10} foregroundStyle="secondaryLabel">
                   耗时 {formatDuration(pages.buildDurationMs)}
                 </Text>
-              )}
+              ) : null}
             </VStack>
 
-            <Rectangle width={1} background={{ light: "#e5e7eb", dark: "#2a2d3a" }} />
-
             {/* Worker 一侧 */}
-            <VStack spacing={8} padding={14}>
+            <VStack spacing={8} padding={14} frame={{ minWidth: 0, maxWidth: Infinity }}>
               <HStack spacing={4}>
-                <Text font={{ name: "system", size: 10 }} color="#888888">WORKER</Text>
+                <Text font={10} foregroundStyle="secondaryLabel">WORKER</Text>
                 <Spacer />
-                <Text font={{ name: "system", size: 11 }} color="#8B5CF6" fontWeight="semibold" lineLimit={1}>
+                <Text font={11} fontWeight="semibold" foregroundStyle="#8B5CF6" lineLimit={1}>
                   {state.workerName}
                 </Text>
               </HStack>
 
               <HStack spacing={6}>
-                <Text font={{ name: "system", size: 16 }} color={workerColor(worker.status)} fontWeight="bold">
-                  {workerIcon(worker.status)}
+                <Text font={16} fontWeight="bold" foregroundStyle={workerColor(worker.status)}>
+                  W
                 </Text>
                 <VStack spacing={2}>
-                  <Text font={{ name: "system", size: 13 }} color={workerColor(worker.status)} fontWeight="semibold">
+                  <Text font={13} fontWeight="semibold" foregroundStyle={workerColor(worker.status)}>
                     {workerLabel(worker.status)}
                   </Text>
-                  <Text font={{ name: "monospaced", size: 10 }} color="#888888">
+                  <Text font={10} foregroundStyle="secondaryLabel">
                     {worker.scriptTag ? `#${worker.scriptTag}` : "—"}
                   </Text>
                 </VStack>
               </HStack>
 
               <HStack spacing={4}>
-                <Text font={{ name: "system", size: 10 }} color="#888888">路由</Text>
-                <Text font={{ name: "monospaced", size: 10 }} color="#3B82F6">{worker.routes}</Text>
+                <Text font={10} foregroundStyle="secondaryLabel">路由</Text>
+                <Text font={10} foregroundStyle="#3B82F6">{worker.routes}</Text>
               </HStack>
 
-              <Text font={{ name: "system", size: 10 }} color="#888888">
+              <Text font={10} foregroundStyle="secondaryLabel">
                 {worker.deployedAt ? `部署于 ${timeAgo(worker.deployedAt)}` : "—"}
               </Text>
 
-              {worker.status === "deploying" && (
-                <Text font={{ name: "system", size: 10 }} color="#F59E0B">
+              {worker.status === "deploying" ? (
+                <Text font={10} foregroundStyle="#F59E0B">
                   正在激活新版本...
                 </Text>
-              )}
+              ) : null}
             </VStack>
-
           </HStack>
         </LiveActivityUIExpandedCenter>
       </LiveActivityUI>
