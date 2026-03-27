@@ -1,0 +1,9 @@
+{
+  "name": "Gins-Rime Updater",
+  "version": "1.0.0",
+  "description": "Unified 1-Click Update for Gins-Rime on iOS Hamster v3.",
+  "author": "Gin",
+  "entry": "main.tsx",
+  "icon": "keyboard",
+  "backgroundColor": "#1a1a1a"
+}

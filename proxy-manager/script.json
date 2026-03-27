@@ -1,0 +1,9 @@
+{
+  "name": "Gins-Proxy Manager",
+  "version": "1.1.0",
+  "description": "Unified Proxy Configuration Manager for iOS (Surge, Shadowrocket, Stash).",
+  "author": "Gin",
+  "entry": "main.tsx",
+  "icon": "shield.lefthalf.fill",
+  "backgroundColor": "#1a1a1a"
+}
