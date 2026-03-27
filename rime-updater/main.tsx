@@ -18,7 +18,7 @@ const {
 // @ts-ignore
 const { useState, useEffect } = React;
 
-const API_BASE = "https://rime.ichimarugin728.com";
+const API_BASE = "https://rime.ichimarugin728.dev";
 const BUNDLE_URL = `${API_BASE}/download/dist/gins-rime-bundle.zip`;
 const VERSION_URL = `${API_BASE}/api/versions`;
 const bookmarkName = "Gins-Rime-Folder";
