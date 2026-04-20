@@ -51,7 +51,7 @@ This repo now includes a Cloudflare Worker distribution layer for `Gins-Scripts`
 
 Files:
 
-- `wrangler.toml`
+- `wrangler.jsonc`
 - `src/index.js`
 - `tools/build-distribution.mjs`
 - `public/index.html`
@@ -63,7 +63,7 @@ How it works:
 - `npm run build:dist` copies script files into `public/downloads`
 - `public/manifest.json` is generated as a machine-readable catalog
 - `src/index.js` serves static assets and stable short aliases like `/download/scriptable/qweather`
-- `wrangler.toml` defines the Worker name as `gins-scripts`
+- `wrangler.jsonc` defines the Worker name as `gins-scripts`
 
 Recommended binding naming:
 

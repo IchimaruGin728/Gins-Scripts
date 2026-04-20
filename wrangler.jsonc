@@ -1,0 +1,30 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "gins-scripts",
+  "main": "src/index.js",
+  "compatibility_date": "2026-04-20",
+  "workers_dev": true,
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": ["/download/*", "/api/*"]
+  },
+  "vars": {
+    "GINS_SCRIPTS_REPO": "IchimaruGin728/Gins-Scripts"
+  }
+
+  // Optional bindings you can add later with your own IDs / bucket names.
+  // Keep the naming convention as gins-scripts-xxx.
+  //
+  // "kv_namespaces": [
+  //   {
+  //     "binding": "GINS_SCRIPTS_KV"
+  //   }
+  // ],
+  // "r2_buckets": [
+  //   {
+  //     "binding": "GINS_SCRIPTS_BUCKET",
+  //     "bucket_name": "gins-scripts-assets"
+  //   }
+  // ]
+}
