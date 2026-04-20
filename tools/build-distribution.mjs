@@ -11,78 +11,91 @@ const files = [
     product: "qweather",
     label: "QWeather Weather Widget",
     source: "scriptable/QWeatherWeatherWidget.js",
+    slug: "qweather-weather-widget",
   },
   {
     platform: "scriptable",
     product: "datagovsg",
     label: "DataGovSG Dashboard",
     source: "scriptable/DataGovSGDashboard.js",
+    slug: "datagovsg-dashboard",
   },
   {
     platform: "scripting",
     product: "qweather",
     label: "QWeather Widget Index",
     source: "scripting/qweather-weather-widget/index.tsx",
+    slug: "qweather-weather-widget/index",
   },
   {
     platform: "scripting",
     product: "qweather",
     label: "QWeather Widget Shared",
     source: "scripting/qweather-weather-widget/shared.ts",
+    slug: "qweather-weather-widget/shared",
   },
   {
     platform: "scripting",
     product: "qweather",
     label: "QWeather Widget View",
     source: "scripting/qweather-weather-widget/widget.tsx",
+    slug: "qweather-weather-widget/widget",
   },
   {
     platform: "scripting",
     product: "datagovsg",
     label: "DataGovSG Index",
     source: "scripting/datagovsg-dashboard/index.tsx",
+    slug: "datagovsg-dashboard/index",
   },
   {
     platform: "scripting",
     product: "datagovsg",
     label: "DataGovSG Shared",
     source: "scripting/datagovsg-dashboard/shared.ts",
+    slug: "datagovsg-dashboard/shared",
   },
   {
     platform: "scripting",
     product: "datagovsg",
     label: "DataGovSG Widget View",
     source: "scripting/datagovsg-dashboard/widget.tsx",
+    slug: "datagovsg-dashboard/widget",
   },
   {
     platform: "egern",
     product: "qweather",
     label: "QWeather Widget",
     source: "egern/qweather-weather-widget.js",
+    slug: "qweather-weather-widget",
   },
   {
     platform: "egern",
     product: "qweather",
     label: "QWeather Module",
     source: "egern/qweather-weather-module.yaml",
+    slug: "qweather-weather-module",
   },
   {
     platform: "egern",
     product: "datagovsg",
     label: "DataGovSG Dashboard",
     source: "egern/datagovsg-dashboard.js",
+    slug: "datagovsg-dashboard",
   },
   {
     platform: "stash",
     product: "qweather",
     label: "QWeather Tile",
     source: "stash/qweather-weather-tile.js",
+    slug: "qweather-weather-tile",
   },
   {
     platform: "surge",
     product: "qweather",
     label: "QWeather Panel",
     source: "surge/qweather-weather-panel.js",
+    slug: "qweather-weather-panel",
   },
 ]
 
@@ -124,6 +137,7 @@ async function copyFiles() {
     manifests.files.push({
       ...file,
       path: `/downloads/${file.source}`,
+      aliasPath: `/${file.platform}/${file.slug}`,
       contentType: contentType(file.source),
     })
   }
@@ -152,7 +166,7 @@ async function writeIndex() {
     .map(([key, group]) => {
       const [platform, product] = key.split(":")
       const links = group
-        .map((file) => `<li><a href="${file.path}">${escapeHtml(file.label)}</a><span>${escapeHtml(file.source)}</span></li>`)
+        .map((file) => `<li><a href="${file.aliasPath}">${escapeHtml(file.label)}</a><span>${escapeHtml(file.aliasPath)}</span></li>`)
         .join("")
       return `
         <section class="card">
@@ -260,10 +274,10 @@ async function writeIndex() {
     <section class="hero">
       <div class="pill">Cloudflare Distribution Ready</div>
       <h1>Gins-Scripts</h1>
-      <p>Cross-platform widget scripts for Scriptable, Scripting, Egern, Stash, and Surge. This site is built to be deployed on Cloudflare Workers with static assets and stable download aliases.</p>
+      <p>Cross-platform widget scripts for Scriptable, Scripting, Egern, Stash, and Surge. Canonical URLs follow the pattern scripts.ichimarugin728.dev/software-name/script-or-widget-name.</p>
       <div class="actions">
         <a class="button" href="/manifest.json">Open manifest.json</a>
-        <a class="button secondary" href="/download/scriptable/qweather">Short download alias</a>
+        <a class="button secondary" href="/scriptable/qweather-weather-widget">Canonical script URL</a>
       </div>
     </section>
     <section class="grid">${cards}</section>
