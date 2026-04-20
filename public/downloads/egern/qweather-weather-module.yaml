@@ -1,0 +1,19 @@
+name: "QWeather Widget Suite"
+description: "A polished QWeather widget for Egern with small, medium and large layouts."
+author: "Codex"
+
+scriptings:
+  - generic:
+      name: "qweather-weather-widget"
+      script_url: "https://example.com/qweather-weather-widget.js"
+      timeout: 20
+
+widgets:
+  - name: "qweather-weather-widget"
+    env:
+      WEATHER_API_KEY: "<YOUR_API_KEY>"
+      WEATHER_LOCATION: "<LOCATION_ID_OR_LNG_LAT>"
+      QWEATHER_LANG: "zh"
+      QWEATHER_UNIT: "m"
+      WEATHER_API_HOST: "https://devapi.qweather.com"
+      WEATHER_NAME: "自定义城市"

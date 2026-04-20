@@ -1,0 +1,110 @@
+{
+  "name": "Gins-Scripts",
+  "generatedAt": "2026-04-20T11:26:51.216Z",
+  "files": [
+    {
+      "platform": "scriptable",
+      "product": "qweather",
+      "label": "QWeather Weather Widget",
+      "source": "scriptable/QWeatherWeatherWidget.js",
+      "path": "/downloads/scriptable/QWeatherWeatherWidget.js",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "platform": "scriptable",
+      "product": "datagovsg",
+      "label": "DataGovSG Dashboard",
+      "source": "scriptable/DataGovSGDashboard.js",
+      "path": "/downloads/scriptable/DataGovSGDashboard.js",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "platform": "scripting",
+      "product": "qweather",
+      "label": "QWeather Widget Index",
+      "source": "scripting/qweather-weather-widget/index.tsx",
+      "path": "/downloads/scripting/qweather-weather-widget/index.tsx",
+      "contentType": "text/plain; charset=UTF-8"
+    },
+    {
+      "platform": "scripting",
+      "product": "qweather",
+      "label": "QWeather Widget Shared",
+      "source": "scripting/qweather-weather-widget/shared.ts",
+      "path": "/downloads/scripting/qweather-weather-widget/shared.ts",
+      "contentType": "text/plain; charset=UTF-8"
+    },
+    {
+      "platform": "scripting",
+      "product": "qweather",
+      "label": "QWeather Widget View",
+      "source": "scripting/qweather-weather-widget/widget.tsx",
+      "path": "/downloads/scripting/qweather-weather-widget/widget.tsx",
+      "contentType": "text/plain; charset=UTF-8"
+    },
+    {
+      "platform": "scripting",
+      "product": "datagovsg",
+      "label": "DataGovSG Index",
+      "source": "scripting/datagovsg-dashboard/index.tsx",
+      "path": "/downloads/scripting/datagovsg-dashboard/index.tsx",
+      "contentType": "text/plain; charset=UTF-8"
+    },
+    {
+      "platform": "scripting",
+      "product": "datagovsg",
+      "label": "DataGovSG Shared",
+      "source": "scripting/datagovsg-dashboard/shared.ts",
+      "path": "/downloads/scripting/datagovsg-dashboard/shared.ts",
+      "contentType": "text/plain; charset=UTF-8"
+    },
+    {
+      "platform": "scripting",
+      "product": "datagovsg",
+      "label": "DataGovSG Widget View",
+      "source": "scripting/datagovsg-dashboard/widget.tsx",
+      "path": "/downloads/scripting/datagovsg-dashboard/widget.tsx",
+      "contentType": "text/plain; charset=UTF-8"
+    },
+    {
+      "platform": "egern",
+      "product": "qweather",
+      "label": "QWeather Widget",
+      "source": "egern/qweather-weather-widget.js",
+      "path": "/downloads/egern/qweather-weather-widget.js",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "platform": "egern",
+      "product": "qweather",
+      "label": "QWeather Module",
+      "source": "egern/qweather-weather-module.yaml",
+      "path": "/downloads/egern/qweather-weather-module.yaml",
+      "contentType": "text/yaml; charset=UTF-8"
+    },
+    {
+      "platform": "egern",
+      "product": "datagovsg",
+      "label": "DataGovSG Dashboard",
+      "source": "egern/datagovsg-dashboard.js",
+      "path": "/downloads/egern/datagovsg-dashboard.js",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "platform": "stash",
+      "product": "qweather",
+      "label": "QWeather Tile",
+      "source": "stash/qweather-weather-tile.js",
+      "path": "/downloads/stash/qweather-weather-tile.js",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "platform": "surge",
+      "product": "qweather",
+      "label": "QWeather Panel",
+      "source": "surge/qweather-weather-panel.js",
+      "path": "/downloads/surge/qweather-weather-panel.js",
+      "contentType": "application/javascript; charset=UTF-8"
+    }
+  ]
+}

@@ -45,6 +45,53 @@ Optional:
 
 Example values are provided in [.env.example](/Users/ichimarugin728/Gins-Projects/Gins-Scripts/.env.example).
 
+## Cloudflare Distribution
+
+This repo now includes a Cloudflare Worker distribution layer for `Gins-Scripts`.
+
+Files:
+
+- `wrangler.toml`
+- `src/index.js`
+- `tools/build-distribution.mjs`
+- `public/index.html`
+- `public/manifest.json`
+- `public/downloads/...`
+
+How it works:
+
+- `npm run build:dist` copies script files into `public/downloads`
+- `public/manifest.json` is generated as a machine-readable catalog
+- `src/index.js` serves static assets and stable short aliases like `/download/scriptable/qweather`
+- `wrangler.toml` defines the Worker name as `gins-scripts`
+
+Recommended binding naming:
+
+- `gins-scripts-assets`
+- `gins-scripts-kv`
+- `gins-scripts-cache`
+- `gins-scripts-secrets`
+
+Deploy:
+
+```bash
+npm install
+npm run cf:deploy
+```
+
+Useful routes after deployment:
+
+- `/`
+- `/manifest.json`
+- `/api/manifest`
+- `/download/scriptable/qweather`
+- `/download/scriptable/datagovsg`
+- `/download/egern/qweather`
+- `/download/egern/qweather-module`
+- `/download/egern/datagovsg`
+- `/download/stash/qweather`
+- `/download/surge/qweather`
+
 ## Parameter Examples
 
 ### Scriptable / Scripting
