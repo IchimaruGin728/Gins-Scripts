@@ -1,0 +1,25 @@
+---
+import CatalogGrid from "@/components/CatalogGrid.astro"
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import { SOFTWARES, TYPES, filesFor, type CatalogType } from "@/lib/catalog"
+
+export function getStaticPaths() {
+  return TYPES.map((type) => ({
+    params: { type: type.id },
+    props: { type },
+  }))
+}
+
+const { type } = Astro.props as { type: { id: CatalogType; label: string; description: string } }
+---
+
+<BaseLayout
+  title={`${type.label} | Gins-Scripts`}
+  eyebrow={type.label}
+  heading={type.label}
+  description={`${type.description} Browse by app and open the published entry directly from its software namespace.`}
+>
+  <section class="grid">
+    {SOFTWARES.map((software) => <CatalogGrid type={type} software={software} files={filesFor(type.id, software.id)} />)}
+  </section>
+</BaseLayout>

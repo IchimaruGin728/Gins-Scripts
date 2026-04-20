@@ -52,18 +52,28 @@ This repo now includes a Cloudflare Worker distribution layer for `Gins-Scripts`
 Files:
 
 - `wrangler.jsonc`
-- `src/index.js`
+- `src/worker.ts`
+- `src/lib/catalog.ts`
+- `src/pages/...`
+- `src/layouts/...`
+- `src/components/...`
 - `tools/build-distribution.mjs`
-- `public/index.html`
 - `public/manifest.json`
 - `public/downloads/...`
+- `dist/...`
 
 How it works:
 
-- `npm run build:dist` copies script files into `public/downloads`
-- `public/manifest.json` is generated as a machine-readable catalog
-- `src/index.js` serves static assets and stable short aliases like `/download/scriptable/qweather`
+- `pnpm run build:catalog` copies script files into `public/downloads` and updates `public/manifest.json`
+- `pnpm run build` runs the catalog build and then Astro static build
+- Astro renders the catalog pages into `dist/...`
+- Hono handles the Worker entry and serves canonical URLs plus `/api/manifest`
+- canonical URLs follow `/{type}/{software}/{name}`
+- `src/worker.ts` serves canonical URLs only; old `/download/...` and software-first paths are intentionally removed
 - `wrangler.jsonc` defines the Worker name as `gins-scripts`
+- connect the Worker directly to the GitHub repository in Cloudflare Builds instead of using GitHub Actions
+- package management is `pnpm`
+- `@hono/hono` is consumed from `jsr`
 
 Recommended binding naming:
 
@@ -75,22 +85,45 @@ Recommended binding naming:
 Deploy:
 
 ```bash
-npm install
-npm run cf:deploy
+pnpm install
+pnpm run cf:deploy
 ```
+
+Cloudflare dashboard settings:
+
+- `Compatibility date`: keep it on the newest date you intentionally support
+- `Placement`: `smart`
+- `Build command`: `pnpm run build`
+- `Deploy command`: `pnpm exec wrangler deploy`
+- connect the Worker to the GitHub repo directly from Workers & Pages
 
 Useful routes after deployment:
 
 - `/`
+- `/widgets`
+- `/modules`
+- `/scripts`
 - `/manifest.json`
 - `/api/manifest`
-- `/download/scriptable/qweather`
-- `/download/scriptable/datagovsg`
-- `/download/egern/qweather`
-- `/download/egern/qweather-module`
-- `/download/egern/datagovsg`
-- `/download/stash/qweather`
-- `/download/surge/qweather`
+- `/widgets/scriptable/qweather-weather-widget`
+- `/widgets/scriptable/datagovsg-dashboard`
+- `/widgets/scripting/qweather-weather-widget/index`
+- `/widgets/scripting/qweather-weather-widget/shared`
+- `/widgets/scripting/qweather-weather-widget/widget`
+- `/widgets/scripting/datagovsg-dashboard/index`
+- `/widgets/scripting/datagovsg-dashboard/shared`
+- `/widgets/scripting/datagovsg-dashboard/widget`
+- `/widgets/egern/qweather-weather-widget`
+- `/modules/egern/qweather-weather-module`
+- `/widgets/egern/datagovsg-dashboard`
+- `/widgets/stash/qweather-weather-tile`
+- `/widgets/surge/qweather-weather-panel`
+
+Software landing paths are published even when empty, for example:
+
+- `/widgets/quantumultx`
+- `/modules/loon`
+- `/scripts/shadowrocket`
 
 ## Parameter Examples
 

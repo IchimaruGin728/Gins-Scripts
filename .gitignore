@@ -1,2 +1,5 @@
 node_modules/
 .wrangler/
+.astro/
+dist/
+package-lock.json

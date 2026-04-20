@@ -1,0 +1,25 @@
+---
+import CatalogGrid from "@/components/CatalogGrid.astro"
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import { SOFTWARES, TYPES, filesFor } from "@/lib/catalog"
+---
+
+<BaseLayout
+  title="Gins-Scripts"
+  eyebrow="Public Catalog"
+  heading="Find the right build for each app surface."
+  description="A simple catalog inspired by public product sites. Every published item lives under a stable path: /type/software/name."
+>
+  {
+    TYPES.map((type) => (
+      <>
+        <div class="section-title">{type.label}</div>
+        <section class="grid">
+          {SOFTWARES.map((software) => (
+            <CatalogGrid type={type} software={software} files={filesFor(type.id, software.id)} />
+          ))}
+        </section>
+      </>
+    ))
+  }
+</BaseLayout>

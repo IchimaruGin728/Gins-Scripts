@@ -1,0 +1,30 @@
+---
+import type { CatalogFile, CatalogTypeEntry, SoftwareEntry } from "@/lib/catalog"
+
+interface Props {
+  type: CatalogTypeEntry
+  software: SoftwareEntry
+  files: CatalogFile[]
+}
+
+const { type, software, files } = Astro.props
+---
+
+<section class="card">
+  <div class="eyebrow">{type.label}</div>
+  <h2 class="m-0 mb-3.5 text-[20px] tracking-[-0.02em]">{software.label}</h2>
+  {
+    files.length > 0 ? (
+      <ul class="m-0 grid list-none gap-2.5 p-0">
+        {files.map((file) => (
+          <li class="grid gap-0.75">
+            <a href={`/${file.type}/${file.software}/${file.slug}`}>{file.label}</a>
+            <span class="break-all text-[12px] text-muted">/{file.type}/{file.software}/{file.slug}</span>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <div class="empty">Nothing published yet.</div>
+    )
+  }
+</section>

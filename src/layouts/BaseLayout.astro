@@ -1,0 +1,47 @@
+---
+interface Props {
+  title: string
+  eyebrow: string
+  heading: string
+  description: string
+}
+
+const { title, eyebrow, heading, description } = Astro.props
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{title}</title>
+  </head>
+  <body class="shell">
+    <main class="page">
+      <section class="topbar">
+        <div class="flex flex-col gap-1.5">
+          <div class="text-[15px] font-bold tracking-[0.01em]">Gins-Scripts</div>
+          <div class="text-[13px] text-muted">Cloudflare Worker distribution for widgets, modules, and scripts.</div>
+        </div>
+        <nav class="flex flex-wrap gap-2.5">
+          <a class="navpill" href="/widgets">Widgets</a>
+          <a class="navpill" href="/modules">Modules</a>
+          <a class="navpill" href="/scripts">Scripts</a>
+        </nav>
+      </section>
+      <section class="hero">
+        <div class="pill">{eyebrow}</div>
+        <h1 class="m-0 max-w-[760px] text-[clamp(36px,6vw,64px)] leading-[1.02] tracking-[-0.03em]">{heading}</h1>
+        <p class="m-0 max-w-[760px] text-[16px] leading-[1.65] text-muted md:text-[18px]">{description}</p>
+        <div class="flex flex-wrap gap-3">
+          <a class="cta" href="/manifest.json">Open manifest.json</a>
+          <a class="cta cta-secondary" href="/">Home</a>
+        </div>
+      </section>
+      <slot />
+      <div class="mt-8 border-t border-line pt-5 text-[13px] text-muted">
+        Built with Astro, Hono, TypeScript, UnoCSS, and Cloudflare Workers.
+      </div>
+    </main>
+  </body>
+</html>

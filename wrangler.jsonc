@@ -1,8 +1,11 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "gins-scripts",
-  "main": "src/index.js",
+  "main": "src/worker.ts",
   "compatibility_date": "2026-04-20",
+  "placement": {
+    "mode": "smart"
+  },
   "workers_dev": true,
   "routes": [
     {
@@ -11,18 +14,15 @@
     }
   ],
   "assets": {
-    "directory": "./public",
+    "directory": "./dist",
     "binding": "ASSETS",
     "run_worker_first": [
-      "/scriptable/*",
-      "/scripting/*",
-      "/egern/*",
-      "/quantumultx/*",
-      "/stash/*",
-      "/surge/*",
-      "/loon/*",
-      "/shadowrocket/*",
-      "/download/*",
+      "/widgets",
+      "/widgets/*",
+      "/modules",
+      "/modules/*",
+      "/scripts",
+      "/scripts/*",
       "/api/*"
     ]
   },
