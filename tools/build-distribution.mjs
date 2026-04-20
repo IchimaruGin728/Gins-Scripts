@@ -1,6 +1,6 @@
 import fs from "node:fs/promises"
 import path from "node:path"
-import { FILES, getCanonicalPath, getDownloadPath } from "../src/lib/catalog.ts"
+import { FILES, getCanonicalPath, getDownloadPath } from "../src/lib/catalog.js"
 
 const root = process.cwd()
 const publicDir = path.join(root, "public")
