@@ -6,7 +6,7 @@ workers_dev = true
 [assets]
 directory = "./public"
 binding = "ASSETS"
-run_worker_first = ["/", "/manifest.json", "/api/*"]
+run_worker_first = ["/download/*", "/api/*"]
 
 [vars]
 GINS_SCRIPTS_REPO = "IchimaruGin728/Gins-Scripts"
