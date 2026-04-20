@@ -16,13 +16,15 @@ app.get("/api/manifest", async (c) => {
 
 app.get("*", async (c) => {
   const url = new URL(c.req.url)
+  const pagePath = pages.get(url.pathname)
+  const assetPath = aliases.get(url.pathname)
 
-  if (pages.has(url.pathname)) {
-    return c.env.ASSETS.fetch(new URL(pages.get(url.pathname)!, url))
+  if (pagePath) {
+    return c.env.ASSETS.fetch(new URL(pagePath, url))
   }
 
-  if (aliases.has(url.pathname)) {
-    return c.env.ASSETS.fetch(new URL(aliases.get(url.pathname)!, url))
+  if (assetPath) {
+    return c.env.ASSETS.fetch(new URL(assetPath, url))
   }
 
   return c.env.ASSETS.fetch(c.req.raw)

@@ -29,19 +29,4 @@
   "vars": {
     "GINS_SCRIPTS_REPO": "IchimaruGin728/Gins-Scripts"
   }
-
-  // Optional bindings you can add later with your own IDs / bucket names.
-  // Keep the naming convention as gins-scripts-xxx.
-  //
-  // "kv_namespaces": [
-  //   {
-  //     "binding": "GINS_SCRIPTS_KV"
-  //   }
-  // ],
-  // "r2_buckets": [
-  //   {
-  //     "binding": "GINS_SCRIPTS_BUCKET",
-  //     "bucket_name": "gins-scripts-assets"
-  //   }
-  // ]
 }

@@ -49,7 +49,11 @@ async function copyFiles() {
 }
 
 async function writeManifest() {
-  await fs.writeFile(path.join(publicDir, "manifest.json"), `${JSON.stringify(manifest, null, 2)}\n`, "utf8")
+  await fs.writeFile(
+    path.join(publicDir, "manifest.json"),
+    `${JSON.stringify(manifest, null, 2)}\n`,
+    "utf8"
+  )
 }
 
 await resetGeneratedAssets()

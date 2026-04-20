@@ -32,7 +32,11 @@ export interface CatalogFile {
 
 export const TYPES: CatalogTypeEntry[] = [
   { id: "widgets", label: "Widgets", description: "Visual widgets, tiles, and panels." },
-  { id: "modules", label: "Modules", description: "Importable modules and configuration packages." },
+  {
+    id: "modules",
+    label: "Modules",
+    description: "Importable modules and configuration packages.",
+  },
   { id: "scripts", label: "Scripts", description: "Standalone automation scripts and utilities." },
 ]
 

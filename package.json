@@ -7,10 +7,14 @@
   "scripts": {
     "build:catalog": "node ./tools/build-distribution.mjs",
     "build": "pnpm run build:catalog && astro build",
+    "biome:check": "biome check .",
+    "biome:format": "biome format --write .",
+    "biome:lint": "biome lint .",
     "cf:deploy": "pnpm run build && wrangler deploy",
     "cf:dev": "pnpm run build && wrangler dev"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.4.12",
     "@unocss/astro": "^66.6.8",
     "astro": "latest",
     "typescript": "latest",
