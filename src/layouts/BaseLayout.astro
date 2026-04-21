@@ -3,7 +3,7 @@ interface Props {
   title: string
   eyebrow: string
   heading: string
-  description: string
+  description?: string
 }
 
 const { title, eyebrow, heading, description } = Astro.props
@@ -26,11 +26,6 @@ const { title, eyebrow, heading, description } = Astro.props
       <div class="absolute left-[32%] top-[24%] h-[320px] w-[320px] rounded-full bg-fuchsia-400/12 blur-[84px]"></div>
     </div>
     <main class="page">
-      <section class="govbar">
-        <span class="i-ph-bird-fill text-primary"></span>
-        <span>A Singapore Government Agency Website</span>
-        <a class="ml-1 text-primary no-underline hover:underline" href="https://www.gov.sg/">How to identify</a>
-      </section>
       <section class="topbar">
         <div class="flex items-center gap-3">
           <img src="/favicon/favicon.svg" alt="Gins logo" class="h-7 w-7 rounded-md" loading="eager" decoding="async" />
@@ -55,7 +50,11 @@ const { title, eyebrow, heading, description } = Astro.props
         <h1 class="m-0 text-[clamp(44px,8vw,76px)] leading-[1.02] tracking-[-0.03em] font-black">
           {heading}
         </h1>
-        <p class="mx-auto mt-1 max-w-[780px] text-[17px] leading-[1.6] font-semibold text-[#d0d2e7]">{description}</p>
+        {description && (
+          <p class="mx-auto mt-1 max-w-[780px] text-[17px] leading-[1.6] font-semibold text-[#d0d2e7]">
+            {description}
+          </p>
+        )}
         <slot name="hero-extra" />
         <div class="pointer-events-none absolute bottom-0 left-0 h-34 w-full">
           <div class="absolute left-[-6%] top-10 h-30 w-[40%] rounded-[100%] bg-primary/14"></div>

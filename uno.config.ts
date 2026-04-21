@@ -65,7 +65,7 @@ export default defineConfig({
     search:
       "mx-auto mt-6 flex h-13 w-full max-w-[560px] items-center rounded-full border border-white/15 bg-[#0f1020]/85 px-5 text-[16px] text-ink-soft shadow-soft",
     chip: "inline-flex h-11 items-center gap-2 rounded-full border border-white/12 bg-chip px-4 text-[15px] font-semibold text-ink transition duration-250 hover:bg-chip-active hover:border-primary/45 hover:text-white",
-    sectiontitle: "mb-3.5 mt-10 text-2xl font-bold tracking-[-0.02em] text-[#ddd8ff]",
+    sectiontitle: "mb-5 mt-12 text-2xl font-bold tracking-[-0.02em] text-[#ddd8ff]",
     card: "rounded-[22px] border border-white/12 bg-[#121322]/74 p-5 shadow-soft backdrop-blur-xl transition duration-250 animate-[rise_.55s_ease_both] hover:-translate-y-0.75 hover:border-primary/45 hover:shadow-panel",
     eyebrow: "mb-2.5 text-[11px] uppercase tracking-[0.06em] text-ink-soft",
     empty: "rounded-4 border border-dashed border-white/14 bg-chip p-4.5 text-sm text-ink-soft",

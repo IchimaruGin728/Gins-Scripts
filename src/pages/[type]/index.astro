@@ -19,7 +19,7 @@ const { type } = Astro.props as { type: { id: CatalogType; label: string; descri
   heading={type.label}
   description={`${type.description} Browse by app and open the published entry directly from its software namespace.`}
 >
-  <section class="grid">
+  <section class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
     {softwaresForType(type.id).map((software) => (
       <CatalogGrid type={type} software={software} files={filesFor(type.id, software.id)} />
     ))}
