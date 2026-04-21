@@ -22,6 +22,7 @@
     "wrangler": "latest"
   },
   "dependencies": {
-    "@hono/hono": "jsr:^4.12.14"
+    "@hono/hono": "jsr:^4.12.14",
+    "fflate": "^0.8.2"
   }
 }

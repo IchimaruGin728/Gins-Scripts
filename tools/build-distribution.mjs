@@ -1,15 +1,18 @@
 import fs from "node:fs/promises"
 import path from "node:path"
+import { zipSync } from "fflate"
 import { FILES, getCanonicalPath, getDownloadPath } from "../src/lib/catalog.js"
 
 const root = process.cwd()
 const publicDir = path.join(root, "public")
 const downloadsDir = path.join(publicDir, "downloads")
+const packagesDir = path.join(publicDir, "packages", "scripting")
 
 const manifest = {
   name: "Gins-Scripts",
   generatedAt: new Date().toISOString(),
   files: [],
+  scriptingPackages: [],
 }
 
 function contentType(file) {
@@ -26,11 +29,13 @@ async function ensureDir(filePath) {
 
 async function resetGeneratedAssets() {
   await fs.rm(downloadsDir, { recursive: true, force: true })
+  await fs.rm(packagesDir, { recursive: true, force: true })
   await fs.rm(path.join(publicDir, "widgets"), { recursive: true, force: true })
   await fs.rm(path.join(publicDir, "modules"), { recursive: true, force: true })
   await fs.rm(path.join(publicDir, "scripts"), { recursive: true, force: true })
   await fs.rm(path.join(publicDir, "index.html"), { force: true })
   await fs.mkdir(downloadsDir, { recursive: true })
+  await fs.mkdir(packagesDir, { recursive: true })
 }
 
 async function copyFiles() {
@@ -48,6 +53,66 @@ async function copyFiles() {
   }
 }
 
+function collectScriptingProjects() {
+  const groups = new Map()
+  for (const file of FILES) {
+    if (!file.source.startsWith("scripting/")) continue
+    const parts = file.source.split("/")
+    const project = parts[1]
+    const relativePath = parts.slice(2).join("/")
+    if (!groups.has(project)) groups.set(project, [])
+    groups.get(project).push({ source: file.source, relativePath })
+  }
+  return groups
+}
+
+async function buildScriptingPackages() {
+  const projects = collectScriptingProjects()
+  for (const [project, items] of projects.entries()) {
+    const projectDir = path.join(packagesDir, project)
+    await fs.mkdir(projectDir, { recursive: true })
+
+    const zipFiles = {}
+    const files = []
+    for (const item of items) {
+      const sourcePath = path.join(root, item.source)
+      const content = await fs.readFile(sourcePath)
+      const targetPath = path.join(projectDir, item.relativePath)
+      await ensureDir(targetPath)
+      await fs.writeFile(targetPath, content)
+      zipFiles[item.relativePath] = new Uint8Array(content)
+      files.push({
+        path: item.relativePath,
+        source: item.source,
+        url: `/downloads/${item.source}`,
+      })
+    }
+
+    const zipBytes = zipSync(zipFiles, { level: 9 })
+    const zipPath = path.join(packagesDir, `${project}.zip`)
+    await fs.writeFile(zipPath, Buffer.from(zipBytes))
+
+    const packageManifest = {
+      name: project,
+      type: "scripting",
+      directoryUrl: `/packages/scripting/${project}/`,
+      zipUrl: `/packages/scripting/${project}.zip`,
+      files,
+      entrypoints: {
+        index: files.find((f) => f.path === "index.tsx")?.url ?? null,
+        widget: files.find((f) => f.path === "widget.tsx")?.url ?? null,
+      },
+    }
+
+    await fs.writeFile(
+      path.join(projectDir, "manifest.json"),
+      `${JSON.stringify(packageManifest, null, 2)}\n`,
+      "utf8"
+    )
+    manifest.scriptingPackages.push(packageManifest)
+  }
+}
+
 async function writeManifest() {
   await fs.writeFile(
     path.join(publicDir, "manifest.json"),
@@ -58,4 +123,5 @@ async function writeManifest() {
 
 await resetGeneratedAssets()
 await copyFiles()
+await buildScriptingPackages()
 await writeManifest()
