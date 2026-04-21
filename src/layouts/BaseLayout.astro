@@ -26,12 +26,12 @@ const { title, eyebrow, heading, description } = Astro.props
       <section class="topbar">
         <div class="flex items-center gap-3">
           <span class="i-ph-cluster-fill text-[24px] text-primary"></span>
-          <div class="text-[31px] leading-none font-black tracking-[-0.02em]">data.gov.sg</div>
+          <div class="text-[31px] leading-none font-black tracking-[-0.02em]">gins-scripts.dev</div>
         </div>
         <nav class="hidden items-center gap-1.5 md:flex">
-          <a class="navpill" href="/widgets">Datasets</a>
-          <a class="navpill" href="/modules">Products</a>
-          <a class="navpill" href="/scripts">APIs</a>
+          <a class="navpill" href="/widgets">Widgets</a>
+          <a class="navpill" href="/modules">Modules</a>
+          <a class="navpill" href="/scripts">Scripts</a>
           <a class="navpill" href="/manifest.json">Manifest</a>
           <span
             class="ml-1 inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary text-sm font-bold text-white"
@@ -62,3 +62,14 @@ const { title, eyebrow, heading, description } = Astro.props
     </main>
   </body>
 </html>
+
+<style is:global>
+  code,
+  kbd,
+  pre,
+  samp {
+    font-family:
+      "SF Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+      "Courier New", monospace;
+  }
+</style>

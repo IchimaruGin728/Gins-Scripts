@@ -2,31 +2,46 @@
 import CatalogGrid from "@/components/CatalogGrid.astro"
 import BaseLayout from "@/layouts/BaseLayout.astro"
 import { SOFTWARES, TYPES, filesFor } from "@/lib/catalog"
+
+const quickLinks = [
+  { href: "/widgets", label: "Widgets", icon: "i-ph-app-window" },
+  { href: "/modules", label: "Modules", icon: "i-ph-cube" },
+  { href: "/scripts", label: "Scripts", icon: "i-ph-terminal-window" },
+  { href: "/widgets/scripting", label: "Scripting", icon: "i-ph-article" },
+  { href: "/widgets/scriptable", label: "Scriptable", icon: "i-ph-device-mobile" },
+  { href: "/widgets/egern", label: "Egern", icon: "i-ph-sparkle" },
+  { href: "/widgets/quantumultx", label: "QuantumultX", icon: "i-ph-shield" },
+  { href: "/widgets/stash", label: "Stash", icon: "i-ph-stack" },
+]
 ---
 
 <BaseLayout
   title="Gins-Scripts"
-  eyebrow="Gins Scripts Directory"
-  heading="Singapore's open data portal"
-  description="Explore national datasets and API-powered scripts, widgets, and modules with stable Cloudflare-native delivery."
+  eyebrow="Gins Scripts Catalog"
+  heading="Script Hub for Apple Network Tools"
+  description="Browse production-ready Widgets, Modules, and Scripts with stable URLs, clean structure, and Cloudflare-native delivery."
 >
   <Fragment slot="hero-extra">
     <div class="search">
       <span class="i-ph-magnifying-glass text-[20px] text-ink-soft"></span>
-      <span class="ml-3">Try keywords like: “weather”, “transport”, “api”</span>
+      <span class="ml-3">Try keywords like: “weather”, “qweather”, “transparent widget”</span>
       <span class="ml-auto inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary text-white">
         <span class="i-ph-magnifying-glass"></span>
       </span>
     </div>
     <div class="mt-6 flex flex-wrap justify-center gap-2.5">
-      <a class="chip" href="/widgets"><span class="i-ph-app-window"></span>Widgets</a>
-      <a class="chip" href="/modules"><span class="i-ph-cube"></span>Modules</a>
-      <a class="chip" href="/scripts"><span class="i-ph-terminal-window"></span>Scripts</a>
-      <a class="chip" href="/widgets/scripting"><span class="i-ph-article"></span>Scripting</a>
-      <a class="chip" href="/widgets/scriptable"><span class="i-ph-device-mobile"></span>Scriptable</a>
-      <a class="chip" href="/widgets/egern"><span class="i-ph-sparkle"></span>Egern</a>
-      <a class="chip" href="/widgets/quantumultx"><span class="i-ph-shield"></span>QuantumultX</a>
-      <a class="chip" href="/widgets/stash"><span class="i-ph-stack"></span>Stash</a>
+      {
+        quickLinks.map((link, index) => (
+          <a
+            class="chip animate-[drift_3.4s_ease-in-out_infinite]"
+            href={link.href}
+            style={`animation-delay:${index * 0.12}s`}
+          >
+            <span class={link.icon}></span>
+            {link.label}
+          </a>
+        ))
+      }
     </div>
   </Fragment>
 
@@ -35,7 +50,7 @@ import { SOFTWARES, TYPES, filesFor } from "@/lib/catalog"
       3 categories, 8 software surfaces
     </h2>
     <p class="mx-auto mt-3 max-w-[760px] text-[17px] text-ink-soft">
-      Every path is reserved in advance, so new assets can ship without changing URL structure.
+      URL paths are pre-reserved by type and software, so new releases can be added without breaking existing links.
     </p>
   </div>
 

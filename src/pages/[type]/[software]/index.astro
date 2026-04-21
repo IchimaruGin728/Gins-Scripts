@@ -35,7 +35,7 @@ const items = filesFor(type.id, software.id)
             {items.map((file) => (
               <li class="grid gap-0.75">
                 <a href={getCanonicalPath(file)}>{file.label}</a>
-                <span class="break-all text-[12px] text-muted">{getCanonicalPath(file)}</span>
+                <span class="break-all text-[12px] text-ink-soft font-mono">{getCanonicalPath(file)}</span>
               </li>
             ))}
           </ul>

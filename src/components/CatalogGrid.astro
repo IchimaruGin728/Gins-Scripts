@@ -11,15 +11,28 @@ const { type, software, files } = Astro.props
 ---
 
 <section class="card">
-  <div class="eyebrow">{type.label}</div>
-  <h2 class="m-0 mb-3.5 text-[20px] tracking-[-0.02em]">{software.label}</h2>
+  <div class="mb-3 flex items-start justify-between gap-3">
+    <div>
+      <div class="eyebrow">{type.label}</div>
+      <h2 class="m-0 text-[20px] tracking-[-0.02em]">{software.label}</h2>
+    </div>
+    <div class="trend" aria-hidden="true">
+      <span class="trendbar h-3"></span>
+      <span class="trendbar h-5" style="animation-delay:.15s"></span>
+      <span class="trendbar h-7" style="animation-delay:.3s"></span>
+      <span class="trendbar h-4" style="animation-delay:.45s"></span>
+      <span class="trendbar h-6" style="animation-delay:.6s"></span>
+    </div>
+  </div>
   {
     files.length > 0 ? (
       <ul class="m-0 grid list-none gap-2.5 p-0">
         {files.map((file) => (
-          <li class="grid gap-0.75">
-            <a href={`/${file.type}/${file.software}/${file.slug}`}>{file.label}</a>
-            <span class="break-all text-[12px] text-muted">/{file.type}/{file.software}/{file.slug}</span>
+          <li class="grid gap-0.75 rounded-xl bg-primary-soft/35 px-2.5 py-2 transition hover:bg-primary-soft/55">
+            <a class="font-semibold no-underline hover:text-primary" href={`/${file.type}/${file.software}/${file.slug}`}>
+              {file.label}
+            </a>
+            <span class="break-all text-[12px] text-ink-soft font-mono">/{file.type}/{file.software}/{file.slug}</span>
           </li>
         ))}
       </ul>
