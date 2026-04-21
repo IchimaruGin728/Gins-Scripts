@@ -1,0 +1,34 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+---
+
+<BaseLayout
+  title="Usage Guide | Gins-Scripts"
+  eyebrow="Usage Guide"
+  heading="How to use scripts quickly"
+  description="统一入口：安装、参数、环境变量、更新策略都放在这里。"
+>
+  <section class="grid gap-4 md:grid-cols-3">
+    <article class="card">
+      <h2 class="m-0 text-[20px] tracking-[-0.02em]">1. Choose Path</h2>
+      <p class="mt-2 text-ink-soft">
+        所有内容按固定路径分发：
+        <code>/{`{type}`}/{`{software}`}/{`{name}`}</code>，例如
+        <code>/widgets/scriptable/qweather-weather-widget</code>。
+      </p>
+    </article>
+    <article class="card">
+      <h2 class="m-0 text-[20px] tracking-[-0.02em]">2. Set ENV</h2>
+      <p class="mt-2 text-ink-soft">
+        敏感参数只走环境变量：如 <code>QWEATHER_API_KEY</code>、<code>QWEATHER_LOCATION</code>。
+        不要把密钥写入脚本仓库。
+      </p>
+    </article>
+    <article class="card">
+      <h2 class="m-0 text-[20px] tracking-[-0.02em]">3. Keep Updated</h2>
+      <p class="mt-2 text-ink-soft">
+        推荐固定主路径做订阅，版本升级通过同路径覆盖。大改动再新增 slug，避免破坏已有用户配置。
+      </p>
+    </article>
+  </section>
+</BaseLayout>

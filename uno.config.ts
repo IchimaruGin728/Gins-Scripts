@@ -58,15 +58,15 @@ export default defineConfig({
     govbar:
       "mx--4 h-9 flex items-center gap-2 border-b border-line bg-white px-4 text-[13px] text-ink-soft md:mx--6",
     topbar:
-      "mt-3 flex items-center justify-between rounded-2xl border border-line bg-panel px-5 py-4 shadow-soft",
+      "mt-3 flex items-center justify-between rounded-2xl border border-line bg-white/85 px-5 py-4 shadow-soft backdrop-blur-md",
     navpill:
       "inline-flex h-9 items-center rounded-full px-4 text-sm font-semibold text-ink no-underline transition duration-200 hover:bg-chip data-[active=true]:bg-primary-soft data-[active=true]:text-primary",
-    hero: "relative mt-4 overflow-hidden rounded-3xl border border-line bg-panel px-6 pt-16 pb-22 text-center shadow-panel animate-[rise_.55s_ease_both] md:px-10",
+    hero: "relative mt-4 overflow-hidden rounded-3xl border border-primary/25 bg-white/88 px-6 pt-16 pb-22 text-center shadow-panel backdrop-blur-md animate-[rise_.55s_ease_both] md:px-10",
     search:
       "mx-auto mt-6 flex h-13 w-full max-w-[560px] items-center rounded-full border border-[#c7cad4] bg-white px-5 text-[16px] text-ink-soft shadow-soft",
     chip: "inline-flex h-11 items-center gap-2 rounded-full border border-line bg-chip px-4 text-[15px] font-semibold text-ink transition duration-200 hover:bg-chip-active hover:border-primary/40 hover:text-primary",
     sectiontitle: "mb-3.5 mt-8 text-2xl font-bold tracking-[-0.02em]",
-    card: "rounded-5 border border-line bg-panel p-5 shadow-soft transition duration-250 animate-[rise_.55s_ease_both] hover:-translate-y-0.5 hover:border-primary/35 hover:shadow-panel",
+    card: "rounded-5 border border-line bg-white/88 p-5 shadow-soft backdrop-blur-sm transition duration-250 animate-[rise_.55s_ease_both] hover:-translate-y-0.5 hover:border-primary/35 hover:shadow-panel",
     eyebrow: "mb-2.5 text-[11px] uppercase tracking-[0.06em] text-ink-soft",
     empty: "rounded-4 border border-dashed border-line bg-chip p-4.5 text-sm text-ink-soft",
     trend: "flex h-8 items-end gap-1 text-primary",
