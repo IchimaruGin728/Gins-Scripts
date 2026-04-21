@@ -1,10 +1,10 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro"
-import { FILES, SOFTWARES, TYPES, filesFor, getCanonicalPath, getSoftwarePath, type CatalogType, type SoftwareId } from "@/lib/catalog"
+import { TYPES, filesFor, getCanonicalPath, getSoftwarePath, softwaresForType, type CatalogType, type SoftwareId } from "@/lib/catalog"
 
 export function getStaticPaths() {
   return TYPES.flatMap((type) =>
-    SOFTWARES.map((software) => ({
+    softwaresForType(type.id).map((software) => ({
       params: { type: type.id, software: software.id },
       props: { type, software },
     }))

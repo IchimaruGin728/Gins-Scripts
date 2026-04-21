@@ -19,6 +19,12 @@ export const SOFTWARES = [
   { id: "shadowrocket", label: "Shadowrocket" },
 ]
 
+export const SOFTWARES_BY_TYPE = {
+  widgets: ["egern", "scripting", "scriptable"],
+  modules: ["egern", "shadowrocket", "quantumultx", "loon", "stash", "surge"],
+  scripts: ["egern", "shadowrocket", "quantumultx", "loon", "stash", "surge", "scripting", "scriptable"],
+}
+
 export const FILES = [
   {
     type: "widgets",
@@ -109,7 +115,7 @@ export const FILES = [
     slug: "datagovsg-dashboard",
   },
   {
-    type: "widgets",
+    type: "scripts",
     software: "stash",
     product: "qweather",
     label: "QWeather Tile",
@@ -117,7 +123,7 @@ export const FILES = [
     slug: "qweather-weather-tile",
   },
   {
-    type: "widgets",
+    type: "scripts",
     software: "surge",
     product: "qweather",
     label: "QWeather Panel",
@@ -146,7 +152,7 @@ export function getPagePaths() {
   const pages = new Map()
   for (const type of TYPES) {
     pages.set(getTypePath(type.id), `${getTypePath(type.id)}/index.html`)
-    for (const software of SOFTWARES) {
+    for (const software of softwaresForType(type.id)) {
       pages.set(
         getSoftwarePath(type.id, software.id),
         `${getSoftwarePath(type.id, software.id)}/index.html`
@@ -177,4 +183,9 @@ export function typeById(typeId) {
 
 export function softwareById(softwareId) {
   return SOFTWARES.find((software) => software.id === softwareId)
+}
+
+export function softwaresForType(typeId) {
+  const allowedIds = SOFTWARES_BY_TYPE[typeId] ?? []
+  return SOFTWARES.filter((software) => allowedIds.includes(software.id))
 }

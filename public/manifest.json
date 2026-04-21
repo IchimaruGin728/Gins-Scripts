@@ -1,6 +1,6 @@
 {
   "name": "Gins-Scripts",
-  "generatedAt": "2026-04-21T02:35:12.702Z",
+  "generatedAt": "2026-04-21T02:42:41.273Z",
   "files": [
     {
       "type": "widgets",
@@ -124,25 +124,25 @@
       "contentType": "application/javascript; charset=UTF-8"
     },
     {
-      "type": "widgets",
+      "type": "scripts",
       "software": "stash",
       "product": "qweather",
       "label": "QWeather Tile",
       "source": "stash/qweather-weather-tile.js",
       "slug": "qweather-weather-tile",
       "path": "/downloads/stash/qweather-weather-tile.js",
-      "aliasPath": "/widgets/stash/qweather-weather-tile",
+      "aliasPath": "/scripts/stash/qweather-weather-tile",
       "contentType": "application/javascript; charset=UTF-8"
     },
     {
-      "type": "widgets",
+      "type": "scripts",
       "software": "surge",
       "product": "qweather",
       "label": "QWeather Panel",
       "source": "surge/qweather-weather-panel.js",
       "slug": "qweather-weather-panel",
       "path": "/downloads/surge/qweather-weather-panel.js",
-      "aliasPath": "/widgets/surge/qweather-weather-panel",
+      "aliasPath": "/scripts/surge/qweather-weather-panel",
       "contentType": "application/javascript; charset=UTF-8"
     }
   ]

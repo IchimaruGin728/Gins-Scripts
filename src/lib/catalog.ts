@@ -33,6 +33,7 @@ export interface CatalogFile {
 export {
   FILES,
   SOFTWARES,
+  SOFTWARES_BY_TYPE,
   TYPES,
   filesFor,
   getAliasMap,
@@ -42,5 +43,6 @@ export {
   getSoftwarePath,
   getTypePath,
   softwareById,
+  softwaresForType,
   typeById,
 } from "./catalog.js"

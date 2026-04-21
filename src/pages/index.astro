@@ -1,7 +1,7 @@
 ---
 import CatalogGrid from "@/components/CatalogGrid.astro"
 import BaseLayout from "@/layouts/BaseLayout.astro"
-import { SOFTWARES, TYPES, filesFor } from "@/lib/catalog"
+import { TYPES, filesFor, softwaresForType } from "@/lib/catalog"
 
 const quickLinks = [
   { href: "/widgets", label: "Widgets", icon: "i-ph-app-window" },
@@ -10,8 +10,8 @@ const quickLinks = [
   { href: "/widgets/scripting", label: "Scripting", icon: "i-ph-article" },
   { href: "/widgets/scriptable", label: "Scriptable", icon: "i-ph-device-mobile" },
   { href: "/widgets/egern", label: "Egern", icon: "i-ph-sparkle" },
-  { href: "/widgets/quantumultx", label: "QuantumultX", icon: "i-ph-shield" },
-  { href: "/widgets/stash", label: "Stash", icon: "i-ph-stack" },
+  { href: "/scripts/quantumultx", label: "QuantumultX", icon: "i-ph-shield" },
+  { href: "/scripts/stash", label: "Stash", icon: "i-ph-stack" },
 ]
 ---
 
@@ -59,7 +59,7 @@ const quickLinks = [
       <>
         <div class="sectiontitle">{type.label}</div>
         <section class="grid">
-          {SOFTWARES.map((software) => (
+          {softwaresForType(type.id).map((software) => (
             <CatalogGrid type={type} software={software} files={filesFor(type.id, software.id)} />
           ))}
         </section>

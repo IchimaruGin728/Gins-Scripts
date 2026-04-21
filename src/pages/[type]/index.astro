@@ -1,7 +1,7 @@
 ---
 import CatalogGrid from "@/components/CatalogGrid.astro"
 import BaseLayout from "@/layouts/BaseLayout.astro"
-import { SOFTWARES, TYPES, filesFor, type CatalogType } from "@/lib/catalog"
+import { TYPES, filesFor, softwaresForType, type CatalogType } from "@/lib/catalog"
 
 export function getStaticPaths() {
   return TYPES.map((type) => ({
@@ -20,6 +20,8 @@ const { type } = Astro.props as { type: { id: CatalogType; label: string; descri
   description={`${type.description} Browse by app and open the published entry directly from its software namespace.`}
 >
   <section class="grid">
-    {SOFTWARES.map((software) => <CatalogGrid type={type} software={software} files={filesFor(type.id, software.id)} />)}
+    {softwaresForType(type.id).map((software) => (
+      <CatalogGrid type={type} software={software} files={filesFor(type.id, software.id)} />
+    ))}
   </section>
 </BaseLayout>
