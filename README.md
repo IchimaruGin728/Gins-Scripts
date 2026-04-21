@@ -8,6 +8,11 @@ Cross-platform weather widgets built around QWeather for:
 - Stash Tile
 - Surge Panel
 
+## Quick Docs
+
+- Repo wiki doc: [`WIKI.md`](./WIKI.md)
+- Web guide page: `/guide`
+
 ## Files
 
 - `scriptable/QWeatherWeatherWidget.js`

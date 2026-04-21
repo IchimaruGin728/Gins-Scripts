@@ -4,31 +4,38 @@ import BaseLayout from "@/layouts/BaseLayout.astro"
 
 <BaseLayout
   title="Usage Guide | Gins-Scripts"
-  eyebrow="Usage Guide"
-  heading="How to use scripts quickly"
-  description="统一入口：安装、参数、环境变量、更新策略都放在这里。"
+  eyebrow="Guide"
+  heading="Quick Setup"
 >
-  <section class="grid gap-4 md:grid-cols-3">
+  <section class="grid gap-4 md:grid-cols-2">
     <article class="card">
-      <h2 class="m-0 text-[20px] tracking-[-0.02em]">1. Choose Path</h2>
-      <p class="mt-2 text-ink-soft">
-        所有内容按固定路径分发：
-        <code>/{`{type}`}/{`{software}`}/{`{name}`}</code>，例如
-        <code>/widgets/scriptable/qweather-weather-widget</code>。
-      </p>
+      <h2 class="m-0 text-[20px] tracking-[-0.02em]">1. URL Pattern</h2>
+      <p class="mt-2 text-ink-soft"><code>/{`{type}`}/{`{software}`}/{`{name}`}</code></p>
+      <p class="mt-2 text-ink-soft">Example: <code>/widgets/scriptable/qweather-weather-widget</code></p>
     </article>
     <article class="card">
-      <h2 class="m-0 text-[20px] tracking-[-0.02em]">2. Set ENV</h2>
-      <p class="mt-2 text-ink-soft">
-        敏感参数只走环境变量：如 <code>QWEATHER_API_KEY</code>、<code>QWEATHER_LOCATION</code>。
-        不要把密钥写入脚本仓库。
-      </p>
+      <h2 class="m-0 text-[20px] tracking-[-0.02em]">2. Type / Software Matrix</h2>
+      <p class="mt-2 text-ink-soft"><code>widgets</code>: <code>egern</code>, <code>scripting</code>, <code>scriptable</code></p>
+      <p class="mt-2 text-ink-soft"><code>modules</code>: <code>egern</code>, <code>shadowrocket</code>, <code>quantumultx</code>, <code>loon</code>, <code>stash</code>, <code>surge</code></p>
+      <p class="mt-2 text-ink-soft"><code>scripts</code>: <code>egern</code>, <code>shadowrocket</code>, <code>quantumultx</code>, <code>loon</code>, <code>stash</code>, <code>surge</code>, <code>scripting</code>, <code>scriptable</code></p>
     </article>
     <article class="card">
-      <h2 class="m-0 text-[20px] tracking-[-0.02em]">3. Keep Updated</h2>
-      <p class="mt-2 text-ink-soft">
-        推荐固定主路径做订阅，版本升级通过同路径覆盖。大改动再新增 slug，避免破坏已有用户配置。
-      </p>
+      <h2 class="m-0 text-[20px] tracking-[-0.02em]">3. Scripting Package URLs</h2>
+      <p class="mt-2 text-ink-soft">Directory:</p>
+      <p class="mt-2 text-ink-soft"><code>/packages/scripting/qweather-weather-widget/</code></p>
+      <p class="mt-2 text-ink-soft"><code>/packages/scripting/datagovsg-dashboard/</code></p>
+      <p class="mt-2 text-ink-soft">ZIP:</p>
+      <p class="mt-2 text-ink-soft"><code>/packages/scripting/qweather-weather-widget.zip</code></p>
+      <p class="mt-2 text-ink-soft"><code>/packages/scripting/datagovsg-dashboard.zip</code></p>
+    </article>
+    <article class="card">
+      <h2 class="m-0 text-[20px] tracking-[-0.02em]">4. QWeather Keys</h2>
+      <p class="mt-2 text-ink-soft"><code>WEATHER_API_KEY</code>: your key</p>
+      <p class="mt-2 text-ink-soft"><code>WEATHER_LOCATION</code>: location id or <code>lng,lat</code></p>
+      <p class="mt-2 text-ink-soft"><code>QWEATHER_LANG</code>: <code>zh</code> or <code>en</code></p>
+      <p class="mt-2 text-ink-soft"><code>QWEATHER_UNIT</code>: <code>m</code> or <code>i</code></p>
+      <p class="mt-2 text-ink-soft"><code>WEATHER_API_HOST</code>: <code>https://devapi.qweather.com</code></p>
+      <p class="mt-2 text-ink-soft"><code>WEATHER_NAME</code>: display city name</p>
     </article>
   </section>
 </BaseLayout>
