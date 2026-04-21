@@ -18,28 +18,45 @@ const { title, eyebrow, heading, description } = Astro.props
   </head>
   <body class="shell">
     <main class="page">
+      <section class="govbar">
+        <span class="i-ph-bird-fill text-primary"></span>
+        <span>A Singapore Government Agency Website</span>
+        <a class="ml-1 text-primary no-underline hover:underline" href="https://www.gov.sg/">How to identify</a>
+      </section>
       <section class="topbar">
-        <div class="flex flex-col gap-1.5">
-          <div class="text-[15px] font-bold tracking-[0.01em]">Gins-Scripts</div>
-          <div class="text-[13px] text-muted">Cloudflare Worker distribution for widgets, modules, and scripts.</div>
+        <div class="flex items-center gap-3">
+          <span class="i-ph-cluster-fill text-[24px] text-primary"></span>
+          <div class="text-[31px] leading-none font-black tracking-[-0.02em]">data.gov.sg</div>
         </div>
-        <nav class="flex flex-wrap gap-2.5">
-          <a class="navpill" href="/widgets">Widgets</a>
-          <a class="navpill" href="/modules">Modules</a>
-          <a class="navpill" href="/scripts">Scripts</a>
+        <nav class="hidden items-center gap-1.5 md:flex">
+          <a class="navpill" href="/widgets">Datasets</a>
+          <a class="navpill" href="/modules">Products</a>
+          <a class="navpill" href="/scripts">APIs</a>
+          <a class="navpill" href="/manifest.json">Manifest</a>
+          <span
+            class="ml-1 inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary text-sm font-bold text-white"
+            >G</span
+          >
         </nav>
       </section>
       <section class="hero">
-        <div class="pill">{eyebrow}</div>
-        <h1 class="m-0 max-w-[760px] text-[clamp(36px,6vw,64px)] leading-[1.02] tracking-[-0.03em]">{heading}</h1>
-        <p class="m-0 max-w-[760px] text-[16px] leading-[1.65] text-muted md:text-[18px]">{description}</p>
-        <div class="flex flex-wrap gap-3">
-          <a class="cta" href="/manifest.json">Open manifest.json</a>
-          <a class="cta cta-secondary" href="/">Home</a>
+        <div class="text-[12px] font-bold uppercase tracking-[0.12em] text-primary">{eyebrow}</div>
+        <h1 class="m-0 text-[clamp(44px,8vw,76px)] leading-[1.02] tracking-[-0.03em] font-black">
+          {heading}
+        </h1>
+        <p class="mx-auto mt-1 max-w-[780px] text-[17px] leading-[1.6] font-semibold text-ink">{description}</p>
+        <slot name="hero-extra" />
+        <div class="pointer-events-none absolute bottom-0 left-0 h-34 w-full">
+          <div class="absolute left-[-6%] top-10 h-30 w-[40%] rounded-[100%] bg-primary/8"></div>
+          <div class="absolute left-[22%] top-2 h-36 w-[36%] rounded-[100%] bg-primary/11"></div>
+          <div class="absolute left-[54%] top-8 h-30 w-[34%] rounded-[100%] bg-primary/10"></div>
+          <div class="absolute right-[-8%] top-3 h-38 w-[32%] rounded-[100%] bg-primary/8"></div>
         </div>
       </section>
-      <slot />
-      <div class="mt-8 border-t border-line pt-5 text-[13px] text-muted">
+      <section class="mt-8">
+        <slot />
+      </section>
+      <div class="mt-10 border-t border-line pt-5 text-[13px] text-ink-soft">
         Built with Astro, Hono, TypeScript, UnoCSS, and Cloudflare Workers.
       </div>
     </main>

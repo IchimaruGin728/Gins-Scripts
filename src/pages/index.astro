@@ -6,14 +6,43 @@ import { SOFTWARES, TYPES, filesFor } from "@/lib/catalog"
 
 <BaseLayout
   title="Gins-Scripts"
-  eyebrow="Public Catalog"
-  heading="Find the right build for each app surface."
-  description="A simple catalog inspired by public product sites. Every published item lives under a stable path: /type/software/name."
+  eyebrow="Gins Scripts Directory"
+  heading="Singapore's open data portal"
+  description="Explore national datasets and API-powered scripts, widgets, and modules with stable Cloudflare-native delivery."
 >
+  <Fragment slot="hero-extra">
+    <div class="search">
+      <span class="i-ph-magnifying-glass text-[20px] text-ink-soft"></span>
+      <span class="ml-3">Try keywords like: “weather”, “transport”, “api”</span>
+      <span class="ml-auto inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary text-white">
+        <span class="i-ph-magnifying-glass"></span>
+      </span>
+    </div>
+    <div class="mt-6 flex flex-wrap justify-center gap-2.5">
+      <a class="chip" href="/widgets"><span class="i-ph-app-window"></span>Widgets</a>
+      <a class="chip" href="/modules"><span class="i-ph-cube"></span>Modules</a>
+      <a class="chip" href="/scripts"><span class="i-ph-terminal-window"></span>Scripts</a>
+      <a class="chip" href="/widgets/scripting"><span class="i-ph-article"></span>Scripting</a>
+      <a class="chip" href="/widgets/scriptable"><span class="i-ph-device-mobile"></span>Scriptable</a>
+      <a class="chip" href="/widgets/egern"><span class="i-ph-sparkle"></span>Egern</a>
+      <a class="chip" href="/widgets/quantumultx"><span class="i-ph-shield"></span>QuantumultX</a>
+      <a class="chip" href="/widgets/stash"><span class="i-ph-stack"></span>Stash</a>
+    </div>
+  </Fragment>
+
+  <div class="mt-2 text-center">
+    <h2 class="m-0 text-[clamp(34px,5vw,58px)] leading-[1.08] tracking-[-0.03em] font-black text-ink">
+      3 categories, 8 software surfaces
+    </h2>
+    <p class="mx-auto mt-3 max-w-[760px] text-[17px] text-ink-soft">
+      Every path is reserved in advance, so new assets can ship without changing URL structure.
+    </p>
+  </div>
+
   {
     TYPES.map((type) => (
       <>
-        <div class="section-title">{type.label}</div>
+        <div class="sectiontitle">{type.label}</div>
         <section class="grid">
           {SOFTWARES.map((software) => (
             <CatalogGrid type={type} software={software} files={filesFor(type.id, software.id)} />
