@@ -21,9 +21,9 @@ const { title, eyebrow, heading, description } = Astro.props
   </head>
   <body class="shell">
     <div class="pointer-events-none fixed inset-0 -z-1 overflow-hidden">
-      <div class="absolute right-[-12%] top-[-10%] h-[540px] w-[540px] rounded-full bg-primary/14 blur-[80px]"></div>
-      <div class="absolute bottom-[-14%] left-[-10%] h-[520px] w-[520px] rounded-full bg-primary/12 blur-[84px]"></div>
-      <div class="absolute left-[32%] top-[22%] h-[280px] w-[280px] rounded-full bg-primary/8 blur-[72px]"></div>
+      <div class="absolute right-[-12%] top-[-10%] h-[620px] w-[620px] rounded-full bg-primary/18 blur-[92px]"></div>
+      <div class="absolute bottom-[-14%] left-[-10%] h-[580px] w-[580px] rounded-full bg-primary/14 blur-[96px]"></div>
+      <div class="absolute left-[32%] top-[24%] h-[320px] w-[320px] rounded-full bg-fuchsia-400/12 blur-[84px]"></div>
     </div>
     <main class="page">
       <section class="govbar">
@@ -34,7 +34,9 @@ const { title, eyebrow, heading, description } = Astro.props
       <section class="topbar">
         <div class="flex items-center gap-3">
           <img src="/favicon.svg" alt="Gins logo" class="h-7 w-7 rounded-md" loading="eager" decoding="async" />
-          <div class="text-[31px] leading-none font-black tracking-[-0.02em]">Scripts</div>
+          <div class="bg-gradient-to-r from-[#e9ddff] via-[#cfb7ff] to-[#9f79ff] bg-clip-text text-[31px] leading-none font-black text-transparent tracking-[-0.02em]">
+            Scripts
+          </div>
         </div>
         <nav class="hidden items-center gap-1.5 md:flex">
           <a class="navpill" href="/widgets">Widgets</a>
@@ -53,13 +55,13 @@ const { title, eyebrow, heading, description } = Astro.props
         <h1 class="m-0 text-[clamp(44px,8vw,76px)] leading-[1.02] tracking-[-0.03em] font-black">
           {heading}
         </h1>
-        <p class="mx-auto mt-1 max-w-[780px] text-[17px] leading-[1.6] font-semibold text-ink">{description}</p>
+        <p class="mx-auto mt-1 max-w-[780px] text-[17px] leading-[1.6] font-semibold text-[#d0d2e7]">{description}</p>
         <slot name="hero-extra" />
         <div class="pointer-events-none absolute bottom-0 left-0 h-34 w-full">
-          <div class="absolute left-[-6%] top-10 h-30 w-[40%] rounded-[100%] bg-primary/8"></div>
-          <div class="absolute left-[22%] top-2 h-36 w-[36%] rounded-[100%] bg-primary/11"></div>
-          <div class="absolute left-[54%] top-8 h-30 w-[34%] rounded-[100%] bg-primary/10"></div>
-          <div class="absolute right-[-8%] top-3 h-38 w-[32%] rounded-[100%] bg-primary/8"></div>
+          <div class="absolute left-[-6%] top-10 h-30 w-[40%] rounded-[100%] bg-primary/14"></div>
+          <div class="absolute left-[22%] top-2 h-36 w-[36%] rounded-[100%] bg-primary/18"></div>
+          <div class="absolute left-[54%] top-8 h-30 w-[34%] rounded-[100%] bg-fuchsia-400/14"></div>
+          <div class="absolute right-[-8%] top-3 h-38 w-[32%] rounded-[100%] bg-primary/14"></div>
         </div>
       </section>
       <section class="mt-8">
@@ -73,6 +75,30 @@ const { title, eyebrow, heading, description } = Astro.props
 </html>
 
 <style is:global>
+  ::selection {
+    background: rgba(139, 92, 246, 0.45);
+    color: #fff;
+  }
+
+  ._astro_loading_indicator {
+    background: linear-gradient(90deg, #8b5cf6 0%, #c084fc 50%, #8b5cf6 100%);
+    background-size: 200% 100%;
+    box-shadow:
+      0 0 14px rgba(192, 132, 252, 0.6),
+      0 0 24px rgba(139, 92, 246, 0.45);
+    height: 3px;
+    animation: shimmer 2s linear infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: -100% 0;
+    }
+  }
+
   code,
   kbd,
   pre,

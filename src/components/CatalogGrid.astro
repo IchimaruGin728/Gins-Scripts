@@ -28,7 +28,7 @@ const { type, software, files } = Astro.props
     files.length > 0 ? (
       <ul class="m-0 grid list-none gap-2.5 p-0">
         {files.map((file) => (
-          <li class="grid gap-0.75 rounded-xl bg-primary-soft/35 px-2.5 py-2 transition hover:bg-primary-soft/55">
+          <li class="grid gap-0.75 rounded-xl border border-white/8 bg-primary-soft/50 px-2.5 py-2 transition hover:border-primary/40 hover:bg-primary-soft/80">
             <a class="font-semibold no-underline hover:text-primary" href={`/${file.type}/${file.software}/${file.slug}`}>
               {file.label}
             </a>
