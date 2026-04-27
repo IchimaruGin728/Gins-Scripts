@@ -1,4 +1,5 @@
 ---
+
 import BaseLayout from "@/layouts/BaseLayout.astro"
 ---
 
@@ -10,23 +11,29 @@ import BaseLayout from "@/layouts/BaseLayout.astro"
   <section class="grid gap-4 md:grid-cols-2">
     <article class="card">
       <h2 class="m-0 text-[20px] tracking-[-0.02em]">1. URL Pattern</h2>
-      <p class="mt-2 text-ink-soft"><code>/{`{type}`}/{`{software}`}/{`{name}`}</code></p>
-      <p class="mt-2 text-ink-soft">Example: <code>/widgets/scriptable/qweather-weather-widget</code></p>
+      <p class="mt-2 text-ink-soft"><code>/{`{Software}`}/{`{Category}`}/{`{Project}`}</code></p>
+      <p class="mt-2 text-ink-soft">Example: <code>/Scripting/Widget/Countdown/index</code></p>
     </article>
     <article class="card">
-      <h2 class="m-0 text-[20px] tracking-[-0.02em]">2. Type / Software Matrix</h2>
-      <p class="mt-2 text-ink-soft"><code>widgets</code>: <code>egern</code>, <code>scripting</code>, <code>scriptable</code></p>
-      <p class="mt-2 text-ink-soft"><code>modules</code>: <code>egern</code>, <code>shadowrocket</code>, <code>quantumultx</code>, <code>loon</code>, <code>stash</code>, <code>surge</code></p>
-      <p class="mt-2 text-ink-soft"><code>scripts</code>: <code>egern</code>, <code>shadowrocket</code>, <code>quantumultx</code>, <code>loon</code>, <code>stash</code>, <code>surge</code>, <code>scripting</code>, <code>scriptable</code></p>
+      <h2 class="m-0 text-[20px] tracking-[-0.02em]">2. Software / Category Matrix</h2>
+      <p class="mt-2 text-ink-soft"><code>Scripting</code>: <code>Script</code>, <code>Widget</code></p>
+      <p class="mt-2 text-ink-soft"><code>Scriptable</code>: <code>Widget</code></p>
+      <p class="mt-2 text-ink-soft"><code>Egern</code>: <code>Script</code>, <code>Widget</code>, <code>Module</code></p>
+      <p class="mt-2 text-ink-soft"><code>Stash</code>: <code>Override</code>, <code>Tile</code></p>
+      <p class="mt-2 text-ink-soft"><code>Surge</code>: <code>Script</code>, <code>Module</code></p>
+      <p class="mt-2 text-ink-soft"><code>Shadowrocket</code> / <code>Loon</code>: <code>Script</code>, <code>Module</code></p>
+      <p class="mt-2 text-ink-soft"><code>QuantumultX</code>: <code>Rewrite</code></p>
     </article>
     <article class="card">
       <h2 class="m-0 text-[20px] tracking-[-0.02em]">3. Scripting Package URLs</h2>
       <p class="mt-2 text-ink-soft">Directory:</p>
-      <p class="mt-2 text-ink-soft"><code>/packages/scripting/qweather-weather-widget/</code></p>
-      <p class="mt-2 text-ink-soft"><code>/packages/scripting/datagovsg-dashboard/</code></p>
+      <p class="mt-2 text-ink-soft"><code>/packages/Scripting/QWeather/</code></p>
+      <p class="mt-2 text-ink-soft"><code>/packages/Scripting/DataGovSG/</code></p>
+      <p class="mt-2 text-ink-soft"><code>/packages/Scripting/Countdown/</code></p>
       <p class="mt-2 text-ink-soft">ZIP:</p>
-      <p class="mt-2 text-ink-soft"><code>/packages/scripting/qweather-weather-widget.zip</code></p>
-      <p class="mt-2 text-ink-soft"><code>/packages/scripting/datagovsg-dashboard.zip</code></p>
+      <p class="mt-2 text-ink-soft"><code>/packages/Scripting/QWeather.zip</code></p>
+      <p class="mt-2 text-ink-soft"><code>/packages/Scripting/DataGovSG.zip</code></p>
+      <p class="mt-2 text-ink-soft"><code>/packages/Scripting/Countdown.zip</code></p>
     </article>
     <article class="card">
       <h2 class="m-0 text-[20px] tracking-[-0.02em]">4. QWeather Keys</h2>

@@ -1,12 +1,15 @@
-# Widgets Suite
+# Gins-Scripts
 
-Cross-platform weather widgets built around QWeather for:
+Cross-platform scripts, widgets, modules, tiles, overrides, and rewrites for:
 
 - Scriptable
 - Scripting app
 - Egern
-- Stash Tile
-- Surge Panel
+- Stash
+- Surge
+- Shadowrocket
+- Loon
+- QuantumultX
 
 ## Quick Docs
 
@@ -15,14 +18,22 @@ Cross-platform weather widgets built around QWeather for:
 
 ## Files
 
-- `scriptable/QWeatherWeatherWidget.js`
-- `scripting/qweather-weather-widget/index.tsx`
-- `scripting/qweather-weather-widget/widget.tsx`
-- `scripting/qweather-weather-widget/shared.ts`
-- `egern/qweather-weather-widget.js`
-- `egern/qweather-weather-module.yaml`
-- `stash/qweather-weather-tile.js`
-- `surge/qweather-weather-panel.js`
+- `Scriptable/QWeather.js`
+- `Scriptable/DataGovSG.js`
+- `Scripting/QWeather/index.tsx`
+- `Scripting/QWeather/widget.tsx`
+- `Scripting/QWeather/shared.ts`
+- `Scripting/DataGovSG/index.tsx`
+- `Scripting/DataGovSG/widget.tsx`
+- `Scripting/DataGovSG/shared.ts`
+- `Scripting/Countdown/index.tsx`
+- `Scripting/Countdown/widget.tsx`
+- `Scripting/Countdown/shared.ts`
+- `Egern/QWeather.js`
+- `Egern/QWeather.yaml`
+- `Egern/DataGovSG.js`
+- `Stash/QWeather.js`
+- `Surge/QWeather.js`
 
 ## Required QWeather Config
 
@@ -73,8 +84,8 @@ How it works:
 - `pnpm run build` runs the catalog build and then Astro static build
 - Astro renders the catalog pages into `dist/...`
 - Hono handles the Worker entry and serves canonical URLs plus `/api/manifest`
-- canonical URLs follow `/{type}/{software}/{name}`
-- `src/worker.ts` serves canonical URLs only; old `/download/...` and software-first paths are intentionally removed
+- canonical URLs follow `/{Software}/{Category}/{Project}`
+- `src/worker.ts` serves canonical pages and raw source aliases
 - `wrangler.jsonc` defines the Worker name as `gins-scripts`
 - connect the Worker directly to the GitHub repository in Cloudflare Builds instead of using GitHub Actions
 - package management is `pnpm`
@@ -105,30 +116,37 @@ Cloudflare dashboard settings:
 Useful routes after deployment:
 
 - `/`
-- `/widgets`
-- `/modules`
-- `/scripts`
+- `/Scripting`
+- `/Scripting/Widget`
+- `/Scriptable/Widget`
+- `/Egern/Widget`
+- `/Egern/Module`
+- `/Stash/Tile`
+- `/Surge/Script`
 - `/manifest.json`
 - `/api/manifest`
-- `/widgets/scriptable/qweather-weather-widget`
-- `/widgets/scriptable/datagovsg-dashboard`
-- `/widgets/scripting/qweather-weather-widget/index`
-- `/widgets/scripting/qweather-weather-widget/shared`
-- `/widgets/scripting/qweather-weather-widget/widget`
-- `/widgets/scripting/datagovsg-dashboard/index`
-- `/widgets/scripting/datagovsg-dashboard/shared`
-- `/widgets/scripting/datagovsg-dashboard/widget`
-- `/widgets/egern/qweather-weather-widget`
-- `/modules/egern/qweather-weather-module`
-- `/widgets/egern/datagovsg-dashboard`
-- `/widgets/stash/qweather-weather-tile`
-- `/widgets/surge/qweather-weather-panel`
+- `/Scriptable/Widget/QWeather`
+- `/Scriptable/Widget/DataGovSG`
+- `/Scripting/Widget/QWeather/index`
+- `/Scripting/Widget/QWeather/shared`
+- `/Scripting/Widget/QWeather/widget`
+- `/Scripting/Widget/DataGovSG/index`
+- `/Scripting/Widget/DataGovSG/shared`
+- `/Scripting/Widget/DataGovSG/widget`
+- `/Scripting/Widget/Countdown/index`
+- `/Scripting/Widget/Countdown/shared`
+- `/Scripting/Widget/Countdown/widget`
+- `/Egern/Widget/QWeather`
+- `/Egern/Module/QWeather`
+- `/Egern/Widget/DataGovSG`
+- `/Stash/Tile/QWeather`
+- `/Surge/Script/QWeather`
 
-Software landing paths are published even when empty, for example:
+Software landing paths are published even when empty:
 
-- `/widgets/quantumultx`
-- `/modules/loon`
-- `/scripts/shadowrocket`
+- `/QuantumultX`
+- `/Loon`
+- `/Shadowrocket`
 
 ## Parameter Examples
 
@@ -149,7 +167,7 @@ Use widget parameter JSON such as:
 
 ### Egern
 
-Set the widget `env` fields in [egern/qweather-weather-module.yaml](/Users/ichimarugin728/Gins-Projects/Gins-Scripts/egern/qweather-weather-module.yaml).
+Set the widget `env` fields in [QWeather.yaml](/Users/ichimarugin728/Gins-Projects/Gins-Scripts/Egern/QWeather.yaml).
 
 ### Stash / Surge
 
@@ -164,7 +182,7 @@ WEATHER_API_KEY=<YOUR_API_KEY>&WEATHER_LOCATION=<LOCATION_ID_OR_LNG_LAT>&WEATHER
 - Scriptable version supports small, medium, and large widgets with decorative gradient, hourly sparkline, and optional transparent background image.
 - Scripting version uses `Widget.family` plus widget environment values to adapt to full-color and accented rendering.
 - Egern version uses the JSON widget DSL and supports `systemSmall`, `systemMedium`, and `systemLarge`.
-- Stash Tile and Surge Panel are intentionally simpler because those surfaces do not expose the same drawing/layout APIs as iOS widgets.
+- Stash Tile and Surge Script are intentionally simpler because those surfaces do not expose the same drawing/layout APIs as iOS widgets.
 
 ## Transparent Background
 
@@ -184,11 +202,11 @@ Egern does not expose the same screenshot-crop transparent workflow as Scriptabl
 
 Files:
 
-- `scriptable/DataGovSGDashboard.js`
-- `scripting/datagovsg-dashboard/index.tsx`
-- `scripting/datagovsg-dashboard/widget.tsx`
-- `scripting/datagovsg-dashboard/shared.ts`
-- `egern/datagovsg-dashboard.js`
+- `Scriptable/DataGovSG.js`
+- `Scripting/DataGovSG/index.tsx`
+- `Scripting/DataGovSG/widget.tsx`
+- `Scripting/DataGovSG/shared.ts`
+- `Egern/DataGovSG.js`
 
 Config:
 

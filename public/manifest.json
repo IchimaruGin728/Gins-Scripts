@@ -1,204 +1,264 @@
 {
   "name": "Gins-Scripts",
-  "generatedAt": "2026-04-21T03:25:55.783Z",
+  "generatedAt": "2026-04-27T05:12:01.752Z",
   "files": [
     {
-      "type": "widgets",
-      "software": "scriptable",
-      "product": "qweather",
-      "label": "QWeather Weather Widget",
-      "source": "scriptable/QWeatherWeatherWidget.js",
-      "slug": "qweather-weather-widget",
-      "path": "/downloads/scriptable/QWeatherWeatherWidget.js",
-      "aliasPath": "/widgets/scriptable/qweather-weather-widget",
+      "software": "Scriptable",
+      "category": "Widget",
+      "product": "QWeather",
+      "label": "QWeather",
+      "source": "Scriptable/QWeather.js",
+      "slug": "QWeather",
+      "path": "/downloads/Scriptable/QWeather.js",
+      "aliasPath": "/Scriptable/Widget/QWeather",
       "contentType": "application/javascript; charset=UTF-8"
     },
     {
-      "type": "widgets",
-      "software": "scriptable",
-      "product": "datagovsg",
-      "label": "DataGovSG Dashboard",
-      "source": "scriptable/DataGovSGDashboard.js",
-      "slug": "datagovsg-dashboard",
-      "path": "/downloads/scriptable/DataGovSGDashboard.js",
-      "aliasPath": "/widgets/scriptable/datagovsg-dashboard",
+      "software": "Scriptable",
+      "category": "Widget",
+      "product": "DataGovSG",
+      "label": "DataGovSG",
+      "source": "Scriptable/DataGovSG.js",
+      "slug": "DataGovSG",
+      "path": "/downloads/Scriptable/DataGovSG.js",
+      "aliasPath": "/Scriptable/Widget/DataGovSG",
       "contentType": "application/javascript; charset=UTF-8"
     },
     {
-      "type": "widgets",
-      "software": "scripting",
-      "product": "qweather",
-      "label": "QWeather Widget Index",
-      "source": "scripting/qweather-weather-widget/index.tsx",
-      "slug": "qweather-weather-widget/index",
-      "path": "/downloads/scripting/qweather-weather-widget/index.tsx",
-      "aliasPath": "/widgets/scripting/qweather-weather-widget/index",
+      "software": "Scripting",
+      "category": "Widget",
+      "product": "QWeather",
+      "label": "QWeather Index",
+      "source": "Scripting/QWeather/index.tsx",
+      "slug": "QWeather/index",
+      "path": "/downloads/Scripting/QWeather/index.tsx",
+      "aliasPath": "/Scripting/Widget/QWeather/index",
       "contentType": "text/plain; charset=UTF-8"
     },
     {
-      "type": "widgets",
-      "software": "scripting",
-      "product": "qweather",
-      "label": "QWeather Widget Shared",
-      "source": "scripting/qweather-weather-widget/shared.ts",
-      "slug": "qweather-weather-widget/shared",
-      "path": "/downloads/scripting/qweather-weather-widget/shared.ts",
-      "aliasPath": "/widgets/scripting/qweather-weather-widget/shared",
+      "software": "Scripting",
+      "category": "Widget",
+      "product": "QWeather",
+      "label": "QWeather Shared",
+      "source": "Scripting/QWeather/shared.ts",
+      "slug": "QWeather/shared",
+      "path": "/downloads/Scripting/QWeather/shared.ts",
+      "aliasPath": "/Scripting/Widget/QWeather/shared",
       "contentType": "text/plain; charset=UTF-8"
     },
     {
-      "type": "widgets",
-      "software": "scripting",
-      "product": "qweather",
-      "label": "QWeather Widget View",
-      "source": "scripting/qweather-weather-widget/widget.tsx",
-      "slug": "qweather-weather-widget/widget",
-      "path": "/downloads/scripting/qweather-weather-widget/widget.tsx",
-      "aliasPath": "/widgets/scripting/qweather-weather-widget/widget",
+      "software": "Scripting",
+      "category": "Widget",
+      "product": "QWeather",
+      "label": "QWeather View",
+      "source": "Scripting/QWeather/widget.tsx",
+      "slug": "QWeather/widget",
+      "path": "/downloads/Scripting/QWeather/widget.tsx",
+      "aliasPath": "/Scripting/Widget/QWeather/widget",
       "contentType": "text/plain; charset=UTF-8"
     },
     {
-      "type": "widgets",
-      "software": "scripting",
-      "product": "datagovsg",
+      "software": "Scripting",
+      "category": "Widget",
+      "product": "DataGovSG",
       "label": "DataGovSG Index",
-      "source": "scripting/datagovsg-dashboard/index.tsx",
-      "slug": "datagovsg-dashboard/index",
-      "path": "/downloads/scripting/datagovsg-dashboard/index.tsx",
-      "aliasPath": "/widgets/scripting/datagovsg-dashboard/index",
+      "source": "Scripting/DataGovSG/index.tsx",
+      "slug": "DataGovSG/index",
+      "path": "/downloads/Scripting/DataGovSG/index.tsx",
+      "aliasPath": "/Scripting/Widget/DataGovSG/index",
       "contentType": "text/plain; charset=UTF-8"
     },
     {
-      "type": "widgets",
-      "software": "scripting",
-      "product": "datagovsg",
+      "software": "Scripting",
+      "category": "Widget",
+      "product": "DataGovSG",
       "label": "DataGovSG Shared",
-      "source": "scripting/datagovsg-dashboard/shared.ts",
-      "slug": "datagovsg-dashboard/shared",
-      "path": "/downloads/scripting/datagovsg-dashboard/shared.ts",
-      "aliasPath": "/widgets/scripting/datagovsg-dashboard/shared",
+      "source": "Scripting/DataGovSG/shared.ts",
+      "slug": "DataGovSG/shared",
+      "path": "/downloads/Scripting/DataGovSG/shared.ts",
+      "aliasPath": "/Scripting/Widget/DataGovSG/shared",
       "contentType": "text/plain; charset=UTF-8"
     },
     {
-      "type": "widgets",
-      "software": "scripting",
-      "product": "datagovsg",
-      "label": "DataGovSG Widget View",
-      "source": "scripting/datagovsg-dashboard/widget.tsx",
-      "slug": "datagovsg-dashboard/widget",
-      "path": "/downloads/scripting/datagovsg-dashboard/widget.tsx",
-      "aliasPath": "/widgets/scripting/datagovsg-dashboard/widget",
+      "software": "Scripting",
+      "category": "Widget",
+      "product": "DataGovSG",
+      "label": "DataGovSG View",
+      "source": "Scripting/DataGovSG/widget.tsx",
+      "slug": "DataGovSG/widget",
+      "path": "/downloads/Scripting/DataGovSG/widget.tsx",
+      "aliasPath": "/Scripting/Widget/DataGovSG/widget",
       "contentType": "text/plain; charset=UTF-8"
     },
     {
-      "type": "widgets",
-      "software": "egern",
-      "product": "qweather",
-      "label": "QWeather Widget",
-      "source": "egern/qweather-weather-widget.js",
-      "slug": "qweather-weather-widget",
-      "path": "/downloads/egern/qweather-weather-widget.js",
-      "aliasPath": "/widgets/egern/qweather-weather-widget",
+      "software": "Scripting",
+      "category": "Widget",
+      "product": "Countdown",
+      "label": "Countdown Index",
+      "source": "Scripting/Countdown/index.tsx",
+      "slug": "Countdown/index",
+      "path": "/downloads/Scripting/Countdown/index.tsx",
+      "aliasPath": "/Scripting/Widget/Countdown/index",
+      "contentType": "text/plain; charset=UTF-8"
+    },
+    {
+      "software": "Scripting",
+      "category": "Widget",
+      "product": "Countdown",
+      "label": "Countdown Shared",
+      "source": "Scripting/Countdown/shared.ts",
+      "slug": "Countdown/shared",
+      "path": "/downloads/Scripting/Countdown/shared.ts",
+      "aliasPath": "/Scripting/Widget/Countdown/shared",
+      "contentType": "text/plain; charset=UTF-8"
+    },
+    {
+      "software": "Scripting",
+      "category": "Widget",
+      "product": "Countdown",
+      "label": "Countdown View",
+      "source": "Scripting/Countdown/widget.tsx",
+      "slug": "Countdown/widget",
+      "path": "/downloads/Scripting/Countdown/widget.tsx",
+      "aliasPath": "/Scripting/Widget/Countdown/widget",
+      "contentType": "text/plain; charset=UTF-8"
+    },
+    {
+      "software": "Egern",
+      "category": "Widget",
+      "product": "QWeather",
+      "label": "QWeather",
+      "source": "Egern/QWeather.js",
+      "slug": "QWeather",
+      "path": "/downloads/Egern/QWeather.js",
+      "aliasPath": "/Egern/Widget/QWeather",
       "contentType": "application/javascript; charset=UTF-8"
     },
     {
-      "type": "modules",
-      "software": "egern",
-      "product": "qweather",
-      "label": "QWeather Module",
-      "source": "egern/qweather-weather-module.yaml",
-      "slug": "qweather-weather-module",
-      "path": "/downloads/egern/qweather-weather-module.yaml",
-      "aliasPath": "/modules/egern/qweather-weather-module",
+      "software": "Egern",
+      "category": "Module",
+      "product": "QWeather",
+      "label": "QWeather",
+      "source": "Egern/QWeather.yaml",
+      "slug": "QWeather",
+      "path": "/downloads/Egern/QWeather.yaml",
+      "aliasPath": "/Egern/Module/QWeather",
       "contentType": "text/yaml; charset=UTF-8"
     },
     {
-      "type": "widgets",
-      "software": "egern",
-      "product": "datagovsg",
-      "label": "DataGovSG Dashboard",
-      "source": "egern/datagovsg-dashboard.js",
-      "slug": "datagovsg-dashboard",
-      "path": "/downloads/egern/datagovsg-dashboard.js",
-      "aliasPath": "/widgets/egern/datagovsg-dashboard",
+      "software": "Egern",
+      "category": "Widget",
+      "product": "DataGovSG",
+      "label": "DataGovSG",
+      "source": "Egern/DataGovSG.js",
+      "slug": "DataGovSG",
+      "path": "/downloads/Egern/DataGovSG.js",
+      "aliasPath": "/Egern/Widget/DataGovSG",
       "contentType": "application/javascript; charset=UTF-8"
     },
     {
-      "type": "scripts",
-      "software": "stash",
-      "product": "qweather",
-      "label": "QWeather Tile",
-      "source": "stash/qweather-weather-tile.js",
-      "slug": "qweather-weather-tile",
-      "path": "/downloads/stash/qweather-weather-tile.js",
-      "aliasPath": "/scripts/stash/qweather-weather-tile",
+      "software": "Stash",
+      "category": "Tile",
+      "product": "QWeather",
+      "label": "QWeather",
+      "source": "Stash/QWeather.js",
+      "slug": "QWeather",
+      "path": "/downloads/Stash/QWeather.js",
+      "aliasPath": "/Stash/Tile/QWeather",
       "contentType": "application/javascript; charset=UTF-8"
     },
     {
-      "type": "scripts",
-      "software": "surge",
-      "product": "qweather",
-      "label": "QWeather Panel",
-      "source": "surge/qweather-weather-panel.js",
-      "slug": "qweather-weather-panel",
-      "path": "/downloads/surge/qweather-weather-panel.js",
-      "aliasPath": "/scripts/surge/qweather-weather-panel",
+      "software": "Surge",
+      "category": "Script",
+      "product": "QWeather",
+      "label": "QWeather",
+      "source": "Surge/QWeather.js",
+      "slug": "QWeather",
+      "path": "/downloads/Surge/QWeather.js",
+      "aliasPath": "/Surge/Script/QWeather",
       "contentType": "application/javascript; charset=UTF-8"
     }
   ],
   "scriptingPackages": [
     {
-      "name": "qweather-weather-widget",
-      "type": "scripting",
-      "directoryUrl": "/packages/scripting/qweather-weather-widget/",
-      "zipUrl": "/packages/scripting/qweather-weather-widget.zip",
+      "name": "QWeather",
+      "software": "Scripting",
+      "directoryUrl": "/packages/Scripting/QWeather/",
+      "zipUrl": "/packages/Scripting/QWeather.zip",
       "files": [
         {
           "path": "index.tsx",
-          "source": "scripting/qweather-weather-widget/index.tsx",
-          "url": "/downloads/scripting/qweather-weather-widget/index.tsx"
+          "source": "Scripting/QWeather/index.tsx",
+          "url": "/downloads/Scripting/QWeather/index.tsx"
         },
         {
           "path": "shared.ts",
-          "source": "scripting/qweather-weather-widget/shared.ts",
-          "url": "/downloads/scripting/qweather-weather-widget/shared.ts"
+          "source": "Scripting/QWeather/shared.ts",
+          "url": "/downloads/Scripting/QWeather/shared.ts"
         },
         {
           "path": "widget.tsx",
-          "source": "scripting/qweather-weather-widget/widget.tsx",
-          "url": "/downloads/scripting/qweather-weather-widget/widget.tsx"
+          "source": "Scripting/QWeather/widget.tsx",
+          "url": "/downloads/Scripting/QWeather/widget.tsx"
         }
       ],
       "entrypoints": {
-        "index": "/downloads/scripting/qweather-weather-widget/index.tsx",
-        "widget": "/downloads/scripting/qweather-weather-widget/widget.tsx"
+        "index": "/downloads/Scripting/QWeather/index.tsx",
+        "widget": "/downloads/Scripting/QWeather/widget.tsx"
       }
     },
     {
-      "name": "datagovsg-dashboard",
-      "type": "scripting",
-      "directoryUrl": "/packages/scripting/datagovsg-dashboard/",
-      "zipUrl": "/packages/scripting/datagovsg-dashboard.zip",
+      "name": "DataGovSG",
+      "software": "Scripting",
+      "directoryUrl": "/packages/Scripting/DataGovSG/",
+      "zipUrl": "/packages/Scripting/DataGovSG.zip",
       "files": [
         {
           "path": "index.tsx",
-          "source": "scripting/datagovsg-dashboard/index.tsx",
-          "url": "/downloads/scripting/datagovsg-dashboard/index.tsx"
+          "source": "Scripting/DataGovSG/index.tsx",
+          "url": "/downloads/Scripting/DataGovSG/index.tsx"
         },
         {
           "path": "shared.ts",
-          "source": "scripting/datagovsg-dashboard/shared.ts",
-          "url": "/downloads/scripting/datagovsg-dashboard/shared.ts"
+          "source": "Scripting/DataGovSG/shared.ts",
+          "url": "/downloads/Scripting/DataGovSG/shared.ts"
         },
         {
           "path": "widget.tsx",
-          "source": "scripting/datagovsg-dashboard/widget.tsx",
-          "url": "/downloads/scripting/datagovsg-dashboard/widget.tsx"
+          "source": "Scripting/DataGovSG/widget.tsx",
+          "url": "/downloads/Scripting/DataGovSG/widget.tsx"
         }
       ],
       "entrypoints": {
-        "index": "/downloads/scripting/datagovsg-dashboard/index.tsx",
-        "widget": "/downloads/scripting/datagovsg-dashboard/widget.tsx"
+        "index": "/downloads/Scripting/DataGovSG/index.tsx",
+        "widget": "/downloads/Scripting/DataGovSG/widget.tsx"
+      }
+    },
+    {
+      "name": "Countdown",
+      "software": "Scripting",
+      "directoryUrl": "/packages/Scripting/Countdown/",
+      "zipUrl": "/packages/Scripting/Countdown.zip",
+      "files": [
+        {
+          "path": "index.tsx",
+          "source": "Scripting/Countdown/index.tsx",
+          "url": "/downloads/Scripting/Countdown/index.tsx"
+        },
+        {
+          "path": "shared.ts",
+          "source": "Scripting/Countdown/shared.ts",
+          "url": "/downloads/Scripting/Countdown/shared.ts"
+        },
+        {
+          "path": "widget.tsx",
+          "source": "Scripting/Countdown/widget.tsx",
+          "url": "/downloads/Scripting/Countdown/widget.tsx"
+        }
+      ],
+      "entrypoints": {
+        "index": "/downloads/Scripting/Countdown/index.tsx",
+        "widget": "/downloads/Scripting/Countdown/widget.tsx"
       }
     }
   ]

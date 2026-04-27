@@ -1,0 +1,34 @@
+---
+
+import CatalogGrid from "@/components/CatalogGrid.astro"
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import {
+  categoriesForSoftware,
+  filesFor,
+  getSoftwarePath,
+  SOFTWARES,
+  type SoftwareId,
+} from "@/lib/catalog"
+
+export function getStaticPaths() {
+  return SOFTWARES.map((software) => ({
+    params: { software: software.id },
+    props: { software },
+  }))
+}
+
+const { software } = Astro.props as { software: { id: SoftwareId; label: string } }
+---
+
+<BaseLayout
+  title={`${software.label} | Gins-Scripts`}
+  eyebrow={software.label}
+  heading={software.label}
+  description={`Namespace: ${getSoftwarePath(software.id)}`}
+>
+  <section class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+    {categoriesForSoftware(software.id).map((category) => (
+      <CatalogGrid software={software} category={category} files={filesFor(software.id, category.id)} />
+    ))}
+  </section>
+</BaseLayout>

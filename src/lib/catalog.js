@@ -1,134 +1,162 @@
-export const TYPES = [
-  { id: "widgets", label: "Widgets", description: "Visual widgets, tiles, and panels." },
-  {
-    id: "modules",
-    label: "Modules",
-    description: "Importable modules and configuration packages.",
-  },
-  { id: "scripts", label: "Scripts", description: "Standalone automation scripts and utilities." },
-]
-
 export const SOFTWARES = [
-  { id: "scriptable", label: "Scriptable" },
-  { id: "scripting", label: "Scripting" },
-  { id: "egern", label: "Egern" },
-  { id: "quantumultx", label: "QuantumultX" },
-  { id: "stash", label: "Stash" },
-  { id: "surge", label: "Surge" },
-  { id: "loon", label: "Loon" },
-  { id: "shadowrocket", label: "Shadowrocket" },
+  { id: "Scripting", label: "Scripting" },
+  { id: "Scriptable", label: "Scriptable" },
+  { id: "Egern", label: "Egern" },
+  { id: "Stash", label: "Stash" },
+  { id: "Surge", label: "Surge" },
+  { id: "Shadowrocket", label: "Shadowrocket" },
+  { id: "Loon", label: "Loon" },
+  { id: "QuantumultX", label: "QuantumultX" },
 ]
 
-export const SOFTWARES_BY_TYPE = {
-  widgets: ["egern", "scripting", "scriptable"],
-  modules: ["egern", "shadowrocket", "quantumultx", "loon", "stash", "surge"],
-  scripts: ["egern", "shadowrocket", "quantumultx", "loon", "stash", "surge", "scripting", "scriptable"],
+export const CATEGORIES = [
+  { id: "Widget", label: "Widget", description: "Home screen and app widgets." },
+  { id: "Script", label: "Script", description: "Standalone automation scripts." },
+  { id: "Module", label: "Module", description: "Importable modules and configuration packages." },
+  { id: "Override", label: "Override", description: "Stash override configuration." },
+  { id: "Tile", label: "Tile", description: "Stash tile display scripts." },
+  { id: "Rewrite", label: "Rewrite", description: "QuantumultX rewrite resources." },
+]
+
+export const CATEGORIES_BY_SOFTWARE = {
+  Scripting: ["Script", "Widget"],
+  Scriptable: ["Widget"],
+  Egern: ["Script", "Widget", "Module"],
+  Stash: ["Override", "Tile"],
+  Surge: ["Script", "Module"],
+  Shadowrocket: ["Script", "Module"],
+  Loon: ["Script", "Module"],
+  QuantumultX: ["Rewrite"],
 }
 
 export const FILES = [
   {
-    type: "widgets",
-    software: "scriptable",
-    product: "qweather",
-    label: "QWeather Weather Widget",
-    source: "scriptable/QWeatherWeatherWidget.js",
-    slug: "qweather-weather-widget",
+    software: "Scriptable",
+    category: "Widget",
+    product: "QWeather",
+    label: "QWeather",
+    source: "Scriptable/QWeather.js",
+    slug: "QWeather",
   },
   {
-    type: "widgets",
-    software: "scriptable",
-    product: "datagovsg",
-    label: "DataGovSG Dashboard",
-    source: "scriptable/DataGovSGDashboard.js",
-    slug: "datagovsg-dashboard",
+    software: "Scriptable",
+    category: "Widget",
+    product: "DataGovSG",
+    label: "DataGovSG",
+    source: "Scriptable/DataGovSG.js",
+    slug: "DataGovSG",
   },
   {
-    type: "widgets",
-    software: "scripting",
-    product: "qweather",
-    label: "QWeather Widget Index",
-    source: "scripting/qweather-weather-widget/index.tsx",
-    slug: "qweather-weather-widget/index",
+    software: "Scripting",
+    category: "Widget",
+    product: "QWeather",
+    label: "QWeather Index",
+    source: "Scripting/QWeather/index.tsx",
+    slug: "QWeather/index",
   },
   {
-    type: "widgets",
-    software: "scripting",
-    product: "qweather",
-    label: "QWeather Widget Shared",
-    source: "scripting/qweather-weather-widget/shared.ts",
-    slug: "qweather-weather-widget/shared",
+    software: "Scripting",
+    category: "Widget",
+    product: "QWeather",
+    label: "QWeather Shared",
+    source: "Scripting/QWeather/shared.ts",
+    slug: "QWeather/shared",
   },
   {
-    type: "widgets",
-    software: "scripting",
-    product: "qweather",
-    label: "QWeather Widget View",
-    source: "scripting/qweather-weather-widget/widget.tsx",
-    slug: "qweather-weather-widget/widget",
+    software: "Scripting",
+    category: "Widget",
+    product: "QWeather",
+    label: "QWeather View",
+    source: "Scripting/QWeather/widget.tsx",
+    slug: "QWeather/widget",
   },
   {
-    type: "widgets",
-    software: "scripting",
-    product: "datagovsg",
+    software: "Scripting",
+    category: "Widget",
+    product: "DataGovSG",
     label: "DataGovSG Index",
-    source: "scripting/datagovsg-dashboard/index.tsx",
-    slug: "datagovsg-dashboard/index",
+    source: "Scripting/DataGovSG/index.tsx",
+    slug: "DataGovSG/index",
   },
   {
-    type: "widgets",
-    software: "scripting",
-    product: "datagovsg",
+    software: "Scripting",
+    category: "Widget",
+    product: "DataGovSG",
     label: "DataGovSG Shared",
-    source: "scripting/datagovsg-dashboard/shared.ts",
-    slug: "datagovsg-dashboard/shared",
+    source: "Scripting/DataGovSG/shared.ts",
+    slug: "DataGovSG/shared",
   },
   {
-    type: "widgets",
-    software: "scripting",
-    product: "datagovsg",
-    label: "DataGovSG Widget View",
-    source: "scripting/datagovsg-dashboard/widget.tsx",
-    slug: "datagovsg-dashboard/widget",
+    software: "Scripting",
+    category: "Widget",
+    product: "DataGovSG",
+    label: "DataGovSG View",
+    source: "Scripting/DataGovSG/widget.tsx",
+    slug: "DataGovSG/widget",
   },
   {
-    type: "widgets",
-    software: "egern",
-    product: "qweather",
-    label: "QWeather Widget",
-    source: "egern/qweather-weather-widget.js",
-    slug: "qweather-weather-widget",
+    software: "Scripting",
+    category: "Widget",
+    product: "Countdown",
+    label: "Countdown Index",
+    source: "Scripting/Countdown/index.tsx",
+    slug: "Countdown/index",
   },
   {
-    type: "modules",
-    software: "egern",
-    product: "qweather",
-    label: "QWeather Module",
-    source: "egern/qweather-weather-module.yaml",
-    slug: "qweather-weather-module",
+    software: "Scripting",
+    category: "Widget",
+    product: "Countdown",
+    label: "Countdown Shared",
+    source: "Scripting/Countdown/shared.ts",
+    slug: "Countdown/shared",
   },
   {
-    type: "widgets",
-    software: "egern",
-    product: "datagovsg",
-    label: "DataGovSG Dashboard",
-    source: "egern/datagovsg-dashboard.js",
-    slug: "datagovsg-dashboard",
+    software: "Scripting",
+    category: "Widget",
+    product: "Countdown",
+    label: "Countdown View",
+    source: "Scripting/Countdown/widget.tsx",
+    slug: "Countdown/widget",
   },
   {
-    type: "scripts",
-    software: "stash",
-    product: "qweather",
-    label: "QWeather Tile",
-    source: "stash/qweather-weather-tile.js",
-    slug: "qweather-weather-tile",
+    software: "Egern",
+    category: "Widget",
+    product: "QWeather",
+    label: "QWeather",
+    source: "Egern/QWeather.js",
+    slug: "QWeather",
   },
   {
-    type: "scripts",
-    software: "surge",
-    product: "qweather",
-    label: "QWeather Panel",
-    source: "surge/qweather-weather-panel.js",
-    slug: "qweather-weather-panel",
+    software: "Egern",
+    category: "Module",
+    product: "QWeather",
+    label: "QWeather",
+    source: "Egern/QWeather.yaml",
+    slug: "QWeather",
+  },
+  {
+    software: "Egern",
+    category: "Widget",
+    product: "DataGovSG",
+    label: "DataGovSG",
+    source: "Egern/DataGovSG.js",
+    slug: "DataGovSG",
+  },
+  {
+    software: "Stash",
+    category: "Tile",
+    product: "QWeather",
+    label: "QWeather",
+    source: "Stash/QWeather.js",
+    slug: "QWeather",
+  },
+  {
+    software: "Surge",
+    category: "Script",
+    product: "QWeather",
+    label: "QWeather",
+    source: "Surge/QWeather.js",
+    slug: "QWeather",
   },
 ]
 
@@ -137,27 +165,30 @@ export function getDownloadPath(file) {
 }
 
 export function getCanonicalPath(file) {
-  return `/${file.type}/${file.software}/${file.slug}`
+  return `/${file.software}/${file.category}/${file.slug}`
 }
 
-export function getTypePath(typeId) {
-  return `/${typeId}`
+export function getSoftwarePath(softwareId) {
+  return `/${softwareId}`
 }
 
-export function getSoftwarePath(typeId, softwareId) {
-  return `/${typeId}/${softwareId}`
+export function getCategoryPath(softwareId, categoryId) {
+  return `/${softwareId}/${categoryId}`
 }
 
 export function getPagePaths() {
   const pages = new Map()
-  for (const type of TYPES) {
-    pages.set(getTypePath(type.id), `${getTypePath(type.id)}/index.html`)
-    for (const software of softwaresForType(type.id)) {
+  for (const software of SOFTWARES) {
+    pages.set(getSoftwarePath(software.id), `${getSoftwarePath(software.id)}/index.html`)
+    for (const category of categoriesForSoftware(software.id)) {
       pages.set(
-        getSoftwarePath(type.id, software.id),
-        `${getSoftwarePath(type.id, software.id)}/index.html`
+        getCategoryPath(software.id, category.id),
+        `${getCategoryPath(software.id, category.id)}/index.html`
       )
     }
+  }
+  for (const file of FILES) {
+    pages.set(getCanonicalPath(file), `${getCanonicalPath(file)}/index.html`)
   }
   return pages
 }
@@ -165,27 +196,33 @@ export function getPagePaths() {
 export function getAliasMap() {
   const aliases = new Map()
   for (const file of FILES) {
-    aliases.set(getCanonicalPath(file), getDownloadPath(file))
+    aliases.set(`${getCanonicalPath(file)}/raw`, getDownloadPath(file))
   }
   return aliases
 }
 
-export function filesFor(typeId, softwareId) {
+export function filesFor(softwareId, categoryId) {
   return FILES.filter((file) => {
-    if (softwareId) return file.type === typeId && file.software === softwareId
-    return file.type === typeId
+    if (categoryId) return file.software === softwareId && file.category === categoryId
+    return file.software === softwareId
   })
-}
-
-export function typeById(typeId) {
-  return TYPES.find((type) => type.id === typeId)
 }
 
 export function softwareById(softwareId) {
   return SOFTWARES.find((software) => software.id === softwareId)
 }
 
-export function softwaresForType(typeId) {
-  const allowedIds = SOFTWARES_BY_TYPE[typeId] ?? []
-  return SOFTWARES.filter((software) => allowedIds.includes(software.id))
+export function categoryById(categoryId) {
+  return CATEGORIES.find((category) => category.id === categoryId)
 }
+
+export function categoriesForSoftware(softwareId) {
+  const allowedIds = CATEGORIES_BY_SOFTWARE[softwareId] ?? []
+  return CATEGORIES.filter((category) => allowedIds.includes(category.id))
+}
+
+export const TYPES = CATEGORIES
+export const SOFTWARES_BY_TYPE = {}
+export const getTypePath = (typeId) => `/${typeId}`
+export const typeById = categoryById
+export const softwaresForType = () => SOFTWARES

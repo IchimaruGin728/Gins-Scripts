@@ -1,0 +1,57 @@
+---
+
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import {
+  type CatalogCategory,
+  categoriesForSoftware,
+  filesFor,
+  getCanonicalPath,
+  getCategoryPath,
+  SOFTWARES,
+  type SoftwareId,
+} from "@/lib/catalog"
+
+export function getStaticPaths() {
+  return SOFTWARES.flatMap((software) =>
+    categoriesForSoftware(software.id).map((category) => ({
+      params: { software: software.id, category: category.id },
+      props: { software, category },
+    }))
+  )
+}
+
+const { software, category } = Astro.props as {
+  software: { id: SoftwareId; label: string }
+  category: { id: CatalogCategory; label: string; description: string }
+}
+
+const items = filesFor(software.id, category.id)
+---
+
+<BaseLayout
+  title={`${software.label} ${category.label} | Gins-Scripts`}
+  eyebrow={`${software.label} / ${category.label}`}
+  heading={category.label}
+  description={`${category.description} Namespace: ${getCategoryPath(software.id, category.id)}`}
+>
+  {
+    items.length > 0 ? (
+      <section class="grid">
+        <section class="card">
+          <div class="eyebrow">{software.label}</div>
+          <h2 class="m-0 mb-3.5 text-[20px] tracking-[-0.02em]">{category.label}</h2>
+          <ul class="m-0 grid list-none gap-2.5 p-0">
+            {items.map((file) => (
+              <li class="grid gap-0.75">
+                <a href={getCanonicalPath(file)}>{file.label}</a>
+                <span class="break-all text-[12px] text-ink-soft font-mono">{getCanonicalPath(file)}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </section>
+    ) : (
+      <div class="empty">Nothing published for {software.label} {category.label} yet.</div>
+    )
+  }
+</BaseLayout>

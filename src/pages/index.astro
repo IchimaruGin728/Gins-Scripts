@@ -1,30 +1,27 @@
 ---
+
 import CatalogGrid from "@/components/CatalogGrid.astro"
 import BaseLayout from "@/layouts/BaseLayout.astro"
-import { TYPES, filesFor, softwaresForType } from "@/lib/catalog"
+import { categoriesForSoftware, filesFor, SOFTWARES } from "@/lib/catalog"
 ---
 
-<BaseLayout
-  title="Gins-Scripts"
-  eyebrow="Gins Scripts"
-  heading="Widgets · Modules · Scripts"
->
+<BaseLayout title="Gins-Scripts" eyebrow="Gins Scripts" heading="Software · Categories · Projects">
   <div class="mt-4 text-center">
     <h2 class="m-0 text-[clamp(34px,5vw,58px)] leading-[1.08] tracking-[-0.03em] font-black text-ink">
-      3 categories, 8 software surfaces
+      8 software surfaces, typed by each app's own resource model
     </h2>
-    <p class="mx-auto mt-3 max-w-[760px] text-[17px] text-ink-soft">
-      URL paths are pre-reserved by type and software, so new releases can be added without breaking existing links.
+    <p class="mx-auto mt-3 max-w-[780px] text-[17px] text-ink-soft">
+      Scripting uses Script and Widget. Surge uses Script and Module. Stash uses Override and Tile. QuantumultX uses Rewrite.
     </p>
   </div>
 
   {
-    TYPES.map((type) => (
+    SOFTWARES.map((software) => (
       <>
-        <div class="sectiontitle">{type.label}</div>
+        <div class="sectiontitle">{software.label}</div>
         <section class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {softwaresForType(type.id).map((software) => (
-            <CatalogGrid type={type} software={software} files={filesFor(type.id, software.id)} />
+          {categoriesForSoftware(software.id).map((category) => (
+            <CatalogGrid software={software} category={category} files={filesFor(software.id, category.id)} />
           ))}
         </section>
       </>

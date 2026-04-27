@@ -6,7 +6,7 @@ import { FILES, getCanonicalPath, getDownloadPath } from "../src/lib/catalog.js"
 const root = process.cwd()
 const publicDir = path.join(root, "public")
 const downloadsDir = path.join(publicDir, "downloads")
-const packagesDir = path.join(publicDir, "packages", "scripting")
+const packagesDir = path.join(publicDir, "packages", "Scripting")
 
 const manifest = {
   name: "Gins-Scripts",
@@ -29,10 +29,22 @@ async function ensureDir(filePath) {
 
 async function resetGeneratedAssets() {
   await fs.rm(downloadsDir, { recursive: true, force: true })
-  await fs.rm(packagesDir, { recursive: true, force: true })
+  await fs.rm(path.join(publicDir, "packages"), { recursive: true, force: true })
   await fs.rm(path.join(publicDir, "widgets"), { recursive: true, force: true })
   await fs.rm(path.join(publicDir, "modules"), { recursive: true, force: true })
   await fs.rm(path.join(publicDir, "scripts"), { recursive: true, force: true })
+  for (const software of [
+    "Scripting",
+    "Scriptable",
+    "Egern",
+    "Stash",
+    "Surge",
+    "Shadowrocket",
+    "Loon",
+    "QuantumultX",
+  ]) {
+    await fs.rm(path.join(publicDir, software), { recursive: true, force: true })
+  }
   await fs.rm(path.join(publicDir, "index.html"), { force: true })
   await fs.mkdir(downloadsDir, { recursive: true })
   await fs.mkdir(packagesDir, { recursive: true })
@@ -56,7 +68,7 @@ async function copyFiles() {
 function collectScriptingProjects() {
   const groups = new Map()
   for (const file of FILES) {
-    if (!file.source.startsWith("scripting/")) continue
+    if (file.software !== "Scripting") continue
     const parts = file.source.split("/")
     const project = parts[1]
     const relativePath = parts.slice(2).join("/")
@@ -94,9 +106,9 @@ async function buildScriptingPackages() {
 
     const packageManifest = {
       name: project,
-      type: "scripting",
-      directoryUrl: `/packages/scripting/${project}/`,
-      zipUrl: `/packages/scripting/${project}.zip`,
+      software: "Scripting",
+      directoryUrl: `/packages/Scripting/${project}/`,
+      zipUrl: `/packages/Scripting/${project}.zip`,
       files,
       entrypoints: {
         index: files.find((f) => f.path === "index.tsx")?.url ?? null,

@@ -1,0 +1,27 @@
+{
+  "name": "QWeather",
+  "software": "Scripting",
+  "directoryUrl": "/packages/Scripting/QWeather/",
+  "zipUrl": "/packages/Scripting/QWeather.zip",
+  "files": [
+    {
+      "path": "index.tsx",
+      "source": "Scripting/QWeather/index.tsx",
+      "url": "/downloads/Scripting/QWeather/index.tsx"
+    },
+    {
+      "path": "shared.ts",
+      "source": "Scripting/QWeather/shared.ts",
+      "url": "/downloads/Scripting/QWeather/shared.ts"
+    },
+    {
+      "path": "widget.tsx",
+      "source": "Scripting/QWeather/widget.tsx",
+      "url": "/downloads/Scripting/QWeather/widget.tsx"
+    }
+  ],
+  "entrypoints": {
+    "index": "/downloads/Scripting/QWeather/index.tsx",
+    "widget": "/downloads/Scripting/QWeather/widget.tsx"
+  }
+}

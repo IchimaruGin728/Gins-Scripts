@@ -1,17 +1,17 @@
-export type CatalogType = "widgets" | "modules" | "scripts"
-
 export type SoftwareId =
-  | "scriptable"
-  | "scripting"
-  | "egern"
-  | "quantumultx"
-  | "stash"
-  | "surge"
-  | "loon"
-  | "shadowrocket"
+  | "Scripting"
+  | "Scriptable"
+  | "Egern"
+  | "Stash"
+  | "Surge"
+  | "Shadowrocket"
+  | "Loon"
+  | "QuantumultX"
 
-export interface CatalogTypeEntry {
-  id: CatalogType
+export type CatalogCategory = "Widget" | "Script" | "Module" | "Override" | "Tile" | "Rewrite"
+
+export interface CatalogCategoryEntry {
+  id: CatalogCategory
   label: string
   description: string
 }
@@ -22,8 +22,8 @@ export interface SoftwareEntry {
 }
 
 export interface CatalogFile {
-  type: CatalogType
   software: SoftwareId
+  category: CatalogCategory
   product: string
   label: string
   source: string
@@ -31,18 +31,18 @@ export interface CatalogFile {
 }
 
 export {
+  CATEGORIES,
+  CATEGORIES_BY_SOFTWARE,
+  categoriesForSoftware,
+  categoryById,
   FILES,
-  SOFTWARES,
-  SOFTWARES_BY_TYPE,
-  TYPES,
   filesFor,
   getAliasMap,
   getCanonicalPath,
+  getCategoryPath,
   getDownloadPath,
   getPagePaths,
   getSoftwarePath,
-  getTypePath,
+  SOFTWARES,
   softwareById,
-  softwaresForType,
-  typeById,
 } from "./catalog.js"

@@ -16,8 +16,9 @@ app.get("/api/manifest", async (c) => {
 
 app.get("*", async (c) => {
   const url = new URL(c.req.url)
-  const pagePath = pages.get(url.pathname)
-  const assetPath = aliases.get(url.pathname)
+  const decodedPath = decodeURIComponent(url.pathname)
+  const pagePath = pages.get(url.pathname) ?? pages.get(decodedPath)
+  const assetPath = aliases.get(url.pathname) ?? aliases.get(decodedPath)
 
   if (pagePath) {
     return c.env.ASSETS.fetch(new URL(pagePath, url))

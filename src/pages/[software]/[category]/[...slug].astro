@@ -1,0 +1,166 @@
+---
+
+import fs from "node:fs/promises"
+import path from "node:path"
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import {
+  type CatalogFile,
+  FILES,
+  getCanonicalPath,
+  getDownloadPath,
+} from "@/lib/catalog"
+
+const REPO_URL = "https://github.com/IchimaruGin728/Gins-Scripts"
+const RAW_URL = "https://raw.githubusercontent.com/IchimaruGin728/Gins-Scripts/main"
+
+export function getStaticPaths() {
+  return FILES.map((file) => ({
+    params: {
+      software: file.software,
+      category: file.category,
+      slug: file.slug,
+    },
+    props: { file },
+  }))
+}
+
+const { file } = Astro.props as { file: CatalogFile }
+const root = process.cwd()
+const sourceParts = file.source.split("/")
+const projectPath = file.software === "Scripting" ? sourceParts.slice(0, 2).join("/") : file.source
+const projectFiles =
+  file.software === "Scripting"
+    ? FILES.filter((entry) => entry.source.startsWith(`${projectPath}/`))
+    : [file]
+
+const files = await Promise.all(
+  projectFiles.map(async (entry) => ({
+    entry,
+    basename: path.basename(entry.source),
+    content: await fs.readFile(path.join(root, entry.source), "utf8"),
+    rawUrl: `${RAW_URL}/${entry.source.split("/").map(encodeURIComponent).join("/")}`,
+  }))
+)
+
+const projectName = file.software === "Scripting" ? sourceParts[1] : file.product
+const isScripting = file.software === "Scripting"
+const packageDirectory = isScripting ? `/packages/Scripting/${projectName}/` : null
+const packageZip = isScripting ? `/packages/Scripting/${projectName}.zip` : null
+const githubPath = isScripting ? projectPath : file.source
+const githubTree = `${REPO_URL}/tree/main/${githubPath.split("/").map(encodeURIComponent).join("/")}`
+const installCode = files
+  .map(({ basename, content }) => `// ${projectName}/${basename}\n${content}`)
+  .join("\n\n")
+---
+
+<BaseLayout
+  title={`${file.label} | Gins-Scripts`}
+  eyebrow={`${file.software} / ${file.category}`}
+  heading={projectName || file.label}
+  description={`Published at ${getCanonicalPath(file)}`}
+>
+  <section class="grid gap-5 lg:grid-cols-[minmax(0,1fr)_360px]">
+    <section class="card">
+      <div class="eyebrow">{file.software} {file.category}</div>
+      <h2 class="m-0 mb-2 text-[24px] tracking-[-0.02em]">{projectName || file.label}</h2>
+      <p class="m-0 text-[14px] leading-6 text-ink-soft">
+        Add it from GitHub, download the Cloudflare package, or copy the file contents directly.
+      </p>
+
+      <div class="mt-4 grid gap-2 rounded-xl border border-white/8 bg-black/20 p-3 font-mono text-[13px] text-[#dfe0ff]">
+        {files.map(({ basename }) => <div>{projectName}/{basename}</div>)}
+      </div>
+
+      <div class="mt-4 flex flex-wrap gap-2">
+        {packageDirectory && <a class="actionlink" href={packageDirectory}>Cloudflare Directory</a>}
+        {packageZip && <a class="actionlink" href={packageZip}>Cloudflare ZIP</a>}
+        <a class="actionlink" href={githubTree}>GitHub Source</a>
+        <button class="actionlink copybtn" type="button" data-copy="bundle">Copy Code</button>
+      </div>
+    </section>
+
+    <aside class="card">
+      <div class="eyebrow">Links</div>
+      <dl class="m-0 grid gap-3 text-[13px]">
+        <div>
+          <dt class="mb-1 font-bold text-ink">Page</dt>
+          <dd class="m-0 break-all font-mono text-ink-soft">{getCanonicalPath(file)}</dd>
+        </div>
+        <div>
+          <dt class="mb-1 font-bold text-ink">Raw source</dt>
+          <dd class="m-0 grid gap-1">
+            {files.map(({ entry, basename }) => (
+              <a class="break-all font-mono text-[12px]" href={getDownloadPath(entry)}>{basename}</a>
+            ))}
+          </dd>
+        </div>
+        {
+          packageZip && (
+            <div>
+              <dt class="mb-1 font-bold text-ink">Package</dt>
+              <dd class="m-0 break-all font-mono text-ink-soft">{packageZip}</dd>
+            </div>
+          )
+        }
+      </dl>
+    </aside>
+  </section>
+
+  <section class="mt-5 grid gap-5">
+    {files.map(({ basename, content, rawUrl }) => (
+      <section class="card">
+        <div class="mb-3 flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <div class="eyebrow">Source</div>
+            <h2 class="m-0 text-[20px] tracking-[-0.02em]">{basename}</h2>
+          </div>
+          <div class="flex gap-2">
+            <a class="actionlink" href={rawUrl}>GitHub Raw</a>
+            <button class="actionlink copybtn" type="button" data-copy={basename}>Copy</button>
+          </div>
+        </div>
+        <pre class="max-h-[620px] overflow-auto rounded-xl border border-white/8 bg-[#090a12] p-4 text-[12px] leading-5 text-[#e6e7ff]"><code id={`code-${basename}`}>{content}</code></pre>
+      </section>
+    ))}
+  </section>
+
+  <textarea id="bundle" class="sr-only">{installCode}</textarea>
+</BaseLayout>
+
+<script>
+  const buttons = document.querySelectorAll("[data-copy]")
+  for (const button of buttons) {
+    button.addEventListener("click", async () => {
+      const key = button.getAttribute("data-copy")
+      const source = key === "bundle" ? document.getElementById("bundle") : document.getElementById(`code-${key}`)
+      const text = source instanceof HTMLTextAreaElement ? source.value : source?.textContent || ""
+      await navigator.clipboard.writeText(text)
+      const original = button.textContent
+      button.textContent = "Copied"
+      setTimeout(() => {
+        button.textContent = original
+      }, 1200)
+    })
+  }
+</script>
+
+<style>
+  .actionlink {
+    display: inline-flex;
+    min-height: 36px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    background: rgba(139, 92, 246, 0.16);
+    padding: 0 12px;
+    color: #f2edff;
+    font-size: 13px;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .copybtn {
+    cursor: pointer;
+  }
+</style>
