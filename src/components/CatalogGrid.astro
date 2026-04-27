@@ -1,7 +1,9 @@
 ---
 
+
+
 import type { CatalogCategoryEntry, CatalogFile, SoftwareEntry } from "@/lib/catalog"
-import { getCanonicalPath } from "@/lib/catalog"
+import { getCanonicalPath, getDownloadPath } from "@/lib/catalog"
 
 interface Props {
   software: SoftwareEntry
@@ -31,10 +33,21 @@ const { software, category, files } = Astro.props
       <ul class="m-0 grid list-none gap-2.5 p-0">
         {files.map((file) => (
           <li class="grid gap-0.75 rounded-xl border border-white/8 bg-primary-soft/50 px-2.5 py-2 transition hover:border-primary/40 hover:bg-primary-soft/80">
-            <a class="font-semibold no-underline hover:text-primary" href={getCanonicalPath(file)}>
+            <a
+              class="font-semibold no-underline hover:text-primary"
+              href={file.software === "Scripting" ? getCanonicalPath(file) : getDownloadPath(file)}
+            >
               {file.label}
             </a>
-            <span class="break-all text-[12px] text-ink-soft font-mono">{getCanonicalPath(file)}</span>
+            {
+              file.software === "Scripting" ? (
+                <span class="break-all text-[12px] text-ink-soft font-mono">{getCanonicalPath(file)}</span>
+              ) : (
+                <a class="break-all text-[12px] text-ink-soft font-mono" href={getDownloadPath(file)}>
+                  {getDownloadPath(file)}
+                </a>
+              )
+            }
           </li>
         ))}
       </ul>

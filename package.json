@@ -7,10 +7,11 @@
   "scripts": {
     "build:catalog": "node ./tools/build-distribution.mjs",
     "build": "pnpm run build:catalog && astro build",
+    "r2:sync": "node ./tools/sync-r2.mjs",
     "biome:check": "biome check .",
     "biome:format": "biome format --write .",
     "biome:lint": "biome lint .",
-    "cf:deploy": "pnpm run build && wrangler deploy",
+    "cf:deploy": "pnpm run build && pnpm run r2:sync && wrangler deploy",
     "cf:dev": "pnpm run build && wrangler dev"
   },
   "devDependencies": {

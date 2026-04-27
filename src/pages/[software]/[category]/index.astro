@@ -6,6 +6,14 @@
 
 
 
+
+
+
+
+
+
+
+
 import BaseLayout from "@/layouts/BaseLayout.astro"
 import {
   type CatalogCategory,
@@ -13,6 +21,7 @@ import {
   filesFor,
   getCanonicalPath,
   getCategoryPath,
+  getDownloadPath,
   SOFTWARES,
   type SoftwareId,
 } from "@/lib/catalog"
@@ -103,8 +112,8 @@ const scriptingProjects = Array.from(
           <ul class="m-0 grid list-none gap-2.5 p-0">
             {items.map((file) => (
               <li class="grid gap-0.75">
-                <a href={getCanonicalPath(file)}>{file.label}</a>
-                <span class="break-all text-[12px] text-ink-soft font-mono">{getCanonicalPath(file)}</span>
+                <a href={getDownloadPath(file)}>{file.label}</a>
+                <span class="break-all text-[12px] text-ink-soft font-mono">{getDownloadPath(file)}</span>
               </li>
             ))}
           </ul>

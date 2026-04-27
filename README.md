@@ -76,14 +76,16 @@ Files:
 - `tools/build-distribution.mjs`
 - `public/manifest.json`
 - `public/downloads/...`
+- `public/packages/Scripting/...`
 - `dist/...`
 
 How it works:
 
-- `pnpm run build:catalog` copies script files into `public/downloads` and updates `public/manifest.json`
+- `pnpm run build:catalog` copies script files into `public/downloads`, builds Scripting packages into `public/packages/Scripting`, and updates `public/manifest.json`
 - `pnpm run build` runs the catalog build and then Astro static build
+- `pnpm run r2:sync` uploads `public/downloads` and `public/packages` to the `gins-scripts-storage` R2 bucket
 - Astro renders the catalog pages into `dist/...`
-- Hono handles the Worker entry and serves canonical URLs plus `/api/manifest`
+- Hono handles the Worker entry, serves canonical URLs plus `/api/manifest`, and reads `/downloads/*` and `/packages/*` from R2 first with static assets as fallback
 - canonical URLs follow `/{Software}/{Category}/{Project}`
 - `src/worker.ts` serves canonical pages and raw source aliases
 - `wrangler.jsonc` defines the Worker name as `gins-scripts`
@@ -94,6 +96,7 @@ How it works:
 Recommended binding naming:
 
 - `gins-scripts-assets`
+- `gins-scripts-storage`
 - `gins-scripts-kv`
 - `gins-scripts-cache`
 - `gins-scripts-secrets`

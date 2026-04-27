@@ -17,6 +17,10 @@
     "directory": "./dist",
     "binding": "ASSETS",
     "run_worker_first": [
+      "/downloads",
+      "/downloads/*",
+      "/packages",
+      "/packages/*",
       "/widgets",
       "/widgets/*",
       "/modules",
@@ -26,6 +30,34 @@
       "/api/*"
     ]
   },
+  "r2_buckets": [
+    {
+      "binding": "SCRIPTS_R2",
+      "bucket_name": "gins-scripts-storage"
+    }
+  ],
+  "queues": {
+    "producers": [
+      {
+        "queue": "gins-scripts-r2-sync",
+        "binding": "R2_SYNC_QUEUE"
+      }
+    ],
+    "consumers": [
+      {
+        "queue": "gins-scripts-r2-sync",
+        "max_batch_size": 20,
+        "max_batch_timeout": 5
+      }
+    ]
+  },
+  "workflows": [
+    {
+      "name": "gins-scripts-r2-sync",
+      "binding": "R2_SYNC_WORKFLOW",
+      "class_name": "R2SyncWorkflow"
+    }
+  ],
   "vars": {
     "GINS_SCRIPTS_REPO": "IchimaruGin728/Gins-Scripts"
   }
