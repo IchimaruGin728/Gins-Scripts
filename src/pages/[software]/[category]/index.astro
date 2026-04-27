@@ -1,5 +1,7 @@
 ---
 
+
+
 import BaseLayout from "@/layouts/BaseLayout.astro"
 import {
   type CatalogCategory,
@@ -26,6 +28,19 @@ const { software, category } = Astro.props as {
 }
 
 const items = filesFor(software.id, category.id)
+const scriptingProjects = Array.from(
+  items
+    .reduce((groups, item) => {
+      if (!groups.has(item.product)) groups.set(item.product, [])
+      groups.get(item.product)?.push(item)
+      return groups
+    }, new Map<string, typeof items>())
+    .entries()
+).map(([name, files]) => ({
+  name,
+  files,
+  mainFile: files.find((file) => file.source.endsWith("/index.tsx")) ?? files[0],
+}))
 ---
 
 <BaseLayout
@@ -35,7 +50,42 @@ const items = filesFor(software.id, category.id)
   description={`${category.description} Namespace: ${getCategoryPath(software.id, category.id)}`}
 >
   {
-    items.length > 0 ? (
+    software.id === "Scripting" && items.length > 0 ? (
+      <section class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        {scriptingProjects.map((project) => (
+          <section class="card">
+            <div class="eyebrow">{software.label} Package</div>
+            <h2 class="m-0 mb-2 text-[22px] tracking-[-0.02em]">{project.name}</h2>
+            <p class="m-0 break-all font-mono text-[12px] text-ink-soft">
+              /packages/Scripting/{project.name}.zip
+            </p>
+
+            <div class="mt-4 flex flex-wrap gap-2">
+              <a class="actionlink" href={`/packages/Scripting/${project.name}/`}>
+                Directory
+              </a>
+              <a class="actionlink" href={`/packages/Scripting/${project.name}.zip`}>
+                ZIP
+              </a>
+              <a class="actionlink" href={getCanonicalPath(project.mainFile)}>
+                Open
+              </a>
+            </div>
+
+            <ul class="mt-4 grid list-none gap-2 p-0">
+              {project.files.map((file) => (
+                <li class="grid gap-0.5 rounded-xl border border-white/8 bg-primary-soft/50 px-2.5 py-2">
+                  <a class="font-semibold no-underline hover:text-primary" href={getCanonicalPath(file)}>
+                    {file.label.replace(`${project.name} `, "")}
+                  </a>
+                  <span class="break-all text-[12px] text-ink-soft font-mono">{getCanonicalPath(file)}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </section>
+    ) : items.length > 0 ? (
       <section class="grid">
         <section class="card">
           <div class="eyebrow">{software.label}</div>
@@ -55,3 +105,20 @@ const items = filesFor(software.id, category.id)
     )
   }
 </BaseLayout>
+
+<style>
+  .actionlink {
+    display: inline-flex;
+    min-height: 34px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    background: rgba(139, 92, 246, 0.16);
+    padding: 0 11px;
+    color: #f2edff;
+    font-size: 13px;
+    font-weight: 800;
+    text-decoration: none;
+  }
+</style>
