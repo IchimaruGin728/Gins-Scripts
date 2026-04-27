@@ -13,11 +13,26 @@ type Bindings = {
 type R2SyncMessage = {
   key: string
   path: string
+  contentType?: string
 }
 
 const app = new Hono<{ Bindings: Bindings }>()
 const aliases = getAliasMap()
 const pages = getPagePaths()
+
+function normalizeDistributionPath(pathname: string) {
+  const packageMatch = pathname.match(/^\/packages\/Scripting\/([^/.]+)(\.zip|\/.*)?$/)
+  if (packageMatch && packageMatch[1] !== "Widget" && packageMatch[1] !== "Script") {
+    return `/packages/Scripting/Widget/${packageMatch[1]}${packageMatch[2] ?? "/"}`
+  }
+
+  const downloadMatch = pathname.match(/^\/downloads\/Scripting\/([^/]+)\/(.+)$/)
+  if (downloadMatch && downloadMatch[1] !== "Widget" && downloadMatch[1] !== "Script") {
+    return `/downloads/Scripting/Widget/${downloadMatch[1]}/${downloadMatch[2]}`
+  }
+
+  return pathname
+}
 
 app.get("/api/manifest", async (c) => {
   return c.env.ASSETS.fetch(new URL("/manifest.json", c.req.url))
@@ -35,9 +50,11 @@ app.post("/api/r2/sync", async (c) => {
 app.get("*", async (c) => {
   const url = new URL(c.req.url)
   const decodedPath = decodeURIComponent(url.pathname)
+  const normalizedPath = normalizeDistributionPath(decodedPath)
   const pagePath = pages.get(url.pathname) ?? pages.get(decodedPath)
-  const assetPath = aliases.get(url.pathname) ?? aliases.get(decodedPath)
-  const r2Path = decodedPath.replace(/^\/+/, "")
+  const assetPath =
+    aliases.get(url.pathname) ?? aliases.get(decodedPath) ?? aliases.get(normalizedPath)
+  const r2Path = normalizedPath.replace(/^\/+/, "")
 
   if (r2Path.startsWith("downloads/") || r2Path.startsWith("packages/")) {
     const object = await c.env.SCRIPTS_R2.get(r2Path)
@@ -64,28 +81,40 @@ app.get("*", async (c) => {
 async function listSyncMessages(env: Bindings): Promise<R2SyncMessage[]> {
   const response = await env.ASSETS.fetch("https://assets.local/manifest.json")
   const manifest = (await response.json()) as {
-    files?: Array<{ path: string }>
+    files?: Array<{ path: string; contentType?: string }>
     scriptingPackages?: Array<{
       name: string
+      directoryUrl: string
       zipUrl: string
+      manifestUrl?: string
+      scriptConfigUrl?: string
       files: Array<{ path: string }>
     }>
   }
 
-  const paths = new Set<string>()
-  for (const file of manifest.files ?? []) paths.add(file.path)
+  const paths = new Map<string, string | undefined>()
+  for (const file of manifest.files ?? []) paths.set(file.path, file.contentType)
 
   for (const pkg of manifest.scriptingPackages ?? []) {
-    paths.add(pkg.zipUrl)
-    paths.add(`/packages/Scripting/${pkg.name}/manifest.json`)
-    for (const file of pkg.files) paths.add(`/packages/Scripting/${pkg.name}/${file.path}`)
+    paths.set(pkg.zipUrl, "application/zip")
+    paths.set(
+      pkg.manifestUrl ?? `${pkg.directoryUrl}manifest.json`,
+      "application/json; charset=UTF-8"
+    )
+    paths.set(
+      pkg.scriptConfigUrl ?? `${pkg.directoryUrl}script.json`,
+      "application/json; charset=UTF-8"
+    )
+    for (const file of pkg.files)
+      paths.set(`${pkg.directoryUrl}${file.path}`, "application/typescript; charset=UTF-8")
   }
 
-  return Array.from(paths)
+  return Array.from(paths.entries())
     .sort()
-    .map((pathname) => ({
+    .map(([pathname, contentType]) => ({
       path: pathname,
       key: pathname.replace(/^\/+/, ""),
+      contentType,
     }))
 }
 
@@ -96,7 +125,7 @@ async function syncObject(env: Bindings, message: R2SyncMessage) {
   }
 
   const headers = new Headers()
-  const contentType = response.headers.get("content-type")
+  const contentType = message.contentType ?? response.headers.get("content-type")
   const cacheControl = response.headers.get("cache-control")
   if (contentType) headers.set("content-type", contentType)
   if (cacheControl) headers.set("cache-control", cacheControl)

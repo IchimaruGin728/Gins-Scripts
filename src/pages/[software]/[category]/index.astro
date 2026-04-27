@@ -22,6 +22,8 @@ import {
   getCanonicalPath,
   getCategoryPath,
   getDownloadPath,
+  getScriptingPackageDirectoryPath,
+  getScriptingPackageZipPath,
   SOFTWARES,
   type SoftwareId,
 } from "@/lib/catalog"
@@ -53,6 +55,8 @@ const scriptingProjects = Array.from(
   name,
   files,
   mainFile: files.find((file) => file.source.endsWith("/index.tsx")) ?? files[0],
+  directoryUrl: getScriptingPackageDirectoryPath(name, category.id),
+  zipUrl: getScriptingPackageZipPath(name, category.id),
 }))
 ---
 
@@ -70,21 +74,24 @@ const scriptingProjects = Array.from(
             <div class="eyebrow">{software.label} Package</div>
             <h2 class="m-0 mb-2 text-[22px] tracking-[-0.02em]">{project.name}</h2>
             <p class="m-0 break-all font-mono text-[12px] text-ink-soft">
-              /packages/Scripting/{project.name}.zip
+              {project.directoryUrl}
             </p>
 
             <div class="mt-4 flex flex-wrap gap-2">
-              <a class="actionlink" href={`/packages/Scripting/${project.name}/`}>
+              <a class="actionlink" href={project.directoryUrl}>
                 Directory
               </a>
-              <a class="actionlink" href={`/packages/Scripting/${project.name}.zip`}>
-                ZIP
+              <a class="actionlink" href={`${project.directoryUrl}index.tsx`}>
+                Entry File
               </a>
-              <button class="actionlink copybtn" type="button" data-copy-path={`/packages/Scripting/${project.name}/`}>
-                Copy Directory URL
+              <a class="actionlink" href={project.zipUrl}>
+                Download ZIP
+              </a>
+              <button class="actionlink copybtn" type="button" data-copy-path={project.directoryUrl}>
+                Copy Import URL
               </button>
-              <button class="actionlink copybtn" type="button" data-copy-path={`/packages/Scripting/${project.name}.zip`}>
-                Copy ZIP URL
+              <button class="actionlink copybtn" type="button" data-copy-path={`${project.directoryUrl}index.tsx`}>
+                Copy Entry URL
               </button>
               <a class="actionlink" href={getCanonicalPath(project.mainFile)}>
                 Open

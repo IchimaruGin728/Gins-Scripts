@@ -161,11 +161,24 @@ export const FILES = [
 ]
 
 export function getDownloadPath(file) {
-  return `/downloads/${file.source}`
+  const basename = file.source.split("/").at(-1)
+  return `/downloads/${file.software}/${file.category}/${file.product}/${basename}`
 }
 
 export function getCanonicalPath(file) {
   return `/${file.software}/${file.category}/${file.slug}`
+}
+
+export function getScriptingPackageBasePath(project, category = "Widget") {
+  return `/packages/Scripting/${category}/${project}`
+}
+
+export function getScriptingPackageDirectoryPath(project, category = "Widget") {
+  return `${getScriptingPackageBasePath(project, category)}/`
+}
+
+export function getScriptingPackageZipPath(project, category = "Widget") {
+  return `${getScriptingPackageBasePath(project, category)}.zip`
 }
 
 export function getSoftwarePath(softwareId) {

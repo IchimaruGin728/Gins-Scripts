@@ -10,6 +10,8 @@ import {
   FILES,
   getCanonicalPath,
   getDownloadPath,
+  getScriptingPackageDirectoryPath,
+  getScriptingPackageZipPath,
 } from "@/lib/catalog"
 
 const REPO_URL = "https://github.com/IchimaruGin728/Gins-Scripts"
@@ -46,8 +48,9 @@ const files = await Promise.all(
 
 const projectName = file.software === "Scripting" ? sourceParts[1] : file.product
 const isScripting = file.software === "Scripting"
-const packageDirectory = isScripting ? `/packages/Scripting/${projectName}/` : null
-const packageZip = isScripting ? `/packages/Scripting/${projectName}.zip` : null
+const packageDirectory = isScripting ? getScriptingPackageDirectoryPath(projectName, file.category) : null
+const packageZip = isScripting ? getScriptingPackageZipPath(projectName, file.category) : null
+const packageEntry = packageDirectory ? `${packageDirectory}index.tsx` : null
 const githubPath = isScripting ? projectPath : file.source
 const githubTree = `${REPO_URL}/tree/main/${githubPath.split("/").map(encodeURIComponent).join("/")}`
 const installCode = files
@@ -75,8 +78,15 @@ const installCode = files
 
       <div class="mt-4 flex flex-wrap gap-2">
         {packageDirectory && <a class="actionlink" href={packageDirectory}>Cloudflare Directory</a>}
-        {packageZip && <a class="actionlink" href={packageZip}>Cloudflare ZIP</a>}
+        {packageEntry && <a class="actionlink" href={packageEntry}>Entry File</a>}
+        {packageZip && <a class="actionlink" href={packageZip}>Download ZIP</a>}
         <a class="actionlink" href={githubTree}>GitHub Source</a>
+        {packageDirectory && (
+          <button class="actionlink copybtn" type="button" data-copy-url={packageDirectory}>Copy Import URL</button>
+        )}
+        {packageEntry && (
+          <button class="actionlink copybtn" type="button" data-copy-url={packageEntry}>Copy Entry URL</button>
+        )}
         <button class="actionlink copybtn" type="button" data-copy="bundle">Copy Code</button>
       </div>
     </section>
@@ -100,7 +110,11 @@ const installCode = files
           packageZip && (
             <div>
               <dt class="mb-1 font-bold text-ink">Package</dt>
-              <dd class="m-0 break-all font-mono text-ink-soft">{packageZip}</dd>
+              <dd class="m-0 grid gap-1 break-all font-mono text-ink-soft">
+                <span>{packageDirectory}</span>
+                <span>{packageEntry}</span>
+                <span>{packageZip}</span>
+              </dd>
             </div>
           )
         }
@@ -137,6 +151,20 @@ const installCode = files
       const source = key === "bundle" ? document.getElementById("bundle") : document.getElementById(`code-${key}`)
       const text = source instanceof HTMLTextAreaElement ? source.value : source?.textContent || ""
       await navigator.clipboard.writeText(text)
+      const original = button.textContent
+      button.textContent = "Copied"
+      setTimeout(() => {
+        button.textContent = original
+      }, 1200)
+    })
+  }
+
+  const urlButtons = document.querySelectorAll("[data-copy-url]")
+  for (const button of urlButtons) {
+    button.addEventListener("click", async () => {
+      const path = button.getAttribute("data-copy-url") || ""
+      const url = new URL(path, window.location.origin).toString()
+      await navigator.clipboard.writeText(url)
       const original = button.textContent
       button.textContent = "Copied"
       setTimeout(() => {

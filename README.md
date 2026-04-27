@@ -81,11 +81,12 @@ Files:
 
 How it works:
 
-- `pnpm run build:catalog` copies script files into `public/downloads`, builds Scripting packages into `public/packages/Scripting`, and updates `public/manifest.json`
+- `pnpm run build:catalog` copies script files into `public/downloads/{Software}/{Category}/{Project}`, builds Scripting packages into `public/packages/Scripting/{Category}/{Project}`, and updates `public/manifest.json`
 - `pnpm run build` runs the catalog build and then Astro static build
 - `pnpm run r2:sync` uploads `public/downloads` and `public/packages` to the `gins-scripts-storage` R2 bucket
 - Astro renders the catalog pages into `dist/...`
 - Hono handles the Worker entry, serves canonical URLs plus `/api/manifest`, and reads `/downloads/*` and `/packages/*` from R2 first with static assets as fallback
+- `/api/r2/sync` starts the Cloudflare Workflow, which batches every distribution asset into the `gins-scripts-r2-sync` Queue for parallel R2 writes
 - canonical URLs follow `/{Software}/{Category}/{Project}`
 - `src/worker.ts` serves canonical pages and raw source aliases
 - `wrangler.jsonc` defines the Worker name as `gins-scripts`
@@ -97,6 +98,7 @@ Recommended binding naming:
 
 - `gins-scripts-assets`
 - `gins-scripts-storage`
+- `gins-scripts-r2-sync`
 - `gins-scripts-kv`
 - `gins-scripts-cache`
 - `gins-scripts-secrets`
@@ -128,6 +130,10 @@ Useful routes after deployment:
 - `/Surge/Script`
 - `/manifest.json`
 - `/api/manifest`
+- `/downloads/Scripting/Widget/Countdown/index.tsx`
+- `/packages/Scripting/Widget/Countdown/`
+- `/packages/Scripting/Widget/Countdown/index.tsx`
+- `/packages/Scripting/Widget/Countdown.zip`
 - `/Scriptable/Widget/QWeather`
 - `/Scriptable/Widget/DataGovSG`
 - `/Scripting/Widget/QWeather/index`

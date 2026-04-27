@@ -1,0 +1,11 @@
+{
+  "name": "Countdown",
+  "type": "Widget",
+  "entry": "index.tsx",
+  "widget": "widget.tsx",
+  "files": [
+    "index.tsx",
+    "shared.ts",
+    "widget.tsx"
+  ]
+}
