@@ -2,6 +2,10 @@
 
 
 
+
+
+
+
 import BaseLayout from "@/layouts/BaseLayout.astro"
 import {
   type CatalogCategory,
@@ -67,6 +71,12 @@ const scriptingProjects = Array.from(
               <a class="actionlink" href={`/packages/Scripting/${project.name}.zip`}>
                 ZIP
               </a>
+              <button class="actionlink copybtn" type="button" data-copy-path={`/packages/Scripting/${project.name}/`}>
+                Copy Directory URL
+              </button>
+              <button class="actionlink copybtn" type="button" data-copy-path={`/packages/Scripting/${project.name}.zip`}>
+                Copy ZIP URL
+              </button>
               <a class="actionlink" href={getCanonicalPath(project.mainFile)}>
                 Open
               </a>
@@ -106,6 +116,22 @@ const scriptingProjects = Array.from(
   }
 </BaseLayout>
 
+<script>
+  const copyButtons = document.querySelectorAll("[data-copy-path]")
+  for (const button of copyButtons) {
+    button.addEventListener("click", async () => {
+      const path = button.getAttribute("data-copy-path") || ""
+      const url = new URL(path, window.location.origin).toString()
+      await navigator.clipboard.writeText(url)
+      const original = button.textContent
+      button.textContent = "Copied"
+      setTimeout(() => {
+        button.textContent = original
+      }, 1200)
+    })
+  }
+</script>
+
 <style>
   .actionlink {
     display: inline-flex;
@@ -120,5 +146,9 @@ const scriptingProjects = Array.from(
     font-size: 13px;
     font-weight: 800;
     text-decoration: none;
+  }
+
+  .copybtn {
+    cursor: pointer;
   }
 </style>
