@@ -20,20 +20,6 @@ const app = new Hono<{ Bindings: Bindings }>()
 const aliases = getAliasMap()
 const pages = getPagePaths()
 
-function normalizeDistributionPath(pathname: string) {
-  const packageMatch = pathname.match(/^\/packages\/Scripting\/([^/.]+)(\.zip|\/.*)?$/)
-  if (packageMatch && packageMatch[1] !== "Widget" && packageMatch[1] !== "Script") {
-    return `/packages/Scripting/Widget/${packageMatch[1]}${packageMatch[2] ?? "/"}`
-  }
-
-  const downloadMatch = pathname.match(/^\/downloads\/Scripting\/([^/]+)\/(.+)$/)
-  if (downloadMatch && downloadMatch[1] !== "Widget" && downloadMatch[1] !== "Script") {
-    return `/downloads/Scripting/Widget/${downloadMatch[1]}/${downloadMatch[2]}`
-  }
-
-  return pathname
-}
-
 app.get("/api/manifest", async (c) => {
   return c.env.ASSETS.fetch(new URL("/manifest.json", c.req.url))
 })
@@ -50,11 +36,9 @@ app.post("/api/r2/sync", async (c) => {
 app.get("*", async (c) => {
   const url = new URL(c.req.url)
   const decodedPath = decodeURIComponent(url.pathname)
-  const normalizedPath = normalizeDistributionPath(decodedPath)
   const pagePath = pages.get(url.pathname) ?? pages.get(decodedPath)
-  const assetPath =
-    aliases.get(url.pathname) ?? aliases.get(decodedPath) ?? aliases.get(normalizedPath)
-  const r2Path = normalizedPath.replace(/^\/+/, "")
+  const assetPath = aliases.get(url.pathname) ?? aliases.get(decodedPath)
+  const r2Path = decodedPath.replace(/^\/+/, "")
 
   if (r2Path.startsWith("downloads/") || r2Path.startsWith("packages/")) {
     const object = await c.env.SCRIPTS_R2.get(r2Path)
