@@ -1,11 +1,25 @@
 {
+  "color": "#5AC8FA",
+  "contributors": [],
+  "icon": "cloud.sun",
+  "description": "QWeather preview and home screen widget.",
   "name": "QWeather",
-  "type": "Widget",
-  "entry": "index.tsx",
-  "widget": "widget.tsx",
-  "files": [
-    "index.tsx",
-    "shared.ts",
-    "widget.tsx"
-  ]
+  "runInApp": true,
+  "localizedNames": {
+    "zh": "和风天气"
+  },
+  "author": {
+    "name": "IchimaruGin728",
+    "homepage": "https://github.com/IchimaruGin728/Gins-Scripts",
+    "email": ""
+  },
+  "intentInputTypes": [],
+  "version": "1.0.0",
+  "remoteResource": {
+    "url": "https://github.com/IchimaruGin728/Gins-Scripts/tree/main/Scripting/QWeather",
+    "autoUpdateInterval": null
+  },
+  "localizedDescriptions": {
+    "zh": "和风天气预览与桌面小组件。"
+  }
 }
