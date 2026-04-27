@@ -40,6 +40,11 @@ app.get("*", async (c) => {
   const assetPath = aliases.get(url.pathname) ?? aliases.get(decodedPath)
   const r2Path = decodedPath.replace(/^\/+/, "")
 
+  if (r2Path.startsWith("packages/")) {
+    const assetResponse = await c.env.ASSETS.fetch(c.req.raw)
+    if (assetResponse.ok) return assetResponse
+  }
+
   if (r2Path.startsWith("downloads/") || r2Path.startsWith("packages/")) {
     const object = await c.env.SCRIPTS_R2.get(r2Path)
     if (object) {
