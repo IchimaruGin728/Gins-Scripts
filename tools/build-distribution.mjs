@@ -99,7 +99,7 @@ async function buildScriptingPackages() {
       const targetPath = path.join(projectDir, item.relativePath)
       await ensureDir(targetPath)
       await fs.writeFile(targetPath, content)
-      zipFiles[`${project}/${item.relativePath}`] = new Uint8Array(content)
+      zipFiles[item.relativePath] = new Uint8Array(content)
       files.push({
         path: item.relativePath,
         source: item.source,
