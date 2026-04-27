@@ -1,6 +1,6 @@
 {
   "name": "Gins-Scripts",
-  "generatedAt": "2026-04-27T13:36:54.966Z",
+  "generatedAt": "2026-04-27T13:39:38.946Z",
   "files": [
     {
       "software": "Scriptable",
@@ -185,6 +185,7 @@
       "software": "Scripting",
       "category": "Widget",
       "directoryUrl": "/packages/Scripting/Widget/QWeather/",
+      "scriptingUrl": "/packages/Scripting/Widget/QWeather.scripting",
       "zipUrl": "/packages/Scripting/Widget/QWeather.zip",
       "manifestUrl": "/packages/Scripting/Widget/QWeather/manifest.json",
       "scriptConfigUrl": "/packages/Scripting/Widget/QWeather/script.json",
@@ -218,6 +219,7 @@
       "software": "Scripting",
       "category": "Widget",
       "directoryUrl": "/packages/Scripting/Widget/DataGovSG/",
+      "scriptingUrl": "/packages/Scripting/Widget/DataGovSG.scripting",
       "zipUrl": "/packages/Scripting/Widget/DataGovSG.zip",
       "manifestUrl": "/packages/Scripting/Widget/DataGovSG/manifest.json",
       "scriptConfigUrl": "/packages/Scripting/Widget/DataGovSG/script.json",
@@ -251,6 +253,7 @@
       "software": "Scripting",
       "category": "Widget",
       "directoryUrl": "/packages/Scripting/Widget/Countdown/",
+      "scriptingUrl": "/packages/Scripting/Widget/Countdown.scripting",
       "zipUrl": "/packages/Scripting/Widget/Countdown.zip",
       "manifestUrl": "/packages/Scripting/Widget/Countdown/manifest.json",
       "scriptConfigUrl": "/packages/Scripting/Widget/Countdown/script.json",

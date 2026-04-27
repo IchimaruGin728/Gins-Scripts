@@ -181,6 +181,10 @@ export function getScriptingPackageZipPath(project, category = "Widget") {
   return `${getScriptingPackageBasePath(project, category)}.zip`
 }
 
+export function getScriptingPackageFilePath(project, category = "Widget") {
+  return `${getScriptingPackageBasePath(project, category)}.scripting`
+}
+
 export function getSoftwarePath(softwareId) {
   return `/${softwareId}`
 }

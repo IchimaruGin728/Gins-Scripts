@@ -6,6 +6,7 @@ import {
   getCanonicalPath,
   getDownloadPath,
   getScriptingPackageDirectoryPath,
+  getScriptingPackageFilePath,
   getScriptingPackageZipPath,
 } from "../src/lib/catalog.js"
 
@@ -25,6 +26,7 @@ function contentType(file) {
   if (file.endsWith(".ts") || file.endsWith(".tsx")) return "application/typescript; charset=UTF-8"
   if (file.endsWith(".yaml") || file.endsWith(".yml")) return "text/yaml; charset=UTF-8"
   if (file.endsWith(".json")) return "application/json; charset=UTF-8"
+  if (file.endsWith(".scripting")) return "application/zip"
   return "text/plain; charset=UTF-8"
 }
 
@@ -94,6 +96,7 @@ async function buildScriptingPackages() {
   const projects = collectScriptingProjects()
   for (const { category, project, projectSourceDir, items } of projects.values()) {
     const directoryUrl = getScriptingPackageDirectoryPath(project, category)
+    const scriptingUrl = getScriptingPackageFilePath(project, category)
     const zipUrl = getScriptingPackageZipPath(project, category)
     const projectDir = path.join(publicDir, directoryUrl)
     await fs.mkdir(projectDir, { recursive: true })
@@ -120,15 +123,18 @@ async function buildScriptingPackages() {
     zipFiles["script.json"] = new TextEncoder().encode(scriptConfigContent)
 
     const zipBytes = zipSync(zipFiles, { level: 9 })
-    const zipPath = path.join(publicDir, zipUrl)
-    await ensureDir(zipPath)
-    await fs.writeFile(zipPath, Buffer.from(zipBytes))
+    for (const archiveUrl of [scriptingUrl, zipUrl]) {
+      const archivePath = path.join(publicDir, archiveUrl)
+      await ensureDir(archivePath)
+      await fs.writeFile(archivePath, Buffer.from(zipBytes))
+    }
 
     const packageManifest = {
       name: project,
       software: "Scripting",
       category,
       directoryUrl,
+      scriptingUrl,
       zipUrl,
       manifestUrl: `${directoryUrl}manifest.json`,
       scriptConfigUrl: `${directoryUrl}script.json`,

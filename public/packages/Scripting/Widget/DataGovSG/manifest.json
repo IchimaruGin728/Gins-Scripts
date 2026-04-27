@@ -3,6 +3,7 @@
   "software": "Scripting",
   "category": "Widget",
   "directoryUrl": "/packages/Scripting/Widget/DataGovSG/",
+  "scriptingUrl": "/packages/Scripting/Widget/DataGovSG.scripting",
   "zipUrl": "/packages/Scripting/Widget/DataGovSG.zip",
   "manifestUrl": "/packages/Scripting/Widget/DataGovSG/manifest.json",
   "scriptConfigUrl": "/packages/Scripting/Widget/DataGovSG/script.json",

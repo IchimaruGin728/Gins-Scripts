@@ -74,6 +74,7 @@ async function listSyncMessages(env: Bindings): Promise<R2SyncMessage[]> {
     scriptingPackages?: Array<{
       name: string
       directoryUrl: string
+      scriptingUrl?: string
       zipUrl: string
       manifestUrl?: string
       scriptConfigUrl?: string
@@ -85,6 +86,7 @@ async function listSyncMessages(env: Bindings): Promise<R2SyncMessage[]> {
   for (const file of manifest.files ?? []) paths.set(file.path, file.contentType)
 
   for (const pkg of manifest.scriptingPackages ?? []) {
+    if (pkg.scriptingUrl) paths.set(pkg.scriptingUrl, "application/zip")
     paths.set(pkg.zipUrl, "application/zip")
     paths.set(
       pkg.manifestUrl ?? `${pkg.directoryUrl}manifest.json`,

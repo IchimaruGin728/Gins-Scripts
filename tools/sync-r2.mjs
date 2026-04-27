@@ -16,6 +16,7 @@ const contentTypes = new Map([
   [".yml", "text/yaml; charset=UTF-8"],
   [".json", "application/json; charset=UTF-8"],
   [".zip", "application/zip"],
+  [".scripting", "application/zip"],
 ])
 
 async function walk(dir) {

@@ -3,6 +3,7 @@
   "software": "Scripting",
   "category": "Widget",
   "directoryUrl": "/packages/Scripting/Widget/Countdown/",
+  "scriptingUrl": "/packages/Scripting/Widget/Countdown.scripting",
   "zipUrl": "/packages/Scripting/Widget/Countdown.zip",
   "manifestUrl": "/packages/Scripting/Widget/Countdown/manifest.json",
   "scriptConfigUrl": "/packages/Scripting/Widget/Countdown/script.json",

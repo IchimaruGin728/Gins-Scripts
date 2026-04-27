@@ -11,6 +11,7 @@ import {
   getCanonicalPath,
   getDownloadPath,
   getScriptingPackageDirectoryPath,
+  getScriptingPackageFilePath,
   getScriptingPackageZipPath,
 } from "@/lib/catalog"
 
@@ -49,6 +50,7 @@ const files = await Promise.all(
 const projectName = file.software === "Scripting" ? sourceParts[1] : file.product
 const isScripting = file.software === "Scripting"
 const packageDirectory = isScripting ? getScriptingPackageDirectoryPath(projectName, file.category) : null
+const packageScripting = isScripting ? getScriptingPackageFilePath(projectName, file.category) : null
 const packageZip = isScripting ? getScriptingPackageZipPath(projectName, file.category) : null
 const packageEntry = packageDirectory ? `${packageDirectory}index.tsx` : null
 const githubPath = isScripting ? projectPath : file.source
@@ -79,10 +81,14 @@ const installCode = files
       <div class="mt-4 flex flex-wrap gap-2">
         {packageDirectory && <a class="actionlink" href={packageDirectory}>Cloudflare Directory</a>}
         {packageEntry && <a class="actionlink" href={packageEntry}>Entry File</a>}
+        {packageScripting && <a class="actionlink" href={packageScripting}>Download Scripting</a>}
         {packageZip && <a class="actionlink" href={packageZip}>Download ZIP</a>}
         <a class="actionlink" href={githubTree}>GitHub Source</a>
+        {packageScripting && (
+          <button class="actionlink copybtn" type="button" data-copy-url={packageScripting}>Copy Import URL</button>
+        )}
         {isScripting && (
-          <button class="actionlink copybtn" type="button" data-copy-url={githubTree}>Copy Import URL</button>
+          <button class="actionlink copybtn" type="button" data-copy-url={githubTree}>Copy GitHub URL</button>
         )}
         {packageZip && (
           <button class="actionlink copybtn" type="button" data-copy-url={packageZip}>Copy ZIP URL</button>
@@ -116,6 +122,7 @@ const installCode = files
               <dd class="m-0 grid gap-1 break-all font-mono text-ink-soft">
                 <span>{packageDirectory}</span>
                 <span>{packageEntry}</span>
+                <span>{packageScripting}</span>
                 <span>{packageZip}</span>
               </dd>
             </div>

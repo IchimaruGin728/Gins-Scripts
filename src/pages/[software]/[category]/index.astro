@@ -23,6 +23,7 @@ import {
   getCategoryPath,
   getDownloadPath,
   getScriptingPackageDirectoryPath,
+  getScriptingPackageFilePath,
   getScriptingPackageZipPath,
   SOFTWARES,
   type SoftwareId,
@@ -58,6 +59,7 @@ const scriptingProjects = Array.from(
   files,
   mainFile: files.find((file) => file.source.endsWith("/index.tsx")) ?? files[0],
   directoryUrl: getScriptingPackageDirectoryPath(name, category.id),
+  scriptingUrl: getScriptingPackageFilePath(name, category.id),
   zipUrl: getScriptingPackageZipPath(name, category.id),
   githubUrl: `${REPO_URL}/tree/main/Scripting/${encodeURIComponent(name)}`,
 }))
@@ -90,8 +92,14 @@ const scriptingProjects = Array.from(
               <a class="actionlink" href={project.zipUrl}>
                 Download ZIP
               </a>
-              <button class="actionlink copybtn" type="button" data-copy-path={project.githubUrl}>
+              <a class="actionlink" href={project.scriptingUrl}>
+                Download Scripting
+              </a>
+              <button class="actionlink copybtn" type="button" data-copy-path={project.scriptingUrl}>
                 Copy Import URL
+              </button>
+              <button class="actionlink copybtn" type="button" data-copy-path={project.githubUrl}>
+                Copy GitHub URL
               </button>
               <button class="actionlink copybtn" type="button" data-copy-path={project.zipUrl}>
                 Copy ZIP URL

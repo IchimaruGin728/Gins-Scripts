@@ -133,6 +133,7 @@ Useful routes after deployment:
 - `/downloads/Scripting/Widget/Countdown/index.tsx`
 - `/packages/Scripting/Widget/Countdown/`
 - `/packages/Scripting/Widget/Countdown/index.tsx`
+- `/packages/Scripting/Widget/Countdown.scripting`
 - `/packages/Scripting/Widget/Countdown.zip`
 - `/Scriptable/Widget/QWeather`
 - `/Scriptable/Widget/DataGovSG`

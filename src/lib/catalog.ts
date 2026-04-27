@@ -44,6 +44,7 @@ export {
   getPagePaths,
   getScriptingPackageBasePath,
   getScriptingPackageDirectoryPath,
+  getScriptingPackageFilePath,
   getScriptingPackageZipPath,
   getSoftwarePath,
   SOFTWARES,
