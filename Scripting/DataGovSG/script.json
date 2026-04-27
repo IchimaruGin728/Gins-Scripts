@@ -1,0 +1,25 @@
+{
+  "color": "#34C759",
+  "contributors": [],
+  "icon": "chart.line.uptrend.xyaxis",
+  "description": "Data.gov.sg dashboard preview and home screen widget.",
+  "name": "DataGovSG",
+  "runInApp": true,
+  "localizedNames": {
+    "zh": "新加坡数据"
+  },
+  "author": {
+    "name": "IchimaruGin728",
+    "homepage": "https://github.com/IchimaruGin728/Gins-Scripts",
+    "email": ""
+  },
+  "intentInputTypes": [],
+  "version": "1.0.0",
+  "remoteResource": {
+    "url": "https://github.com/IchimaruGin728/Gins-Scripts/tree/main/Scripting/DataGovSG",
+    "autoUpdateInterval": null
+  },
+  "localizedDescriptions": {
+    "zh": "新加坡数据看板预览与桌面小组件。"
+  }
+}

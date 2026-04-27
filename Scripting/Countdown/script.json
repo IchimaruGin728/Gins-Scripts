@@ -1,0 +1,25 @@
+{
+  "color": "#7D86F8",
+  "contributors": [],
+  "icon": "hourglass",
+  "description": "Countdown manager and home screen widget.",
+  "name": "Countdown",
+  "runInApp": true,
+  "localizedNames": {
+    "zh": "倒计时"
+  },
+  "author": {
+    "name": "IchimaruGin728",
+    "homepage": "https://github.com/IchimaruGin728/Gins-Scripts",
+    "email": ""
+  },
+  "intentInputTypes": [],
+  "version": "1.0.0",
+  "remoteResource": {
+    "url": "https://github.com/IchimaruGin728/Gins-Scripts/tree/main/Scripting/Countdown",
+    "autoUpdateInterval": null
+  },
+  "localizedDescriptions": {
+    "zh": "倒计时管理与桌面小组件。"
+  }
+}

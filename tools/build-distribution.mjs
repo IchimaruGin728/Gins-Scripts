@@ -77,7 +77,14 @@ function collectScriptingProjects() {
     const project = file.product
     const relativePath = parts.slice(2).join("/")
     const key = `${file.category}/${project}`
-    if (!groups.has(key)) groups.set(key, { category: file.category, project, items: [] })
+    if (!groups.has(key)) {
+      groups.set(key, {
+        category: file.category,
+        project,
+        projectSourceDir: parts.slice(0, 2).join("/"),
+        items: [],
+      })
+    }
     groups.get(key).items.push({ file, source: file.source, relativePath })
   }
   return groups
@@ -85,7 +92,7 @@ function collectScriptingProjects() {
 
 async function buildScriptingPackages() {
   const projects = collectScriptingProjects()
-  for (const { category, project, items } of projects.values()) {
+  for (const { category, project, projectSourceDir, items } of projects.values()) {
     const directoryUrl = getScriptingPackageDirectoryPath(project, category)
     const zipUrl = getScriptingPackageZipPath(project, category)
     const projectDir = path.join(publicDir, directoryUrl)
@@ -108,14 +115,9 @@ async function buildScriptingPackages() {
       })
     }
 
-    const scriptConfig = {
-      name: project,
-      type: category,
-      entry: "index.tsx",
-      widget: files.some((f) => f.path === "widget.tsx") ? "widget.tsx" : null,
-      files: files.map((file) => file.path),
-    }
-    zipFiles["script.json"] = new TextEncoder().encode(JSON.stringify(scriptConfig, null, 2))
+    const scriptConfigPath = path.join(root, projectSourceDir, "script.json")
+    const scriptConfigContent = await fs.readFile(scriptConfigPath, "utf8")
+    zipFiles["script.json"] = new TextEncoder().encode(scriptConfigContent)
 
     const zipBytes = zipSync(zipFiles, { level: 9 })
     const zipPath = path.join(publicDir, zipUrl)
@@ -144,7 +146,7 @@ async function buildScriptingPackages() {
     )
     await fs.writeFile(
       path.join(projectDir, "script.json"),
-      `${JSON.stringify(scriptConfig, null, 2)}\n`,
+      scriptConfigContent.endsWith("\n") ? scriptConfigContent : `${scriptConfigContent}\n`,
       "utf8"
     )
     manifest.scriptingPackages.push(packageManifest)
