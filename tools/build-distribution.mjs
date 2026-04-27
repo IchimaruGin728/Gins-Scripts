@@ -12,7 +12,6 @@ import {
 
 const root = process.cwd()
 const publicDir = path.join(root, "public")
-const downloadsDir = path.join(publicDir, "downloads")
 
 const manifest = {
   name: "Gins-Scripts",
@@ -35,7 +34,7 @@ async function ensureDir(filePath) {
 }
 
 async function resetGeneratedAssets() {
-  await fs.rm(downloadsDir, { recursive: true, force: true })
+  await fs.rm(path.join(publicDir, "downloads"), { recursive: true, force: true })
   await fs.rm(path.join(publicDir, "packages"), { recursive: true, force: true })
   await fs.rm(path.join(publicDir, "widgets"), { recursive: true, force: true })
   await fs.rm(path.join(publicDir, "modules"), { recursive: true, force: true })
@@ -53,7 +52,6 @@ async function resetGeneratedAssets() {
     await fs.rm(path.join(publicDir, software), { recursive: true, force: true })
   }
   await fs.rm(path.join(publicDir, "index.html"), { force: true })
-  await fs.mkdir(downloadsDir, { recursive: true })
 }
 
 async function copyFiles() {

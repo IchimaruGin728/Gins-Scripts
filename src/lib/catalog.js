@@ -162,7 +162,11 @@ export const FILES = [
 
 export function getDownloadPath(file) {
   const basename = file.source.split("/").at(-1)
-  return `/downloads/${file.software}/${file.category}/${file.product}/${basename}`
+  if (file.software === "Scripting") {
+    return `/${file.software}/${file.category}/${file.product}/${basename}`
+  }
+  const extension = basename.includes(".") ? `.${basename.split(".").at(-1)}` : ""
+  return `/${file.software}/${file.category}/${file.product}${extension}`
 }
 
 export function getCanonicalPath(file) {
@@ -170,7 +174,7 @@ export function getCanonicalPath(file) {
 }
 
 export function getScriptingPackageBasePath(project, category = "Widget") {
-  return `/packages/Scripting/${category}/${project}`
+  return `/Scripting/${category}/${project}`
 }
 
 export function getScriptingPackageDirectoryPath(project, category = "Widget") {

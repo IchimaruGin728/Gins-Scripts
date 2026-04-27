@@ -10,9 +10,7 @@ import {
   FILES,
   getCanonicalPath,
   getDownloadPath,
-  getScriptingPackageDirectoryPath,
   getScriptingPackageFilePath,
-  getScriptingPackageZipPath,
 } from "@/lib/catalog"
 
 const REPO_URL = "https://github.com/IchimaruGin728/Gins-Scripts"
@@ -49,10 +47,7 @@ const files = await Promise.all(
 
 const projectName = file.software === "Scripting" ? sourceParts[1] : file.product
 const isScripting = file.software === "Scripting"
-const packageDirectory = isScripting ? getScriptingPackageDirectoryPath(projectName, file.category) : null
 const packageScripting = isScripting ? getScriptingPackageFilePath(projectName, file.category) : null
-const packageZip = isScripting ? getScriptingPackageZipPath(projectName, file.category) : null
-const packageEntry = packageDirectory ? `${packageDirectory}index.tsx` : null
 const githubPath = isScripting ? projectPath : file.source
 const githubTree = `${REPO_URL}/tree/main/${githubPath.split("/").map(encodeURIComponent).join("/")}`
 const installCode = files
@@ -71,7 +66,7 @@ const installCode = files
       <div class="eyebrow">{file.software} {file.category}</div>
       <h2 class="m-0 mb-2 text-[24px] tracking-[-0.02em]">{projectName || file.label}</h2>
       <p class="m-0 text-[14px] leading-6 text-ink-soft">
-        Add it from GitHub, download the Cloudflare package, or copy the file contents directly.
+        Import the Scripting archive, open the source, or copy the file contents directly.
       </p>
 
       <div class="mt-4 grid gap-2 rounded-xl border border-white/8 bg-black/20 p-3 font-mono text-[13px] text-[#dfe0ff]">
@@ -79,23 +74,11 @@ const installCode = files
       </div>
 
       <div class="mt-4 flex flex-wrap gap-2">
-        {packageDirectory && <a class="actionlink" href={packageDirectory}>Cloudflare Directory</a>}
-        {packageEntry && <a class="actionlink" href={packageEntry}>Entry File</a>}
-        {packageScripting && <a class="actionlink" href={packageScripting}>Download Scripting</a>}
-        {packageZip && <a class="actionlink" href={packageZip}>Download ZIP</a>}
-        <a class="actionlink" href={githubTree}>GitHub Source</a>
+        {packageScripting && <a class="actionlink" href={packageScripting}>Download</a>}
         {packageScripting && (
-          <button class="actionlink copybtn" type="button" data-copy-url={packageScripting}>Copy Import URL</button>
+          <button class="actionlink copybtn" type="button" data-copy-url={packageScripting}>Copy Import</button>
         )}
-        {isScripting && (
-          <button class="actionlink copybtn" type="button" data-copy-url={githubTree}>Copy GitHub URL</button>
-        )}
-        {packageZip && (
-          <button class="actionlink copybtn" type="button" data-copy-url={packageZip}>Copy ZIP URL</button>
-        )}
-        {packageEntry && (
-          <button class="actionlink copybtn" type="button" data-copy-url={packageEntry}>Copy Entry URL</button>
-        )}
+        <a class="actionlink" href={githubTree}>GitHub</a>
         <button class="actionlink copybtn" type="button" data-copy="bundle">Copy Code</button>
       </div>
     </section>
@@ -116,14 +99,11 @@ const installCode = files
           </dd>
         </div>
         {
-          packageZip && (
+          packageScripting && (
             <div>
-              <dt class="mb-1 font-bold text-ink">Package</dt>
+              <dt class="mb-1 font-bold text-ink">Import</dt>
               <dd class="m-0 grid gap-1 break-all font-mono text-ink-soft">
-                <span>{packageDirectory}</span>
-                <span>{packageEntry}</span>
                 <span>{packageScripting}</span>
-                <span>{packageZip}</span>
               </dd>
             </div>
           )

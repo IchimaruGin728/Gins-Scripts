@@ -22,9 +22,7 @@ import {
   getCanonicalPath,
   getCategoryPath,
   getDownloadPath,
-  getScriptingPackageDirectoryPath,
   getScriptingPackageFilePath,
-  getScriptingPackageZipPath,
   SOFTWARES,
   type SoftwareId,
 } from "@/lib/catalog"
@@ -58,9 +56,7 @@ const scriptingProjects = Array.from(
   name,
   files,
   mainFile: files.find((file) => file.source.endsWith("/index.tsx")) ?? files[0],
-  directoryUrl: getScriptingPackageDirectoryPath(name, category.id),
   scriptingUrl: getScriptingPackageFilePath(name, category.id),
-  zipUrl: getScriptingPackageZipPath(name, category.id),
   githubUrl: `${REPO_URL}/tree/main/Scripting/${encodeURIComponent(name)}`,
 }))
 ---
@@ -76,49 +72,33 @@ const scriptingProjects = Array.from(
       <section class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
         {scriptingProjects.map((project) => (
           <section class="card">
-            <div class="eyebrow">{software.label} Package</div>
+            <div class="eyebrow">{software.label}</div>
             <h2 class="m-0 mb-2 text-[22px] tracking-[-0.02em]">{project.name}</h2>
             <p class="m-0 break-all font-mono text-[12px] text-ink-soft">
-              {project.directoryUrl}
+              {project.scriptingUrl}
             </p>
 
             <div class="mt-4 flex flex-wrap gap-2">
-              <a class="actionlink" href={project.directoryUrl}>
-                Directory
-              </a>
-              <a class="actionlink" href={`${project.directoryUrl}index.tsx`}>
-                Entry File
-              </a>
-              <a class="actionlink" href={project.zipUrl}>
-                Download ZIP
-              </a>
               <a class="actionlink" href={project.scriptingUrl}>
-                Download Scripting
+                Download
               </a>
               <button class="actionlink copybtn" type="button" data-copy-path={project.scriptingUrl}>
-                Copy Import URL
-              </button>
-              <button class="actionlink copybtn" type="button" data-copy-path={project.githubUrl}>
-                Copy GitHub URL
-              </button>
-              <button class="actionlink copybtn" type="button" data-copy-path={project.zipUrl}>
-                Copy ZIP URL
-              </button>
-              <button class="actionlink copybtn" type="button" data-copy-path={`${project.directoryUrl}index.tsx`}>
-                Copy Entry URL
+                Copy Import
               </button>
               <a class="actionlink" href={getCanonicalPath(project.mainFile)}>
                 Open
               </a>
+              <a class="actionlink" href={project.githubUrl}>
+                GitHub
+              </a>
             </div>
 
-            <ul class="mt-4 grid list-none gap-2 p-0">
+            <ul class="mt-4 m-0 grid list-none gap-1.5 p-0">
               {project.files.map((file) => (
-                <li class="grid gap-0.5 rounded-xl border border-white/8 bg-primary-soft/50 px-2.5 py-2">
-                  <a class="font-semibold no-underline hover:text-primary" href={getCanonicalPath(file)}>
+                <li>
+                  <a class="break-all font-mono text-[12px] text-ink-soft no-underline hover:text-primary" href={getDownloadPath(file)}>
                     {file.label.replace(`${project.name} `, "")}
                   </a>
-                  <span class="break-all text-[12px] text-ink-soft font-mono">{getCanonicalPath(file)}</span>
                 </li>
               ))}
             </ul>

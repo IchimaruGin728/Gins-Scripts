@@ -20,6 +20,9 @@ const app = new Hono<{ Bindings: Bindings }>()
 const aliases = getAliasMap()
 const pages = getPagePaths()
 
+const distributionPattern =
+  /^\/(Scripting|Scriptable|Egern|Stash|Surge|Shadowrocket|Loon|QuantumultX)\/.+\.(js|mjs|ts|tsx|ya?ml|json|zip|scripting)$/
+
 app.get("/api/manifest", async (c) => {
   return c.env.ASSETS.fetch(new URL("/manifest.json", c.req.url))
 })
@@ -40,12 +43,11 @@ app.get("*", async (c) => {
   const assetPath = aliases.get(url.pathname) ?? aliases.get(decodedPath)
   const r2Path = decodedPath.replace(/^\/+/, "")
 
-  if (r2Path.startsWith("packages/")) {
-    const assetResponse = await c.env.ASSETS.fetch(c.req.raw)
-    if (assetResponse.ok) return assetResponse
+  if (decodedPath.startsWith("/packages/") || decodedPath.startsWith("/downloads/")) {
+    return new Response("Not Found", { status: 404 })
   }
 
-  if (r2Path.startsWith("downloads/") || r2Path.startsWith("packages/")) {
+  if (distributionPattern.test(decodedPath)) {
     const object = await c.env.SCRIPTS_R2.get(r2Path)
     if (object) {
       const headers = new Headers()
@@ -54,6 +56,9 @@ app.get("*", async (c) => {
       headers.set("cache-control", "public, max-age=300")
       return new Response(object.body, { headers })
     }
+
+    const assetResponse = await c.env.ASSETS.fetch(c.req.raw)
+    if (assetResponse.ok) return assetResponse
   }
 
   if (pagePath) {

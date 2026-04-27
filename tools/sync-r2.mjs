@@ -5,7 +5,16 @@ import path from "node:path"
 const root = process.cwd()
 const bucket = process.env.GINS_SCRIPTS_R2_BUCKET || "gins-scripts-storage"
 const concurrency = Number(process.env.GINS_SCRIPTS_R2_CONCURRENCY || 8)
-const roots = ["downloads", "packages"]
+const roots = [
+  "Scripting",
+  "Scriptable",
+  "Egern",
+  "Stash",
+  "Surge",
+  "Shadowrocket",
+  "Loon",
+  "QuantumultX",
+]
 
 const contentTypes = new Map([
   [".js", "application/javascript; charset=UTF-8"],

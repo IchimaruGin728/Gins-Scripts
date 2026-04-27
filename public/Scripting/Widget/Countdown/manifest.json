@@ -1,0 +1,34 @@
+{
+  "name": "Countdown",
+  "software": "Scripting",
+  "category": "Widget",
+  "directoryUrl": "/Scripting/Widget/Countdown/",
+  "scriptingUrl": "/Scripting/Widget/Countdown.scripting",
+  "zipUrl": "/Scripting/Widget/Countdown.zip",
+  "manifestUrl": "/Scripting/Widget/Countdown/manifest.json",
+  "scriptConfigUrl": "/Scripting/Widget/Countdown/script.json",
+  "files": [
+    {
+      "path": "index.tsx",
+      "source": "Scripting/Countdown/index.tsx",
+      "url": "/Scripting/Widget/Countdown/index.tsx",
+      "packageUrl": "/Scripting/Widget/Countdown/index.tsx"
+    },
+    {
+      "path": "shared.ts",
+      "source": "Scripting/Countdown/shared.ts",
+      "url": "/Scripting/Widget/Countdown/shared.ts",
+      "packageUrl": "/Scripting/Widget/Countdown/shared.ts"
+    },
+    {
+      "path": "widget.tsx",
+      "source": "Scripting/Countdown/widget.tsx",
+      "url": "/Scripting/Widget/Countdown/widget.tsx",
+      "packageUrl": "/Scripting/Widget/Countdown/widget.tsx"
+    }
+  ],
+  "entrypoints": {
+    "index": "/Scripting/Widget/Countdown/index.tsx",
+    "widget": "/Scripting/Widget/Countdown/widget.tsx"
+  }
+}

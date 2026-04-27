@@ -1,0 +1,34 @@
+{
+  "name": "DataGovSG",
+  "software": "Scripting",
+  "category": "Widget",
+  "directoryUrl": "/Scripting/Widget/DataGovSG/",
+  "scriptingUrl": "/Scripting/Widget/DataGovSG.scripting",
+  "zipUrl": "/Scripting/Widget/DataGovSG.zip",
+  "manifestUrl": "/Scripting/Widget/DataGovSG/manifest.json",
+  "scriptConfigUrl": "/Scripting/Widget/DataGovSG/script.json",
+  "files": [
+    {
+      "path": "index.tsx",
+      "source": "Scripting/DataGovSG/index.tsx",
+      "url": "/Scripting/Widget/DataGovSG/index.tsx",
+      "packageUrl": "/Scripting/Widget/DataGovSG/index.tsx"
+    },
+    {
+      "path": "shared.ts",
+      "source": "Scripting/DataGovSG/shared.ts",
+      "url": "/Scripting/Widget/DataGovSG/shared.ts",
+      "packageUrl": "/Scripting/Widget/DataGovSG/shared.ts"
+    },
+    {
+      "path": "widget.tsx",
+      "source": "Scripting/DataGovSG/widget.tsx",
+      "url": "/Scripting/Widget/DataGovSG/widget.tsx",
+      "packageUrl": "/Scripting/Widget/DataGovSG/widget.tsx"
+    }
+  ],
+  "entrypoints": {
+    "index": "/Scripting/Widget/DataGovSG/index.tsx",
+    "widget": "/Scripting/Widget/DataGovSG/widget.tsx"
+  }
+}

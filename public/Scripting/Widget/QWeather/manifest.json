@@ -1,0 +1,34 @@
+{
+  "name": "QWeather",
+  "software": "Scripting",
+  "category": "Widget",
+  "directoryUrl": "/Scripting/Widget/QWeather/",
+  "scriptingUrl": "/Scripting/Widget/QWeather.scripting",
+  "zipUrl": "/Scripting/Widget/QWeather.zip",
+  "manifestUrl": "/Scripting/Widget/QWeather/manifest.json",
+  "scriptConfigUrl": "/Scripting/Widget/QWeather/script.json",
+  "files": [
+    {
+      "path": "index.tsx",
+      "source": "Scripting/QWeather/index.tsx",
+      "url": "/Scripting/Widget/QWeather/index.tsx",
+      "packageUrl": "/Scripting/Widget/QWeather/index.tsx"
+    },
+    {
+      "path": "shared.ts",
+      "source": "Scripting/QWeather/shared.ts",
+      "url": "/Scripting/Widget/QWeather/shared.ts",
+      "packageUrl": "/Scripting/Widget/QWeather/shared.ts"
+    },
+    {
+      "path": "widget.tsx",
+      "source": "Scripting/QWeather/widget.tsx",
+      "url": "/Scripting/Widget/QWeather/widget.tsx",
+      "packageUrl": "/Scripting/Widget/QWeather/widget.tsx"
+    }
+  ],
+  "entrypoints": {
+    "index": "/Scripting/Widget/QWeather/index.tsx",
+    "widget": "/Scripting/Widget/QWeather/widget.tsx"
+  }
+}
