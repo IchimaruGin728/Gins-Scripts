@@ -108,6 +108,15 @@ async function buildScriptingPackages() {
       })
     }
 
+    const scriptConfig = {
+      name: project,
+      type: category,
+      entry: "index.tsx",
+      widget: files.some((f) => f.path === "widget.tsx") ? "widget.tsx" : null,
+      files: files.map((file) => file.path),
+    }
+    zipFiles["script.json"] = new TextEncoder().encode(JSON.stringify(scriptConfig, null, 2))
+
     const zipBytes = zipSync(zipFiles, { level: 9 })
     const zipPath = path.join(publicDir, zipUrl)
     await ensureDir(zipPath)
@@ -135,17 +144,7 @@ async function buildScriptingPackages() {
     )
     await fs.writeFile(
       path.join(projectDir, "script.json"),
-      `${JSON.stringify(
-        {
-          name: project,
-          type: category,
-          entry: "index.tsx",
-          widget: files.some((f) => f.path === "widget.tsx") ? "widget.tsx" : null,
-          files: files.map((file) => file.path),
-        },
-        null,
-        2
-      )}\n`,
+      `${JSON.stringify(scriptConfig, null, 2)}\n`,
       "utf8"
     )
     manifest.scriptingPackages.push(packageManifest)

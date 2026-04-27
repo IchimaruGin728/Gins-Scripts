@@ -81,8 +81,11 @@ const installCode = files
         {packageEntry && <a class="actionlink" href={packageEntry}>Entry File</a>}
         {packageZip && <a class="actionlink" href={packageZip}>Download ZIP</a>}
         <a class="actionlink" href={githubTree}>GitHub Source</a>
+        {isScripting && (
+          <button class="actionlink copybtn" type="button" data-copy-url={githubTree}>Copy Import URL</button>
+        )}
         {packageZip && (
-          <button class="actionlink copybtn" type="button" data-copy-url={packageZip}>Copy Import URL</button>
+          <button class="actionlink copybtn" type="button" data-copy-url={packageZip}>Copy ZIP URL</button>
         )}
         {packageEntry && (
           <button class="actionlink copybtn" type="button" data-copy-url={packageEntry}>Copy Entry URL</button>
