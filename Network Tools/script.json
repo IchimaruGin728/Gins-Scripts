@@ -1,0 +1,44 @@
+{
+  "runInApp" : false,
+  "localizedNames" : {
+    "pt" : "",
+    "ja" : "",
+    "de" : "",
+    "it" : "",
+    "zh" : "",
+    "ru" : "",
+    "en" : "",
+    "es" : "",
+    "fr" : ""
+  },
+  "name" : "Network Tools",
+  "intentInputTypes" : [
+
+  ],
+  "localizedDescriptions" : {
+    "pt" : "",
+    "ja" : "",
+    "de" : "",
+    "it" : "",
+    "zh" : "",
+    "ru" : "",
+    "en" : "",
+    "es" : "",
+    "fr" : ""
+  },
+  "icon" : "network",
+  "color" : "rgba(0, 122, 255, 1)",
+  "contributors" : [
+
+  ],
+  "author" : {
+    "name" : "Gin Ichimaru",
+    "email" : "ichimarugin728@icloud.com",
+    "homepage" : null
+  },
+  "entry" : "index.tsx",
+  "iconImage" : "",
+  "version" : "1.0.0",
+  "remoteResource" : null,
+  "description" : "Comprehensive network tools — IP info, ping, DNS, WHOIS, subnet calculator, encoding, BGP\/PeeringDB"
+}
