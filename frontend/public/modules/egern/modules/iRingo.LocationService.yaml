@@ -1,0 +1,6 @@
+name: iRingo.LocationService
+
+
+rules:
+  - DOMAIN,gspe1-ssl.ls.apple.com,DIRECT
+  - DOMAIN,dispatcher.is.autonavi.com,DIRECT

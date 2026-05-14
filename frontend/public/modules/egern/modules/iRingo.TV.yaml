@@ -1,0 +1,5 @@
+name: iRingo.TV
+
+
+rules:
+  - DOMAIN,known-issues.apple.com,REJECT-DROP

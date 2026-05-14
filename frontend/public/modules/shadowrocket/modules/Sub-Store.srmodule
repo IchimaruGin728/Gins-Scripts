@@ -1,0 +1,4 @@
+#!name = Sub-Store
+
+[MITM]
+hostname = %APPEND% 

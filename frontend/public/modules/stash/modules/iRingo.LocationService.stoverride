@@ -1,0 +1,50 @@
+name: " iRingo: 📍 LocationService"
+desc: |-
+  自定义定位服务内容
+  添加国际版功能
+  自定义服务版本
+openUrl: "http://boxjs.com/#/app/iRingo.LocationService"
+author: |-
+  VirgilClyne[https://github.com/VirgilClyne]
+homepage: "https://NSRingo.github.io/guide/GeoServices/location-service"
+icon: "https://images.macrumors.com/article-new/2019/07/ios_location_services-250x250.jpg"
+category: " iRingo"
+date: "2025-10-24 08:48:41"
+version: "1.0.1"
+
+rules:
+  # 📍 Country Code
+  - DOMAIN,gspe1-ssl.ls.apple.com,DIRECT
+  # 📍 Amap Dispatcher
+  - DOMAIN,dispatcher.is.autonavi.com,DIRECT
+
+http:
+  mitm:
+    - "gspe1-ssl.ls.apple.com"
+    - "dispatcher.is.autonavi.com"
+  script:
+    - match: ^https?:\/\/gspe1-ssl\.ls\.apple\.com\/pep\/gcc
+      name: LocationService.response
+      type: response
+      require-body: true
+      argument:
+    - match: ^https?:\/\/dispatcher\.is\.autonavi\.com\/dispatcher
+      name: LocationService.request
+      type: request
+      require-body: true
+      binary-mode: true
+      argument:
+    - match: ^https?:\/\/dispatcher\.is\.autonavi\.com\/dispatcher
+      name: LocationService.response
+      type: response
+      require-body: true
+      binary-mode: true
+      argument:
+
+script-providers:
+  LocationService.request:
+    url: https://github.com/NSRingo/LocationService/releases/download/v1.0.1/request.bundle.js
+    interval: 86400
+  LocationService.response:
+    url: https://github.com/NSRingo/LocationService/releases/download/v1.0.1/response.bundle.js
+    interval: 86400

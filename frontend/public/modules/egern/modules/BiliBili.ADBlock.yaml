@@ -1,0 +1,5 @@
+name: BiliBili.ADBlock
+
+url_rewrites:
+  - match: ^https:\/\/api\.bilibili\.com\/pgc\/activity\/deliver\/material\/receive\? mock-response-body data-type=text status-code=200 data="{"code":0
+    replace: "data":{"closeType":"close_win"

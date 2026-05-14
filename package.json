@@ -22,6 +22,7 @@
     "@biomejs/biome": "latest",
     "@unocss/astro": "^66.6.8",
     "astro": "latest",
+    "tsx": "^4.21.0",
     "typescript": "latest",
     "unocss": "^66.6.8",
     "wrangler": "latest"
