@@ -15,7 +15,7 @@
     "cf:dev": "pnpm run build && wrangler dev"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.12",
+    "@biomejs/biome": "latest",
     "@unocss/astro": "^66.6.8",
     "astro": "latest",
     "typescript": "latest",
@@ -23,7 +23,7 @@
     "wrangler": "latest"
   },
   "dependencies": {
-    "@hono/hono": "jsr:^4.12.14",
+    "@hono/hono": "jsr:^4.12.18",
     "fflate": "^0.8.2"
   }
 }
