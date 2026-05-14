@@ -2,6 +2,10 @@
 
 
 
+
+
+
+
 import fs from "node:fs/promises"
 import path from "node:path"
 import BaseLayout from "@/layouts/BaseLayout.astro"
@@ -30,7 +34,7 @@ export function getStaticPaths() {
 const { file } = Astro.props as { file: CatalogFile }
 const root = process.cwd()
 const sourceParts = file.source.split("/")
-const projectPath = file.software === "Scripting" ? sourceParts.slice(0, 2).join("/") : file.source
+const projectPath = file.software === "Scripting" ? sourceParts.slice(0, 3).join("/") : file.source
 const projectFiles =
   file.software === "Scripting"
     ? FILES.filter((entry) => entry.source.startsWith(`${projectPath}/`))
@@ -45,7 +49,7 @@ const files = await Promise.all(
   }))
 )
 
-const projectName = file.software === "Scripting" ? sourceParts[1] : file.product
+const projectName = file.software === "Scripting" ? sourceParts[2] : file.product
 const isScripting = file.software === "Scripting"
 const packageScripting = isScripting ? getScriptingPackageFilePath(projectName, file.category) : null
 const githubPath = isScripting ? projectPath : file.source

@@ -1,14 +1,25 @@
 export type SoftwareId =
   | "Scripting"
   | "Scriptable"
+  | "ScriptWidget"
+  | "Surge"
   | "Egern"
   | "Stash"
-  | "Surge"
-  | "Shadowrocket"
-  | "Loon"
   | "QuantumultX"
+  | "Loon"
+  | "Shadowrocket"
+  | "Anywhere"
 
-export type CatalogCategory = "Widget" | "Script" | "Module" | "Override" | "Tile" | "Rewrite"
+export type CatalogCategory =
+  | "Widgets"
+  | "Scripts"
+  | "Modules"
+  | "Panels"
+  | "Overrides"
+  | "Tiles"
+  | "Rewrite"
+  | "Gallery"
+  | "Plugins"
 
 export interface CatalogCategoryEntry {
   id: CatalogCategory

@@ -1,161 +1,177 @@
 export const SOFTWARES = [
   { id: "Scripting", label: "Scripting" },
   { id: "Scriptable", label: "Scriptable" },
+  { id: "ScriptWidget", label: "ScriptWidget" },
+  { id: "Surge", label: "Surge" },
   { id: "Egern", label: "Egern" },
   { id: "Stash", label: "Stash" },
-  { id: "Surge", label: "Surge" },
-  { id: "Shadowrocket", label: "Shadowrocket" },
-  { id: "Loon", label: "Loon" },
   { id: "QuantumultX", label: "QuantumultX" },
+  { id: "Loon", label: "Loon" },
+  { id: "Shadowrocket", label: "Shadowrocket" },
+  { id: "Anywhere", label: "Anywhere" },
 ]
 
 export const CATEGORIES = [
-  { id: "Widget", label: "Widget", description: "Home screen and app widgets." },
-  { id: "Script", label: "Script", description: "Standalone automation scripts." },
-  { id: "Module", label: "Module", description: "Importable modules and configuration packages." },
-  { id: "Override", label: "Override", description: "Stash override configuration." },
-  { id: "Tile", label: "Tile", description: "Stash tile display scripts." },
+  { id: "Widgets", label: "Widgets", description: "Home screen and app widgets." },
+  { id: "Scripts", label: "Scripts", description: "Standalone automation scripts." },
+  {
+    id: "Modules",
+    label: "Modules",
+    description: "Importable modules and configuration packages.",
+  },
+  { id: "Panels", label: "Panels", description: "Dashboard panel scripts." },
+  { id: "Overrides", label: "Overrides", description: "Stash override configuration." },
+  { id: "Tiles", label: "Tiles", description: "Stash tile display scripts." },
   { id: "Rewrite", label: "Rewrite", description: "QuantumultX rewrite resources." },
+  { id: "Gallery", label: "Gallery", description: "QuantumultX gallery resources." },
+  { id: "Plugins", label: "Plugins", description: "Loon plugins." },
 ]
 
 export const CATEGORIES_BY_SOFTWARE = {
-  Scripting: ["Script", "Widget"],
-  Scriptable: ["Widget"],
-  Egern: ["Script", "Widget", "Module"],
-  Stash: ["Override", "Tile"],
-  Surge: ["Script", "Module"],
-  Shadowrocket: ["Script", "Module"],
-  Loon: ["Script", "Module"],
-  QuantumultX: ["Rewrite"],
+  Scripting: ["Scripts", "Widgets"],
+  Scriptable: ["Scripts", "Widgets"],
+  ScriptWidget: ["Widgets"],
+  Surge: ["Modules", "Scripts", "Panels"],
+  Egern: ["Modules", "Scripts"],
+  Stash: ["Overrides", "Scripts", "Tiles"],
+  QuantumultX: ["Rewrite", "Gallery"],
+  Loon: ["Plugins", "Scripts"],
+  Shadowrocket: ["Modules"],
+  Anywhere: [],
 }
 
 export const FILES = [
-  {
-    software: "Scriptable",
-    category: "Widget",
-    product: "QWeather",
-    label: "QWeather",
-    source: "Scriptable/QWeather.js",
-    slug: "QWeather",
-  },
-  {
-    software: "Scriptable",
-    category: "Widget",
-    product: "DataGovSG",
-    label: "DataGovSG",
-    source: "Scriptable/DataGovSG.js",
-    slug: "DataGovSG",
-  },
+  // Scripting Widgets
   {
     software: "Scripting",
-    category: "Widget",
+    category: "Widgets",
     product: "QWeather",
     label: "QWeather Index",
-    source: "Scripting/QWeather/index.tsx",
+    source: "Scripting/Widgets/QWeather/index.tsx",
     slug: "QWeather/index",
   },
   {
     software: "Scripting",
-    category: "Widget",
+    category: "Widgets",
     product: "QWeather",
     label: "QWeather Shared",
-    source: "Scripting/QWeather/shared.ts",
+    source: "Scripting/Widgets/QWeather/shared.ts",
     slug: "QWeather/shared",
   },
   {
     software: "Scripting",
-    category: "Widget",
+    category: "Widgets",
     product: "QWeather",
     label: "QWeather View",
-    source: "Scripting/QWeather/widget.tsx",
+    source: "Scripting/Widgets/QWeather/widget.tsx",
     slug: "QWeather/widget",
   },
   {
     software: "Scripting",
-    category: "Widget",
+    category: "Widgets",
     product: "DataGovSG",
     label: "DataGovSG Index",
-    source: "Scripting/DataGovSG/index.tsx",
+    source: "Scripting/Widgets/DataGovSG/index.tsx",
     slug: "DataGovSG/index",
   },
   {
     software: "Scripting",
-    category: "Widget",
+    category: "Widgets",
     product: "DataGovSG",
     label: "DataGovSG Shared",
-    source: "Scripting/DataGovSG/shared.ts",
+    source: "Scripting/Widgets/DataGovSG/shared.ts",
     slug: "DataGovSG/shared",
   },
   {
     software: "Scripting",
-    category: "Widget",
+    category: "Widgets",
     product: "DataGovSG",
     label: "DataGovSG View",
-    source: "Scripting/DataGovSG/widget.tsx",
+    source: "Scripting/Widgets/DataGovSG/widget.tsx",
     slug: "DataGovSG/widget",
   },
   {
     software: "Scripting",
-    category: "Widget",
+    category: "Widgets",
     product: "Countdown",
     label: "Countdown Index",
-    source: "Scripting/Countdown/index.tsx",
+    source: "Scripting/Widgets/Countdown/index.tsx",
     slug: "Countdown/index",
   },
   {
     software: "Scripting",
-    category: "Widget",
+    category: "Widgets",
     product: "Countdown",
     label: "Countdown Shared",
-    source: "Scripting/Countdown/shared.ts",
+    source: "Scripting/Widgets/Countdown/shared.ts",
     slug: "Countdown/shared",
   },
   {
     software: "Scripting",
-    category: "Widget",
+    category: "Widgets",
     product: "Countdown",
     label: "Countdown View",
-    source: "Scripting/Countdown/widget.tsx",
+    source: "Scripting/Widgets/Countdown/widget.tsx",
     slug: "Countdown/widget",
   },
+  // Scriptable Widgets
   {
-    software: "Egern",
-    category: "Widget",
+    software: "Scriptable",
+    category: "Widgets",
     product: "QWeather",
     label: "QWeather",
-    source: "Egern/QWeather.js",
+    source: "Scriptable/Widgets/QWeather.js",
     slug: "QWeather",
   },
   {
-    software: "Egern",
-    category: "Module",
-    product: "QWeather",
-    label: "QWeather",
-    source: "Egern/QWeather.yaml",
-    slug: "QWeather",
-  },
-  {
-    software: "Egern",
-    category: "Widget",
+    software: "Scriptable",
+    category: "Widgets",
     product: "DataGovSG",
     label: "DataGovSG",
-    source: "Egern/DataGovSG.js",
+    source: "Scriptable/Widgets/DataGovSG.js",
     slug: "DataGovSG",
   },
+  // Egern
   {
-    software: "Stash",
-    category: "Tile",
+    software: "Egern",
+    category: "Widgets",
     product: "QWeather",
     label: "QWeather",
-    source: "Stash/QWeather.js",
+    source: "Egern/Scripts/Widgets/QWeather.js",
     slug: "QWeather",
   },
   {
-    software: "Surge",
-    category: "Script",
+    software: "Egern",
+    category: "Modules",
     product: "QWeather",
     label: "QWeather",
-    source: "Surge/QWeather.js",
+    source: "Egern/Modules/QWeather.yaml",
+    slug: "QWeather",
+  },
+  {
+    software: "Egern",
+    category: "Widgets",
+    product: "DataGovSG",
+    label: "DataGovSG",
+    source: "Egern/Scripts/Widgets/DataGovSG.js",
+    slug: "DataGovSG",
+  },
+  // Stash
+  {
+    software: "Stash",
+    category: "Tiles",
+    product: "QWeather",
+    label: "QWeather",
+    source: "Stash/Tiles/QWeather.js",
+    slug: "QWeather",
+  },
+  // Surge
+  {
+    software: "Surge",
+    category: "Scripts",
+    product: "QWeather",
+    label: "QWeather",
+    source: "Surge/Scripts/QWeather.js",
     slug: "QWeather",
   },
 ]
@@ -173,19 +189,19 @@ export function getCanonicalPath(file) {
   return `/${file.software}/${file.category}/${file.slug}`
 }
 
-export function getScriptingPackageBasePath(project, category = "Widget") {
+export function getScriptingPackageBasePath(project, category = "Widgets") {
   return `/Scripting/${category}/${project}`
 }
 
-export function getScriptingPackageDirectoryPath(project, category = "Widget") {
+export function getScriptingPackageDirectoryPath(project, category = "Widgets") {
   return `${getScriptingPackageBasePath(project, category)}/`
 }
 
-export function getScriptingPackageZipPath(project, category = "Widget") {
+export function getScriptingPackageZipPath(project, category = "Widgets") {
   return `${getScriptingPackageBasePath(project, category)}.zip`
 }
 
-export function getScriptingPackageFilePath(project, category = "Widget") {
+export function getScriptingPackageFilePath(project, category = "Widgets") {
   return `${getScriptingPackageBasePath(project, category)}.scripting`
 }
 

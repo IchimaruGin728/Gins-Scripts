@@ -14,6 +14,22 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import BaseLayout from "@/layouts/BaseLayout.astro"
 import {
   type CatalogCategory,
@@ -57,7 +73,7 @@ const scriptingProjects = Array.from(
   files,
   mainFile: files.find((file) => file.source.endsWith("/index.tsx")) ?? files[0],
   scriptingUrl: getScriptingPackageFilePath(name, category.id),
-  githubUrl: `${REPO_URL}/tree/main/Scripting/${encodeURIComponent(name)}`,
+  githubUrl: `${REPO_URL}/tree/main/Scripting/${category.id}/${encodeURIComponent(name)}`,
 }))
 ---
 
