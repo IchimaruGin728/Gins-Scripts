@@ -1,0 +1,10 @@
+name: kelee.WexinMiniPrograms_Remove_ads
+
+
+rules:
+  - DOMAIN, wxsnsdy.wxs.qq.com, REJECT
+  - DOMAIN, wxsmsdy.video.qq.com, REJECT
+  - DOMAIN, wxsnsdythumb.wxs.qq.com, REJECT
+  - DOMAIN, ads-shopping.shouqianba.com, REJECT
+  - DOMAIN, ad.maoyan.com, REJECT
+  - DOMAIN, e.jparking.cn, REJECT

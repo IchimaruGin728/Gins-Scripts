@@ -1,0 +1,5 @@
+name: kelee.Spotify_remove_ads
+
+
+rules:
+  - AND, ((DOMAIN-SUFFIX, spotify.com), (PROTOCOL, QUIC)), REJECT

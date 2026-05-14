@@ -1,0 +1,4 @@
+#!name = kelee.Auto_Join_TF
+
+[Rule]
+DOMAIN, testflight.apple.com, PROXY

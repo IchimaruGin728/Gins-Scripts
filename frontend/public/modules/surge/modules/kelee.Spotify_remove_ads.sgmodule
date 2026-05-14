@@ -1,0 +1,4 @@
+#!name = kelee.Spotify_remove_ads
+
+[Rule]
+AND, ((DOMAIN-SUFFIX, spotify.com), (PROTOCOL, QUIC)), REJECT

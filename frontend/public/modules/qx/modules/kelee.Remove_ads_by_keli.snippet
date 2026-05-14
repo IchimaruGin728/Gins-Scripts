@@ -1,0 +1,5 @@
+# kelee.Remove_ads_by_keli
+
+[rewrite_local]
+^https?:\/\/m\.client\.10010\.com\/mobileService\/customer\/accountListData\.htm mock-response-body data-type=json data="{"imgIndex":"0" url-rewrite "adv":{"startup_adv":{"advCntList":[]
+^https?:\/\/cmds\.omesoft\.com\/HypnotistWS\.asmx response-body-replace-regex <GetADResult>\.\*\?<\/GetADResult> <GetADResult>{"ret":0 url-rewrite "msg":"正常"

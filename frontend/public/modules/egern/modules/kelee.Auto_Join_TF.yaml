@@ -1,0 +1,5 @@
+name: kelee.Auto_Join_TF
+
+
+rules:
+  - DOMAIN, testflight.apple.com, PROXY

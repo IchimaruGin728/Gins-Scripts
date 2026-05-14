@@ -152,97 +152,85 @@
   {
     "name": "kelee.Block_HTTPDNS",
     "upstreams": {
-      "loon": "https://kelee.one/Tool/Loon/Lpx/Block_HTTPDNS.lpx"
+      "loon": "https://raw.githubusercontent.com/mihoyo-typ/KeleeOne/Loon/Plugin/Block_HTTPDNS.lpx"
     }
   },
   {
     "name": "kelee.BlockAdvertisers",
     "upstreams": {
-      "loon": "https://kelee.one/Tool/Loon/Lpx/BlockAdvertisers.lpx"
-    }
-  },
-  {
-    "name": "kelee.IPATool",
-    "upstreams": {
-      "loon": "https://kelee.one/Tool/Loon/Lpx/IPATool.lpx"
-    }
-  },
-  {
-    "name": "kelee.Pinterest_remove_ads",
-    "upstreams": {
-      "loon": "https://kelee.one/Tool/Loon/Lpx/Pinterest_remove_ads.lpx"
+      "loon": "https://raw.githubusercontent.com/mihoyo-typ/KeleeOne/Loon/Plugin/BlockAdvertisers.lpx"
     }
   },
   {
     "name": "kelee.Reddit_remove_ads",
     "upstreams": {
-      "loon": "https://kelee.one/Tool/Loon/Lpx/Reddit_remove_ads.lpx"
+      "loon": "https://raw.githubusercontent.com/mihoyo-typ/KeleeOne/Loon/Plugin/Reddit_remove_ads.lpx"
     }
   },
   {
     "name": "kelee.Spotify_remove_ads",
     "upstreams": {
-      "loon": "https://kelee.one/Tool/Loon/Lpx/Spotify_remove_ads.lpx"
+      "loon": "https://raw.githubusercontent.com/mihoyo-typ/KeleeOne/Loon/Plugin/Spotify_remove_ads.lpx"
     }
   },
   {
     "name": "kelee.JD_remove_ads",
     "upstreams": {
-      "loon": "https://kelee.one/Tool/Loon/Lpx/JD_remove_ads.lpx"
+      "loon": "https://raw.githubusercontent.com/mihoyo-typ/KeleeOne/Loon/Plugin/JD_remove_ads.lpx"
     }
   },
   {
     "name": "kelee.JD_Price",
     "upstreams": {
-      "loon": "https://kelee.one/Tool/Loon/Lpx/JD_Price.lpx"
+      "loon": "https://raw.githubusercontent.com/mihoyo-typ/KeleeOne/Loon/Plugin/JD_Price.lpx"
     }
   },
   {
     "name": "kelee.Remove_ads_by_keli",
     "upstreams": {
-      "loon": "https://kelee.one/Tool/Loon/Lpx/Remove_ads_by_keli.lpx"
+      "loon": "https://raw.githubusercontent.com/mihoyo-typ/KeleeOne/Loon/Plugin/Remove_ads_by_keli.lpx"
     }
   },
   {
     "name": "kelee.LuckinCoffee_remove_ads",
     "upstreams": {
-      "loon": "https://kelee.one/Tool/Loon/Lpx/LuckinCoffee_remove_ads.lpx"
+      "loon": "https://raw.githubusercontent.com/mihoyo-typ/KeleeOne/Loon/Plugin/LuckinCoffee_remove_ads.lpx"
     }
   },
   {
     "name": "kelee.SF-Express_remove_ads",
     "upstreams": {
-      "loon": "https://kelee.one/Tool/Loon/Lpx/SF-Express_remove_ads.lpx"
+      "loon": "https://raw.githubusercontent.com/mihoyo-typ/KeleeOne/Loon/Plugin/SF-Express_remove_ads.lpx"
     }
   },
   {
     "name": "kelee.MailMaster_remove_ads",
     "upstreams": {
-      "loon": "https://kelee.one/Tool/Loon/Lpx/MailMaster_remove_ads.lpx"
+      "loon": "https://raw.githubusercontent.com/mihoyo-typ/KeleeOne/Loon/Plugin/MailMaster_remove_ads.lpx"
     }
   },
   {
     "name": "kelee.Weixin_Official_Accounts_remove_ads",
     "upstreams": {
-      "loon": "https://kelee.one/Tool/Loon/Lpx/Weixin_Official_Accounts_remove_ads.lpx"
+      "loon": "https://raw.githubusercontent.com/mihoyo-typ/KeleeOne/Loon/Plugin/Weixin_Official_Accounts_remove_ads.lpx"
     }
   },
   {
     "name": "kelee.Weixin_external_links_unlock",
     "upstreams": {
-      "loon": "https://kelee.one/Tool/Loon/Lpx/Weixin_external_links_unlock.lpx"
+      "loon": "https://raw.githubusercontent.com/mihoyo-typ/KeleeOne/Loon/Plugin/Weixin_external_links_unlock.lpx"
     }
   },
   {
     "name": "kelee.WexinMiniPrograms_Remove_ads",
     "upstreams": {
-      "loon": "https://kelee.one/Tool/Loon/Lpx/WexinMiniPrograms_Remove_ads.lpx"
+      "loon": "https://raw.githubusercontent.com/mihoyo-typ/KeleeOne/Loon/Plugin/WexinMiniPrograms_Remove_ads.lpx"
     }
   },
   {
     "name": "kelee.Auto_Join_TF",
     "upstreams": {
-      "loon": "https://kelee.one/Tool/Loon/Lpx/Auto_Join_TF.lpx"
+      "loon": "https://raw.githubusercontent.com/mihoyo-typ/KeleeOne/Loon/Plugin/Auto_Join_TF.lpx"
     }
   }
 ]

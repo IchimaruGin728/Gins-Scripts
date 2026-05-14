@@ -1,0 +1,4 @@
+#!name = kelee.Weixin_Official_Accounts_remove_ads
+
+[Rule]
+DOMAIN-SUFFIX, wxs.qq.com, REJECT
