@@ -70,6 +70,6 @@
     "GINS_SCRIPTS_REPO": "IchimaruGin728/Gins-Scripts"
   },
   "triggers": {
-    "crons": ["28 7 * * *", "16 17 * * *"]
+    "crons": ["28 23 * * *", "16 9 * * *"]
   }
 }
