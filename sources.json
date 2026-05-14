@@ -1,0 +1,429 @@
+[
+  {
+    "name": "Scripting Quick Start",
+    "url": "https://scriptingapp.github.io/TestFlight/guide/Quick%20Start",
+    "software": "Scripting",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Scripting llms.txt",
+    "url": "https://scriptingapp.github.io/TestFlight/llms.txt",
+    "software": "Scripting",
+    "type": "llms.txt",
+    "enabled": true
+  },
+  {
+    "name": "Scripting llms-full.txt",
+    "url": "https://scriptingapp.github.io/TestFlight/llms-full.txt",
+    "software": "Scripting",
+    "type": "llms.txt",
+    "enabled": true
+  },
+  {
+    "name": "Scriptable Docs",
+    "url": "https://docs.scriptable.app",
+    "software": "Scriptable",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "ScriptWidget",
+    "url": "https://www.xnu.app/scriptwidget",
+    "software": "ScriptWidget",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "ScriptWidget Components",
+    "url": "https://www.xnu.app/scriptwidget/components",
+    "software": "ScriptWidget",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "ScriptWidget Templates",
+    "url": "https://www.xnu.app/scriptwidget/templates",
+    "software": "ScriptWidget",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Surge MITM",
+    "url": "https://manual.nssurge.com/http-processing/mitm.html",
+    "software": "Surge",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Surge URL Rewrite",
+    "url": "https://manual.nssurge.com/http-processing/url-rewrite.html",
+    "software": "Surge",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Surge Header Rewrite",
+    "url": "https://manual.nssurge.com/http-processing/header-rewrite.html",
+    "software": "Surge",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Surge Body Rewrite",
+    "url": "https://manual.nssurge.com/http-processing/body-rewrite.html",
+    "software": "Surge",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Surge Mock",
+    "url": "https://manual.nssurge.com/http-processing/mock.html",
+    "software": "Surge",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Surge Scripting Common",
+    "url": "https://manual.nssurge.com/scripting/common.html",
+    "software": "Surge",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Surge HTTP Request",
+    "url": "https://manual.nssurge.com/scripting/http-request.html",
+    "software": "Surge",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Surge HTTP Response",
+    "url": "https://manual.nssurge.com/scripting/http-response.html",
+    "software": "Surge",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Surge Rule Script",
+    "url": "https://manual.nssurge.com/scripting/rule.html",
+    "software": "Surge",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Surge Event Script",
+    "url": "https://manual.nssurge.com/scripting/event.html",
+    "software": "Surge",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Surge DNS Script",
+    "url": "https://manual.nssurge.com/scripting/dns.html",
+    "software": "Surge",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Surge Cron Script",
+    "url": "https://manual.nssurge.com/scripting/cron.html",
+    "software": "Surge",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Surge Module",
+    "url": "https://manual.nssurge.com/others/module.html",
+    "software": "Surge",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Surge Panel",
+    "url": "https://manual.nssurge.com/others/panel.html",
+    "software": "Surge",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Egern Modules",
+    "url": "https://egernapp.com/docs/configuration/modules",
+    "software": "Egern",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Egern URL Rewrites",
+    "url": "https://egernapp.com/docs/configuration/url_rewrites",
+    "software": "Egern",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Egern Header Rewrites",
+    "url": "https://egernapp.com/docs/configuration/header_rewrites",
+    "software": "Egern",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Egern Body Rewrites",
+    "url": "https://egernapp.com/docs/configuration/body_rewrites",
+    "software": "Egern",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Egern Scripting",
+    "url": "https://egernapp.com/docs/configuration/scriptings",
+    "software": "Egern",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Egern Widgets",
+    "url": "https://egernapp.com/docs/configuration/widgets",
+    "software": "Egern",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Egern Env Variables",
+    "url": "https://egernapp.com/docs/configuration/env",
+    "software": "Egern",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Egern JavaScript API",
+    "url": "https://egernapp.com/docs/javascript-api",
+    "software": "Egern",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Stash Override",
+    "url": "https://stash.wiki/configuration/override",
+    "software": "Stash",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Stash HTTP Engine Intro",
+    "url": "https://stash.wiki/http-engine/intro",
+    "software": "Stash",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Stash MITM",
+    "url": "https://stash.wiki/http-engine/mitm",
+    "software": "Stash",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Stash Force HTTP Engine",
+    "url": "https://stash.wiki/http-engine/force-http-engine",
+    "software": "Stash",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Stash HTTP Rewrite",
+    "url": "https://stash.wiki/http-engine/rewrite",
+    "software": "Stash",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Stash Manage Scripts",
+    "url": "https://stash.wiki/script/manage-script",
+    "software": "Stash",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Stash Syntax and Interface",
+    "url": "https://stash.wiki/script/syntax-and-interface",
+    "software": "Stash",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Stash Rewrite Requests",
+    "url": "https://stash.wiki/script/rewrite-requests",
+    "software": "Stash",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Stash Tile",
+    "url": "https://stash.wiki/script/tile",
+    "software": "Stash",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Stash Scheduled Tasks",
+    "url": "https://stash.wiki/script/scheduled-tasks",
+    "software": "Stash",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Stash URL Schema",
+    "url": "https://stash.wiki/faq/url-schema",
+    "software": "Stash",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "QuantumultX Rewrite",
+    "url": "https://qx.atlucky.me/shi-yong-fang-fa/pei-zhi-wen-jian-xiang-jie/zhong-xie-rewrite",
+    "software": "QuantumultX",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "QuantumultX Rewrite Local",
+    "url": "https://qx.atlucky.me/shi-yong-fang-fa/pei-zhi-wen-jian-xiang-jie/zhong-xie-rewrite/rewrite_local",
+    "software": "QuantumultX",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "QuantumultX Rewrite Remote",
+    "url": "https://qx.atlucky.me/shi-yong-fang-fa/pei-zhi-wen-jian-xiang-jie/zhong-xie-rewrite/rewrite_remote",
+    "software": "QuantumultX",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "QuantumultX HTTP Request Task",
+    "url": "https://qx.atlucky.me/shi-yong-fang-fa/pei-zhi-wen-jian-xiang-jie/gong-ju-fen-xi/http-qing-qiu-tasklocal",
+    "software": "QuantumultX",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "QuantumultX HTTP Backend",
+    "url": "https://qx.atlucky.me/shi-yong-fang-fa/pei-zhi-wen-jian-xiang-jie/gong-ju-fen-xi/http_backend",
+    "software": "QuantumultX",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "QuantumultX Parser",
+    "url": "https://qx.atlucky.me/shi-yong-fang-fa/jie-xi-qi-de-zuo-yong-yu-xiang-jie",
+    "software": "QuantumultX",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "QuantumultX GitHub",
+    "url": "https://github.com/crossutility/Quantumult-X",
+    "software": "QuantumultX",
+    "type": "github",
+    "enabled": true
+  },
+  {
+    "name": "Loon Rewrite",
+    "url": "https://nsloon.app/docs/Rewrite/",
+    "software": "Loon",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Loon Script",
+    "url": "https://nsloon.app/docs/Script/",
+    "software": "Loon",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Loon Script API",
+    "url": "https://nsloon.app/docs/Script/script_api",
+    "software": "Loon",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Loon Plugin",
+    "url": "https://nsloon.app/docs/Plugin/",
+    "software": "Loon",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Loon Scheme",
+    "url": "https://nsloon.app/docs/Scheme/",
+    "software": "Loon",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Shadowrocket URL Rewrite",
+    "url": "https://lowertop.github.io/Shadowrocket/#url重写",
+    "software": "Shadowrocket",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Shadowrocket Header Rewrite",
+    "url": "https://lowertop.github.io/Shadowrocket/#头部重写",
+    "software": "Shadowrocket",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Shadowrocket Body Rewrite",
+    "url": "https://lowertop.github.io/Shadowrocket/#正文重写",
+    "software": "Shadowrocket",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Shadowrocket Local Map",
+    "url": "https://lowertop.github.io/Shadowrocket/#本地映射",
+    "software": "Shadowrocket",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Shadowrocket HTTPS Decryption",
+    "url": "https://lowertop.github.io/Shadowrocket/#https解密",
+    "software": "Shadowrocket",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Shadowrocket Scripts",
+    "url": "https://lowertop.github.io/Shadowrocket/#脚本",
+    "software": "Shadowrocket",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Shadowrocket Modules",
+    "url": "https://lowertop.github.io/Shadowrocket/#模块",
+    "software": "Shadowrocket",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Shadowrocket Parameters",
+    "url": "https://lowertop.github.io/Shadowrocket/#编辑参数",
+    "software": "Shadowrocket",
+    "type": "web-scrape",
+    "enabled": true
+  },
+  {
+    "name": "Anywhere GitHub",
+    "url": "https://github.com/NodePassProject/Anywhere",
+    "software": "Anywhere",
+    "type": "github",
+    "enabled": true
+  }
+]
