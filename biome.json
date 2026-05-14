@@ -2,7 +2,16 @@
   "$schema": "https://biomejs.dev/schemas/2.4.12/schema.json",
   "files": {
     "ignoreUnknown": true,
-    "includes": ["src/**", "tools/**", "*.json", "*.jsonc", "*.mjs", "*.ts", "*.astro", "*.md"]
+    "includes": [
+      "frontend/src/**",
+      "tools/**",
+      "*.json",
+      "*.jsonc",
+      "*.mjs",
+      "*.ts",
+      "*.astro",
+      "*.md"
+    ]
   },
   "formatter": {
     "enabled": true,
