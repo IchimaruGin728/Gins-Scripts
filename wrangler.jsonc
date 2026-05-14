@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "gins-scripts",
-  "main": "src/worker.ts",
+  "main": "frontend/src/worker.ts",
   "compatibility_date": "2026-04-20",
   "placement": {
     "mode": "smart"
@@ -40,7 +40,7 @@
   },
   "r2_buckets": [
     {
-      "binding": "SCRIPTS_R2",
+      "binding": "GINS_SCRIPTS_R2",
       "bucket_name": "gins-scripts-storage"
     }
   ],
@@ -68,5 +68,8 @@
   ],
   "vars": {
     "GINS_SCRIPTS_REPO": "IchimaruGin728/Gins-Scripts"
+  },
+  "triggers": {
+    "crons": ["28 7 * * *", "16 17 * * *"]
   }
 }

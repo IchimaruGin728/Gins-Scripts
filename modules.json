@@ -1,0 +1,248 @@
+[
+  {
+    "name": "Sub-Store",
+    "upstreams": {
+      "egern": "https://raw.githubusercontent.com/sub-store-org/Sub-Store/master/config/Egern.yaml",
+      "surge": "https://raw.githubusercontent.com/sub-store-org/Sub-Store/master/config/Surge-Beta.sgmodule",
+      "qx": "https://raw.githubusercontent.com/sub-store-org/Sub-Store/master/config/QX.snippet",
+      "stash": "https://raw.githubusercontent.com/sub-store-org/Sub-Store/master/config/Stash.stoverride"
+    }
+  },
+  {
+    "name": "BoxJs",
+    "upstreams": {
+      "surge": "https://raw.githubusercontent.com/chavyleung/scripts/master/box/rewrite/boxjs.rewrite.surge.sgmodule",
+      "qx": "https://raw.githubusercontent.com/chavyleung/scripts/master/box/rewrite/boxjs.rewrite.quanx.conf",
+      "loon": "https://raw.githubusercontent.com/chavyleung/scripts/master/box/rewrite/boxjs.rewrite.loon.plugin",
+      "stash": "https://raw.githubusercontent.com/chavyleung/scripts/master/box/rewrite/boxjs.rewrite.stash.stoverride"
+    }
+  },
+  {
+    "name": "iRingo.LocationService",
+    "upstreams": {
+      "loon": "https://github.com/NSRingo/LocationService/releases/latest/download/iRingo.LocationService.plugin",
+      "surge": "https://github.com/NSRingo/LocationService/releases/latest/download/iRingo.LocationService.sgmodule",
+      "stash": "https://github.com/NSRingo/LocationService/releases/latest/download/iRingo.LocationService.stoverride",
+      "qx": "https://github.com/NSRingo/LocationService/releases/latest/download/iRingo.LocationService.snippet"
+    }
+  },
+  {
+    "name": "iRingo.Maps",
+    "upstreams": {
+      "loon": "https://github.com/NSRingo/Maps/releases/latest/download/iRingo.Maps.plugin",
+      "surge": "https://github.com/NSRingo/Maps/releases/latest/download/iRingo.Maps.sgmodule",
+      "stash": "https://github.com/NSRingo/Maps/releases/latest/download/iRingo.Maps.stoverride",
+      "qx": "https://github.com/NSRingo/Maps/releases/latest/download/iRingo.Maps.snippet",
+      "shadowrocket": "https://github.com/NSRingo/Maps/raw/main/modules/iRingo.Maps.Workers.srmodule"
+    }
+  },
+  {
+    "name": "iRingo.TV",
+    "upstreams": {
+      "loon": "https://github.com/NSRingo/TV/releases/latest/download/iRingo.TV.plugin",
+      "surge": "https://github.com/NSRingo/TV/releases/latest/download/iRingo.TV.sgmodule",
+      "stash": "https://github.com/NSRingo/TV/releases/latest/download/iRingo.TV.stoverride",
+      "qx": "https://github.com/NSRingo/TV/releases/latest/download/iRingo.TV.snippet",
+      "shadowrocket": "https://github.com/NSRingo/TV/releases/latest/download/iRingo.TV.srmodule"
+    }
+  },
+  {
+    "name": "DualSubs.Universal",
+    "upstreams": {
+      "loon": "https://github.com/DualSubs/Universal/releases/latest/download/DualSubs.Universal.plugin",
+      "surge": "https://github.com/DualSubs/Universal/releases/latest/download/DualSubs.Universal.sgmodule",
+      "stash": "https://github.com/DualSubs/Universal/releases/latest/download/DualSubs.Universal.stoverride",
+      "qx": "https://github.com/DualSubs/Universal/releases/latest/download/DualSubs.Universal.snippet",
+      "shadowrocket": "https://github.com/DualSubs/Universal/releases/latest/download/DualSubs.Universal.srmodule"
+    }
+  },
+  {
+    "name": "DualSubs.YouTube",
+    "upstreams": {
+      "loon": "https://github.com/DualSubs/YouTube/releases/latest/download/DualSubs.YouTube.plugin",
+      "surge": "https://github.com/DualSubs/YouTube/releases/latest/download/DualSubs.YouTube.sgmodule",
+      "stash": "https://github.com/DualSubs/YouTube/releases/latest/download/DualSubs.YouTube.stoverride",
+      "qx": "https://github.com/DualSubs/YouTube/releases/latest/download/DualSubs.YouTube.snippet"
+    }
+  },
+  {
+    "name": "DualSubs.Spotify",
+    "upstreams": {
+      "loon": "https://github.com/DualSubs/Spotify/releases/latest/download/DualSubs.Spotify.plugin",
+      "surge": "https://github.com/DualSubs/Spotify/releases/latest/download/DualSubs.Spotify.sgmodule",
+      "stash": "https://github.com/DualSubs/Spotify/releases/latest/download/DualSubs.Spotify.stoverride",
+      "qx": "https://github.com/DualSubs/Spotify/releases/latest/download/DualSubs.Spotify.snippet"
+    }
+  },
+  {
+    "name": "DualSubs.Spotify.Transcripts",
+    "upstreams": {
+      "loon": "https://github.com/DualSubs/Spotify/raw/main/modules/DualSubs.Spotify.Transcripts.plugin",
+      "surge": "https://github.com/DualSubs/Spotify/raw/main/modules/DualSubs.Spotify.Transcripts.sgmodule",
+      "stash": "https://github.com/DualSubs/Spotify/raw/main/modules/DualSubs.Spotify.Transcripts.stoverride",
+      "qx": "https://github.com/DualSubs/Spotify/raw/main/modules/DualSubs.Spotify.Transcripts.snippet"
+    }
+  },
+  {
+    "name": "DualSubs.AddOn.MicrosoftTranslate",
+    "upstreams": {
+      "loon": "https://github.com/DualSubs/AddOn/releases/latest/download/DualSubs.AddOn.MicrosoftTranslate.plugin",
+      "surge": "https://github.com/DualSubs/AddOn/releases/latest/download/DualSubs.AddOn.MicrosoftTranslate.sgmodule",
+      "stash": "https://github.com/DualSubs/AddOn/releases/latest/download/DualSubs.AddOn.MicrosoftTranslate.stoverride",
+      "qx": "https://github.com/DualSubs/AddOn/releases/latest/download/DualSubs.AddOn.MicrosoftTranslate.snippet",
+      "shadowrocket": "https://github.com/DualSubs/AddOn/releases/latest/download/DualSubs.AddOn.MicrosoftTranslate.srmodule"
+    }
+  },
+  {
+    "name": "DualSubs.AddOn.Akamaized",
+    "upstreams": {
+      "loon": "https://github.com/DualSubs/AddOn/raw/main/modules/DualSubs.AddOn.Akamaized.plugin",
+      "surge": "https://github.com/DualSubs/AddOn/raw/main/modules/DualSubs.AddOn.Akamaized.sgmodule",
+      "stash": "https://github.com/DualSubs/AddOn/raw/main/modules/DualSubs.AddOn.Akamaized.stoverride",
+      "qx": "https://github.com/DualSubs/AddOn/raw/main/modules/DualSubs.AddOn.Akamaized.snippet",
+      "shadowrocket": "https://github.com/DualSubs/AddOn/raw/main/modules/DualSubs.AddOn.Akamaized.srmodule"
+    }
+  },
+  {
+    "name": "BiliBili.Enhanced",
+    "upstreams": {
+      "loon": "https://github.com/BiliUniverse/Enhanced/releases/latest/download/BiliBili.Enhanced.plugin",
+      "surge": "https://github.com/BiliUniverse/Enhanced/releases/latest/download/BiliBili.Enhanced.sgmodule",
+      "stash": "https://github.com/BiliUniverse/Enhanced/releases/latest/download/BiliBili.Enhanced.stoverride",
+      "qx": "https://github.com/BiliUniverse/Enhanced/releases/latest/download/BiliBili.Enhanced.snippet",
+      "shadowrocket": "https://github.com/BiliUniverse/Enhanced/releases/latest/download/BiliBili.Enhanced.srmodule"
+    }
+  },
+  {
+    "name": "BiliBili.Global",
+    "upstreams": {
+      "loon": "https://github.com/BiliUniverse/Global/releases/latest/download/BiliBili.Global.plugin",
+      "surge": "https://github.com/BiliUniverse/Global/releases/latest/download/BiliBili.Global.sgmodule",
+      "stash": "https://github.com/BiliUniverse/Global/releases/latest/download/BiliBili.Global.stoverride",
+      "qx": "https://github.com/BiliUniverse/Global/releases/latest/download/BiliBili.Global.snippet",
+      "shadowrocket": "https://github.com/BiliUniverse/Global/releases/latest/download/BiliBili.Global.srmodule"
+    }
+  },
+  {
+    "name": "BiliBili.Redirect",
+    "upstreams": {
+      "loon": "https://github.com/BiliUniverse/Redirect/releases/latest/download/BiliBili.Redirect.plugin",
+      "surge": "https://github.com/BiliUniverse/Redirect/releases/latest/download/BiliBili.Redirect.sgmodule",
+      "stash": "https://github.com/BiliUniverse/Redirect/releases/latest/download/BiliBili.Redirect.stoverride"
+    }
+  },
+  {
+    "name": "BiliBili.ADBlock",
+    "upstreams": {
+      "loon": "https://github.com/BiliUniverse/ADBlock/releases/latest/download/BiliBili.ADBlock.plugin",
+      "surge": "https://github.com/BiliUniverse/ADBlock/releases/latest/download/BiliBili.ADBlock.sgmodule",
+      "stash": "https://github.com/BiliUniverse/ADBlock/releases/latest/download/BiliBili.ADBlock.stoverride",
+      "qx": "https://github.com/BiliUniverse/ADBlock/releases/latest/download/BiliBili.ADBlock.snippet"
+    }
+  },
+  {
+    "name": "HTTPDNS.Block",
+    "upstreams": {
+      "loon": "https://github.com/VirgilClyne/GetSomeFries/raw/main/plugin/HTTPDNS.Block.plugin",
+      "surge": "https://github.com/VirgilClyne/GetSomeFries/raw/main/sgmodule/HTTPDNS.Block.sgmodule",
+      "stash": "https://github.com/VirgilClyne/GetSomeFries/raw/main/stoverride/HTTPDNS.Block.stoverride",
+      "qx": "https://github.com/VirgilClyne/GetSomeFries/raw/main/snippet/HTTPDNS.Block.snippet"
+    }
+  },
+  {
+    "name": "kelee.Block_HTTPDNS",
+    "upstreams": {
+      "loon": "https://kelee.one/Tool/Loon/Lpx/Block_HTTPDNS.lpx"
+    }
+  },
+  {
+    "name": "kelee.BlockAdvertisers",
+    "upstreams": {
+      "loon": "https://kelee.one/Tool/Loon/Lpx/BlockAdvertisers.lpx"
+    }
+  },
+  {
+    "name": "kelee.IPATool",
+    "upstreams": {
+      "loon": "https://kelee.one/Tool/Loon/Lpx/IPATool.lpx"
+    }
+  },
+  {
+    "name": "kelee.Pinterest_remove_ads",
+    "upstreams": {
+      "loon": "https://kelee.one/Tool/Loon/Lpx/Pinterest_remove_ads.lpx"
+    }
+  },
+  {
+    "name": "kelee.Reddit_remove_ads",
+    "upstreams": {
+      "loon": "https://kelee.one/Tool/Loon/Lpx/Reddit_remove_ads.lpx"
+    }
+  },
+  {
+    "name": "kelee.Spotify_remove_ads",
+    "upstreams": {
+      "loon": "https://kelee.one/Tool/Loon/Lpx/Spotify_remove_ads.lpx"
+    }
+  },
+  {
+    "name": "kelee.JD_remove_ads",
+    "upstreams": {
+      "loon": "https://kelee.one/Tool/Loon/Lpx/JD_remove_ads.lpx"
+    }
+  },
+  {
+    "name": "kelee.JD_Price",
+    "upstreams": {
+      "loon": "https://kelee.one/Tool/Loon/Lpx/JD_Price.lpx"
+    }
+  },
+  {
+    "name": "kelee.Remove_ads_by_keli",
+    "upstreams": {
+      "loon": "https://kelee.one/Tool/Loon/Lpx/Remove_ads_by_keli.lpx"
+    }
+  },
+  {
+    "name": "kelee.LuckinCoffee_remove_ads",
+    "upstreams": {
+      "loon": "https://kelee.one/Tool/Loon/Lpx/LuckinCoffee_remove_ads.lpx"
+    }
+  },
+  {
+    "name": "kelee.SF-Express_remove_ads",
+    "upstreams": {
+      "loon": "https://kelee.one/Tool/Loon/Lpx/SF-Express_remove_ads.lpx"
+    }
+  },
+  {
+    "name": "kelee.MailMaster_remove_ads",
+    "upstreams": {
+      "loon": "https://kelee.one/Tool/Loon/Lpx/MailMaster_remove_ads.lpx"
+    }
+  },
+  {
+    "name": "kelee.Weixin_Official_Accounts_remove_ads",
+    "upstreams": {
+      "loon": "https://kelee.one/Tool/Loon/Lpx/Weixin_Official_Accounts_remove_ads.lpx"
+    }
+  },
+  {
+    "name": "kelee.Weixin_external_links_unlock",
+    "upstreams": {
+      "loon": "https://kelee.one/Tool/Loon/Lpx/Weixin_external_links_unlock.lpx"
+    }
+  },
+  {
+    "name": "kelee.WexinMiniPrograms_Remove_ads",
+    "upstreams": {
+      "loon": "https://kelee.one/Tool/Loon/Lpx/WexinMiniPrograms_Remove_ads.lpx"
+    }
+  },
+  {
+    "name": "kelee.Auto_Join_TF",
+    "upstreams": {
+      "loon": "https://kelee.one/Tool/Loon/Lpx/Auto_Join_TF.lpx"
+    }
+  }
+]

@@ -9,6 +9,7 @@
     "build": "pnpm run build:catalog && astro build",
     "r2:sync": "node ./tools/sync-r2.mjs",
     "sync:docs": "node ./tools/sync-docs.mjs",
+    "sync:modules": "node --import tsx ./tools/sync-modules.mjs",
     "fetch:icons": "node ./tools/fetch-icons.mjs",
     "converter": "node --import tsx ./tools/converter/index.ts",
     "biome:check": "biome check .",

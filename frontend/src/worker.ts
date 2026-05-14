@@ -4,7 +4,7 @@ import { getAliasMap, getPagePaths } from "./lib/catalog"
 
 type Bindings = {
   ASSETS: Fetcher
-  SCRIPTS_R2: R2Bucket
+  GINS_SCRIPTS_R2: R2Bucket
   R2_SYNC_QUEUE: Queue<R2SyncMessage>
   R2_SYNC_WORKFLOW: Workflow
   GINS_SCRIPTS_REPO: string
@@ -22,6 +22,9 @@ const pages = getPagePaths()
 
 const distributionPattern =
   /^\/(Scripting|Scriptable|Egern|Stash|Surge|Shadowrocket|Loon|QuantumultX)\/.+\.(js|mjs|ts|tsx|ya?ml|json|zip|scripting)$/
+
+const modulePattern =
+  /^\/(surge|loon|qx|stash|egern|shadowrocket)\/modules\/.+\.(sgmodule|plugin|lpx|snippet|conf|stoverride|yaml|srmodule)$/
 
 app.get("/api/manifest", async (c) => {
   return c.env.ASSETS.fetch(new URL("/manifest.json", c.req.url))
@@ -47,8 +50,8 @@ app.get("*", async (c) => {
     return new Response("Not Found", { status: 404 })
   }
 
-  if (distributionPattern.test(decodedPath)) {
-    const object = await c.env.SCRIPTS_R2.get(r2Path)
+  if (distributionPattern.test(decodedPath) || modulePattern.test(decodedPath)) {
+    const object = await c.env.GINS_SCRIPTS_R2.get(r2Path)
     if (object) {
       const headers = new Headers()
       object.writeHttpMetadata(headers)
@@ -153,5 +156,16 @@ export default {
   },
   async queue(batch: MessageBatch<R2SyncMessage>, env: Bindings): Promise<void> {
     await Promise.all(batch.messages.map((message) => syncObject(env, message.body)))
+  },
+  async scheduled(event: ScheduledEvent, env: Bindings, ctx: ExecutionContext) {
+    console.log("⏰ Running scheduled module sync...")
+    // Module sync logic would go here
+    // For now, this triggers the workflow
+    await env.R2_SYNC_WORKFLOW.create({
+      params: {
+        requestedAt: new Date().toISOString(),
+        type: "module-sync",
+      },
+    })
   },
 }
